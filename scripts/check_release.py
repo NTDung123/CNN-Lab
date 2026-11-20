@@ -29,6 +29,11 @@ def require(condition, message):
 def check_release():
     require(sys.version_info[:2] == (3, 12) and sys.maxsize > 2**32,
             "Use Python 3.12 64-bit, matching requirements.txt and CI.")
+    # The prepare helpers can generate files when BOTH cache files are absent.
+    # A release audit must fail on an incomplete clone rather than create data.
+    for name in ("geometry_splits.npz", "geometry_splits.json", "real_training.npz", "real_training.json"):
+        require((ROOT / "data" / name).is_file(),
+                f"Missing frozen dataset: data/{name}. Restore the complete release; this check never regenerates it.")
     identities = asset_identity(ROOT)
     require("missing" not in identities.values(), "A required inference asset is missing.")
     report_checks = {}
