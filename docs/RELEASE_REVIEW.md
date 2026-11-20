@@ -63,10 +63,10 @@ Các tệp log và môi trường trong `results/history/`, `results/tested_envi
 - Dữ liệu thực nhỏ và chọn thuận tiện; softmax chưa hiệu chỉnh độ tin cậy. Chưa có kiểm chứng triển khai ngoài phạm vi demo.
 - Lần rà soát phát hành này không kiểm tra trực quan lại Chrome/mobile. Các kiểm tra trình duyệt cũ được ghi rõ là bằng chứng lịch sử.
 - Docker CLI có mặt nhưng Docker Engine chưa hoạt động ở lần kiểm tra; chưa build/chạy image trong lần này.
-- Workflow Windows/Ubuntu đã được chuẩn bị; chưa thể gọi là CI đạt trước khi push và xem kết quả workflow trên GitHub.
+- Workflow Windows/Ubuntu đã được chuẩn bị. Trạng thái chạy thực tế được xem tại [GitHub Actions của CNN Lab](https://github.com/NTDung123/CNN-Lab/actions); kết quả local không được gọi thay là kết quả CI.
 
 ## Trước khi nộp và công khai
 
 Giữ bản nộp source, checkpoint, dữ liệu cần thiết và báo cáo cùng phiên bản. Điền nhiệm vụ kỹ thuật và % đóng góp thực tế. Nhóm chưa chọn giấy phép chung cho mã tự phát triển; phần kế thừa và từng ảnh tiếp tục giữ phạm vi quyền tại nguồn đã ghi trong notices.
 
-Repo đích và chế độ Public/Private cần do nhóm xác định. Việc chuẩn bị Git local không đồng nghĩa đã push hay công khai repository.
+Repository đích: [NTDung123/CNN-Lab](https://github.com/NTDung123/CNN-Lab), chế độ **Public** theo lựa chọn của nhóm. Tên hiển thị trong README là CNN Lab; đường dẫn repository dùng dấu gạch nối thay khoảng trắng. Trạng thái nhánh/commit và workflow trên GitHub là căn cứ xác nhận bản đã công khai.

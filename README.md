@@ -23,6 +23,11 @@ Bài tập lớn môn **Xử lý ảnh**, lớp **INT13146-N09**, **Nhóm 01**.
 
 Cần **Python 3.12 64-bit kèm Python Launcher**. Không sao chép `.venv` từ máy khác và không dùng Python mặc định chưa kiểm tra phiên bản.
 
+```powershell
+git clone https://github.com/NTDung123/CNN-Lab.git
+cd CNN-Lab
+```
+
 1. Tải/clone đầy đủ repository.
 2. Chạy `SETUP_WINDOWS.bat` để tạo môi trường và cài thư viện.
 3. Chạy `RUN_DEMO_WINDOWS.bat`.
