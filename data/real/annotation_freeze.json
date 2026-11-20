@@ -1,0 +1,19 @@
+{
+  "experiment_id": "phase4_projected_geometry",
+  "created_at_utc": "2026-11-15T15:10:04.298199+00:00",
+  "manifest_sha256": "395756ec395df0d0216116ec19dad994c73e8132f2b653dc6e133c36cdb6942e",
+  "test_ids": [
+    "cassette_clear",
+    "cd_black",
+    "cd_white",
+    "cd_dark_texture",
+    "floppy_scan",
+    "ancient_round",
+    "rare_coins",
+    "vhs_black",
+    "floppy_white",
+    "grass_test",
+    "wood_test"
+  ],
+  "rule": "Roles and manual boxes fixed before any phase-4 photo inference. Test contains only new sources; old test moved to development. Label edits are versioned, history/v3 remains unchanged."
+}

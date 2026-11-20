@@ -1,0 +1,90 @@
+{
+  "schema_version": 4,
+  "fixed_before_inference": true,
+  "changes": [
+    {
+      "id": "cd_gray",
+      "old_annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            176,
+            130,
+            432,
+            340
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "new_distractors": [
+        {
+          "id": 1,
+          "class": "ellipse",
+          "bbox": [
+            176,
+            130,
+            432,
+            340
+          ],
+          "occluded": false,
+          "clipped": false,
+          "label_reason": "Projected 2D outline is elliptical / clipped, not an approximately circular target."
+        }
+      ],
+      "reason": "Fixed projected-geometry policy before any phase-4 selection/test. Original phase-3 labels/results retained in history/v3."
+    },
+    {
+      "id": "gold_cap",
+      "old_annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            54,
+            0,
+            552,
+            450
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "new_distractors": [
+        {
+          "id": 1,
+          "class": "ellipse",
+          "bbox": [
+            54,
+            0,
+            552,
+            450
+          ],
+          "occluded": false,
+          "clipped": true,
+          "label_reason": "Projected 2D outline is elliptical / clipped, not an approximately circular target."
+        }
+      ],
+      "reason": "Fixed projected-geometry policy before any phase-4 selection/test. Original phase-3 labels/results retained in history/v3."
+    }
+  ],
+  "prior_test_moved_to_development": [
+    "fd_round",
+    "cassette_audioforum",
+    "cassette_overlap",
+    "cd_gray",
+    "carlsberg_cap",
+    "cassette_case",
+    "sd_adapter",
+    "gold_cap"
+  ],
+  "excluded_candidates_before_predictions": [
+    "8:illustration, not camera/scan",
+    "2:multiple background rectangular objects ambiguous",
+    "3/4:oblique museum display with gemstones, outside simple silhouette scope",
+    "12:multiple heavily clipped discs",
+    "14:disassembled case and oblique disc",
+    "17:disc inside case, ambiguous nested target policy"
+  ]
+}

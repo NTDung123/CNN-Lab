@@ -1,0 +1,69 @@
+{
+  "manifest_sha256": "395756ec395df0d0216116ec19dad994c73e8132f2b653dc6e133c36cdb6942e",
+  "shapes_checkpoint_sha256": "425bf873b35e0a943d3d738170d6d0c295153cdac6edcf81605f6f24b8c9c46f",
+  "geometry_dataset_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "processing_sha256": "6074eb00a3ffd750d278661f8aed448b3e0755d5e525b65703aaee37987deb52",
+  "service_sha256": "b408d56d3e8ce60b93fe67ac7087be8303d5410cd8a701be0df44e131de62cb7",
+  "segmentation_sha256": "43ffa3c088e04a49673c0fe6dc1244237c1059d271371512fbee569879da9c63",
+  "geometry_profile_sha256": "31b505b03bbae82f6962cc66782e45a7cc7c50fae5f1070206bae341139bd3b6",
+  "metrics_sha256": "90e5762e42123b56ea3c782b43f2f073afc6b49399c8ecf640a3a2b4844c4a45",
+  "real_evaluation_sha256": "922cabe6b660964ffdc03409ecd67f13d659cba5442918b387313033e9162244",
+  "selection_experiment_sha256": "c44b750dac0470f4bf71b117fef7e2773ed3135b118b93a68d39721a87c06564",
+  "protocol_version": 5,
+  "test_previously_seen_in_phase": 4,
+  "test_independent": false,
+  "frozen_at_utc": "2026-11-19T03:15:03.021059+00:00",
+  "selected_mode": "repaired_regions",
+  "training_roles": [
+    "development"
+  ],
+  "selection_roles": [
+    "validation"
+  ],
+  "test_previously_used_for_selection": false,
+  "selection_rule": "Maximize validation target macro-F1 across two target classes, including negative-frame FP. CNN epochs selected on validation with synthetic validation guard; no new test used.",
+  "notes": "Roles/manual labels frozen first. Previously observed phase-3 test sources are development. Do not modify pipeline after reading new test results. The real test photos were already opened in phase 4; their phase-4 summary scores were known while phase-5 bugs were fixed using synthetic probes and development/validation only. No test photo was run during phase-5 development, but the test is no longer an unseen benchmark.",
+  "amendments": [
+    {
+      "amended_at_utc": "2026-11-19T03:27:20.318542+00:00",
+      "reason": "Sửa lỗi chọn cực tính trong digit_foreground (chỉ nhánh chữ số), phát hiện khi kiểm tra giao diện bằng ảnh validation MNIST; không dựa trên kết quả test. Mã hình học không đổi.",
+      "changed_items": [
+        "processing_sha256",
+        "selection_experiment_sha256"
+      ],
+      "previous_lock_sha256": "a43d66842f674a8b6bcf45a609ecc3c6038f44b57c41d9d94de76e4a4a7b6a06",
+      "test_already_opened_in_this_phase": true
+    },
+    {
+      "amended_at_utc": "2026-11-19T17:52:45.560315+00:00",
+      "reason": "Hiển thị: tô màu vùng theo nhãn (xanh/cam/đỏ), vẽ cả vùng chưa xác định, thêm unknown_reason; không đổi nhãn dự đoán",
+      "changed_items": [
+        "selection_experiment_sha256",
+        "service_sha256"
+      ],
+      "previous_lock_sha256": "7f436116150cb90f25dde0d54b98d500affa4fb3200e9f20c5fe3569e96eba77",
+      "test_already_opened_in_this_phase": true
+    },
+    {
+      "amended_at_utc": "2026-11-19T18:00:17.013791+00:00",
+      "reason": "Hiển thị: tô màu vùng theo nhãn (xanh/cam/đỏ), vẽ cả vùng chưa xác định (kèm ảnh ẩn chúng), thêm unknown_reason; không đổi nhãn dự đoán",
+      "changed_items": [
+        "selection_experiment_sha256",
+        "service_sha256"
+      ],
+      "previous_lock_sha256": "6b041182050b82c959bb3b1c2b4f773af1c40ce712909348d93fd4db4b6ca10f",
+      "test_already_opened_in_this_phase": true
+    },
+    {
+      "amended_at_utc": "2026-11-19T18:27:18.451638+00:00",
+      "reason": "Hiển thị chữ số: tô màu nét được đọc (xanh/đỏ theo ngưỡng 0,75), tô đỏ vết bị bỏ qua; preprocess_digit chỉ trả thêm mặt nạ để vẽ, không đổi dự đoán",
+      "changed_items": [
+        "processing_sha256",
+        "selection_experiment_sha256",
+        "service_sha256"
+      ],
+      "previous_lock_sha256": "93d5aeca5f9561b3be9192829a64acbe72345148b3bf8b47a3c0a61de39128c4",
+      "test_already_opened_in_this_phase": true
+    }
+  ]
+}

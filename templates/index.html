@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#112a2a">
+  <title>CNN Lab · Nhận dạng chữ số & hình học</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='real.css') }}">
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="CNN Lab trang chủ"><span class="brand-mark">n<span>·</span></span><span>CNN Lab<small>THỰC HÀNH XỬ LÝ ẢNH</small></span></a>
+    <div class="sidebar-label">KHÔNG GIAN THỬ NGHIỆM</div>
+    <nav aria-label="Chế độ">
+      <button class="nav-button active" data-mode="digits" aria-current="page"><span class="nav-icon">7</span><span>Chữ số viết tay<small>MNIST · 0 đến 9</small></span><span class="nav-arrow">↗</span></button>
+      <button class="nav-button" data-mode="shapes"><span class="nav-icon shapes-icon">○</span><span>Hình học cơ bản<small>Hình tròn & chữ nhật</small></span><span class="nav-arrow">↗</span></button>
+      <button class="nav-button" data-mode="real"><span class="nav-icon">▧</span><span>Ảnh chụp thực tế<small>Nguồn, nhãn & ca nhận sai</small></span><span class="nav-arrow">↗</span></button>
+      <button class="nav-button" data-mode="metrics"><span class="nav-icon">▥</span><span>Kiểm thử & kết quả<small>Số đo và ca nhận dạng sai</small></span><span class="nav-arrow">↗</span></button>
+    </nav>
+    <div class="sidebar-note"><span class="tiny-label">TỪ ĐIỂM ẢNH ĐẾN NHÃN</span><p>Quan sát từng bước xử lý ảnh và đặc trưng mà mô hình học được.</p><div class="mini-path"><span>Ảnh</span><i>→</i><span>Xử lý</span><i>→</i><span>CNN</span></div></div>
+    <div class="sidebar-bottom"><span class="online-dot"></span>Chạy trên máy của bạn<small>Ảnh được xử lý bởi máy đang chạy ứng dụng.</small></div>
+  </aside>
+  <main>
+    <header class="page-header"><div><div class="eyebrow">NHẬN DẠNG BẰNG MẠNG NEURAL <span>/</span> BẢN CHẠY THỬ</div><h1 id="pageTitle">Chữ số viết tay<span>.</span></h1><p id="pageDescription">Vẽ một chữ số, xem dự đoán và cách CNN nhìn nét vẽ của bạn.</p></div><div class="model-status" id="modelStatus"><span class="online-dot"></span>Đang kiểm tra mô hình</div></header>
+    <section id="workspace" class="workspace">
+      <article class="card input-card">
+        <div class="card-heading"><div><span class="step-number">01</span><h2>Ảnh đầu vào</h2></div><span class="pill" id="inputType">MỘT CHỮ SỐ</span></div>
+        <div class="drawing-area" id="drawingArea"><canvas id="drawCanvas" width="280" height="280" aria-label="Khung vẽ chữ số" tabindex="0"></canvas><span class="canvas-placeholder" id="canvasPlaceholder">Vẽ ở đây<span>Dùng chuột hoặc một ngón tay</span></span></div>
+        <div class="brush-controls"><label for="brushSize">Độ dày nét</label><input id="brushSize" type="range" min="8" max="34" value="22"><span id="brushValue">22</span><button class="text-button" id="clearBtn">↻ Xóa</button></div>
+        <div class="action-row"><label class="button secondary upload-button" for="imageUpload"><span>↑</span> Tải ảnh lên<input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp,image/bmp,.bmp" hidden></label><button class="button primary" id="predictBtn">Nhận dạng <span>→</span></button></div>
+        <p id="inputHint" class="input-hint">Viết một chữ số 0–9 thật rõ. Không dùng chế độ này để đọc cả dãy số.</p>
+        <div id="realContext" class="real-input-context" hidden></div>
+        <div class="samples"><div class="sample-heading"><span>HOẶC THỬ ẢNH MẪU</span><span id="sampleNote">Từ tập MNIST test</span></div><div id="sampleGrid" class="sample-grid"></div></div>
+        <div class="error-message" id="inputError" role="alert" hidden></div>
+      </article>
+      <article class="card result-card">
+        <div class="card-heading"><div><span class="step-number">02</span><h2>Kết quả nhận dạng</h2></div><span class="pill green" id="modelTag">CNN · MNIST</span></div>
+        <div id="resultBody" class="result-body" aria-live="polite"></div>
+      </article>
+    </section>
+    <section id="pipelineSection" class="card pipeline-section" hidden><div class="card-heading"><div><span class="step-number">03</span><h2>Từng bước xử lý</h2></div><span class="subtle" id="pipelineMeta"></span></div><div id="pipelineSteps" class="pipeline-steps"></div><div id="pipelineBranches" class="pipeline-branch-panel" hidden></div><div id="featureMaps" class="feature-maps"></div></section>
+    <section id="metricsSection" class="metrics-section" hidden></section>
+    <section id="realSection" class="metrics-section" hidden></section>
+    <dialog id="realDialog" class="real-dialog"><div id="realDialogBody"></div></dialog>
+    <footer><span>Xử lý ảnh · CNN Lab</span><span id="footerNote">Tiền xử lý tự cài bằng NumPy · Mạng neural dùng PyTorch</span></footer>
+  </main>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+Phase 5: Python 3.13.18; Linux CPU
+{"numpy": "2.5.3", "Pillow": "12.3.0", "Flask": "3.1.3", "torch": "2.15.0+cu132"}
+67 unittest checks passed (52 phase-4 + 15 phase-5 regressions). Desktop browser check (Chrome headless, 1360x1000): digits, shapes, metrics and real-photo tabs, no JavaScript errors, no HTTP errors.
+Not re-run in phase 5: mobile 390/320 px layout checks, Windows BAT files. Requirements still pin Python 3.12 / torch 2.7.1+cpu. The 67 tests were also re-run with the pinned numpy 2.3.5 and Pillow 13.0.0 (pass); torch 2.7.1 itself was not re-tested in phase 5.

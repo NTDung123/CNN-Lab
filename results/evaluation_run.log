@@ -1,0 +1,226 @@
+MNIST raw test: 99.0800%
+MNIST through actual image pipeline: 98.7100%
+Original provided ANN on same raw test set: 98.5000%
+Scene evaluation dark_background: 15/90
+Scene evaluation dark_background: 30/90
+Scene evaluation dark_background: 45/90
+Scene evaluation dark_background: 60/90
+Scene evaluation dark_background: 75/90
+Scene evaluation dark_background: 90/90
+{
+  "mnist_raw_accuracy": 0.9908,
+  "mnist_pipeline_accuracy": 0.9871,
+  "original_ann_accuracy": 0.985,
+  "shape_classification_accuracy": 1.0,
+  "detection": {
+    "scenes": 90,
+    "ground_truth_all_classes": 540,
+    "iou_threshold": 0.5,
+    "confidence_threshold": 0.75,
+    "per_class": {
+      "circle": {
+        "tp": 129,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "rectangle": {
+        "tp": 138,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "tp": 267,
+    "fp": 0,
+    "fn": 0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "mean_iou_on_true_positives": 0.9928404939813528,
+    "ground_truth_targets": 267,
+    "conditions": {
+      "clean": {
+        "scenes": 30,
+        "ground_truth_all_classes": 180,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 51,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "rectangle": {
+            "tp": 43,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "tp": 94,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mean_iou_on_true_positives": 0.9933452395355122,
+        "ground_truth_targets": 94
+      },
+      "gaussian_and_impulse_noise": {
+        "scenes": 30,
+        "ground_truth_all_classes": 180,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 40,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "rectangle": {
+            "tp": 45,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "tp": 85,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mean_iou_on_true_positives": 0.9941028429795659,
+        "ground_truth_targets": 85
+      },
+      "dark_background": {
+        "scenes": 30,
+        "ground_truth_all_classes": 180,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 38,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "rectangle": {
+            "tp": 50,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "tp": 88,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mean_iou_on_true_positives": 0.991082019584317,
+        "ground_truth_targets": 88
+      }
+    },
+    "normalized_input_deduplication": {
+      "passed": true,
+      "rejected_candidate_scenes": 0,
+      "accepted_scene_inputs": 540,
+      "overlap_with_earlier_inputs": 0,
+      "selection_rule": "Normalized image identity only, checked before model inference"
+    }
+  },
+  "stress": {
+    "scenes": 12,
+    "ground_truth_all_classes": 36,
+    "iou_threshold": 0.5,
+    "confidence_threshold": 0.75,
+    "per_class": {
+      "circle": {
+        "tp": 0,
+        "fp": 0,
+        "fn": 9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      },
+      "rectangle": {
+        "tp": 0,
+        "fp": 2,
+        "fn": 8,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0
+      }
+    },
+    "tp": 0,
+    "fp": 2,
+    "fn": 17,
+    "precision": 0.0,
+    "recall": 0.0,
+    "f1": 0.0,
+    "mean_iou_on_true_positives": 0.0,
+    "ground_truth_targets": 17,
+    "conditions": {
+      "touching": {
+        "scenes": 12,
+        "ground_truth_all_classes": 36,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "rectangle": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 8,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "tp": 0,
+        "fp": 2,
+        "fn": 17,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mean_iou_on_true_positives": 0.0,
+        "ground_truth_targets": 17
+      }
+    },
+    "normalized_input_deduplication": {
+      "passed": true,
+      "rejected_candidate_scenes": 0,
+      "accepted_scene_inputs": 12,
+      "overlap_with_earlier_inputs": 0,
+      "selection_rule": "Normalized image identity only, checked before model inference"
+    }
+  },
+  "seconds": 24.53545832633972
+}

@@ -1,0 +1,8 @@
+{
+  "name": "MNIST",
+  "url": "https://storage.googleapis.com/tensorflow/tf-keras-datasets/mnist.npz",
+  "sha256": "731c5ac602752760c8e48fbffcf8c3b850d9dc2a2aedcf2cc48468fc17b673d1",
+  "train_samples": 60000,
+  "test_samples": 10000,
+  "validation_split_from_train": 5000
+}

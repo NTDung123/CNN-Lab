@@ -1,0 +1,30 @@
+{
+  "phase": 5,
+  "unit_tests": {
+    "run": 68,
+    "passed": 68,
+    "failed": 0
+  },
+  "browser": {
+    "desktop": true,
+    "mobile_390": null,
+    "mobile_320": null,
+    "digit_uneven_light_upload": "6 (99.96%)",
+    "open_outline_circle_detected": true,
+    "tiny_region_not_boxed": true,
+    "metrics": true,
+    "real_gallery_cases": 40,
+    "phase_comparison_table": true,
+    "browser_errors": []
+  },
+  "geometry_predictions_unchanged_by_lock_amendment": true,
+  "frozen_benchmarks_unchanged": {
+    "mnist_raw": 0.9908,
+    "mnist_pipeline": 0.9871,
+    "shape_classification": 0.9992,
+    "scene_regression": "267/0/0",
+    "real_test": "9/3/1"
+  },
+  "windows_bat_executed": false,
+  "phase4_record": "results/history/v4/verification.json"
+}

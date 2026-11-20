@@ -1,0 +1,26 @@
+test_digit_polarity_and_blank (test_project.AlgorithmTests.test_digit_polarity_and_blank) ... ok
+test_eight_connectivity_and_area_filter (test_project.AlgorithmTests.test_eight_connectivity_and_area_filter) ... ok
+test_grayscale_and_alpha (test_project.AlgorithmTests.test_grayscale_and_alpha) ... ok
+test_holes_and_morphological_closing (test_project.AlgorithmTests.test_holes_and_morphological_closing) ... ok
+test_otsu_separates_two_classes (test_project.AlgorithmTests.test_otsu_separates_two_classes) ... ok
+test_resize_preserves_identity_and_average (test_project.AlgorithmTests.test_resize_preserves_identity_and_average) ... ok
+test_union_joining_previously_separate_runs (test_project.AlgorithmTests.test_union_joining_previously_separate_runs) ... ok
+test_bad_input_is_not_server_error (test_project.AppTests.test_bad_input_is_not_server_error) ... ok
+test_empty_shape_image_and_negative_classes (test_project.AppTests.test_empty_shape_image_and_negative_classes) ... ok
+test_evaluation_protocol_is_independent_and_has_stress_failures (test_project.AppTests.test_evaluation_protocol_is_independent_and_has_stress_failures) ... ok
+test_home_assets_and_models (test_project.AppTests.test_home_assets_and_models) ... ok
+test_mixed_rotated_and_outline_shapes (test_project.AppTests.test_mixed_rotated_and_outline_shapes) ... ok
+test_real_photo_gallery_api_and_assets (test_project.AppTests.test_real_photo_gallery_api_and_assets) ... ok
+test_ten_unselected_mnist_examples_via_http_pipeline (test_project.AppTests.test_ten_unselected_mnist_examples_via_http_pipeline) ... ok
+test_all_frozen_splits_are_unique_and_disjoint (test_project.GeometryDataTests.test_all_frozen_splits_are_unique_and_disjoint) ... ok
+test_duplicate_and_wrong_class_detections_are_penalized (test_project.GeometryDataTests.test_duplicate_and_wrong_class_detections_are_penalized) ... ok
+test_generator_actively_rejects_blocked_inputs (test_project.GeometryDataTests.test_generator_actively_rejects_blocked_inputs) ... ok
+test_protocol_detects_changed_checkpoint (test_project.GeometryDataTests.test_protocol_detects_changed_checkpoint) ... ok
+test_quantized_fingerprint_catches_float_only_differences (test_project.GeometryDataTests.test_quantized_fingerprint_catches_float_only_differences) ... ok
+test_real_sources_and_labels_are_valid (test_project.GeometryDataTests.test_real_sources_and_labels_are_valid) ... ok
+test_source_group_cannot_cross_roles (test_project.GeometryDataTests.test_source_group_cannot_cross_roles) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.894s
+
+OK

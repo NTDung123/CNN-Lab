@@ -1,0 +1,194 @@
+{
+  "version": 4,
+  "seed": 20261115,
+  "classes": [
+    "circle",
+    "rectangle",
+    "triangle",
+    "ellipse",
+    "background"
+  ],
+  "dependencies": {
+    "manifest_sha256": "395756ec395df0d0216116ec19dad994c73e8132f2b653dc6e133c36cdb6942e",
+    "geometry_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+    "processing_sha256": "5003b85b1af2e535349732e3fb3f3e9ef3f3e18a1d0eeeb11de2e5f85a064c2d",
+    "segmentation_sha256": "00e033b78eea8d182c5638380d048a70f9c0bccef28eb2bc3a540f98c2a5d5ea",
+    "builder_sha256": "02da785ee0ab4a8f7e0518cf07b67d842eb1053722f5fea96dfe585ee7977b0b"
+  },
+  "archive_sha256": "2f652410bc196ab7318ced7dd8cb82b173b0be6a40b52388f2e4906daec7925f",
+  "train_samples": 16154,
+  "train_class_counts": {
+    "0": 4204,
+    "1": 3404,
+    "2": 3000,
+    "3": 3146,
+    "4": 2400
+  },
+  "real_validation_samples": 1095,
+  "real_validation_class_counts": {
+    "1": 39,
+    "4": 1044,
+    "0": 12
+  },
+  "synthetic_validation_samples": 1600,
+  "source_cases_opened": [
+    {
+      "id": "brooklyn_coins",
+      "role": "development",
+      "source_group": "brooklyn_coins"
+    },
+    {
+      "id": "us_aluminum",
+      "role": "development",
+      "source_group": "us_aluminum"
+    },
+    {
+      "id": "floppy_front",
+      "role": "development",
+      "source_group": "floppy_front"
+    },
+    {
+      "id": "floppy_back",
+      "role": "development",
+      "source_group": "discoa340_collection"
+    },
+    {
+      "id": "floppy_label",
+      "role": "development",
+      "source_group": "floppy_label"
+    },
+    {
+      "id": "dimes_overlap",
+      "role": "development",
+      "source_group": "dimes_overlap"
+    },
+    {
+      "id": "fd_round",
+      "role": "development",
+      "source_group": "ab11_disk"
+    },
+    {
+      "id": "floppy_pair",
+      "role": "validation",
+      "source_group": "muralikrishna_floppy"
+    },
+    {
+      "id": "cassette_audioforum",
+      "role": "development",
+      "source_group": "joxemai_cassette"
+    },
+    {
+      "id": "cassette_overlap",
+      "role": "development",
+      "source_group": "seth_ily_cassettes"
+    },
+    {
+      "id": "verbatim_disc",
+      "role": "development",
+      "source_group": "discoa340_collection"
+    },
+    {
+      "id": "cd_gray",
+      "role": "development",
+      "source_group": "asanagi_cd"
+    },
+    {
+      "id": "carlsberg_cap",
+      "role": "development",
+      "source_group": "michalpl_cap"
+    },
+    {
+      "id": "cassette_case",
+      "role": "development",
+      "source_group": "shams948_case"
+    },
+    {
+      "id": "dat_pair",
+      "role": "validation",
+      "source_group": "inpriva_cassettes"
+    },
+    {
+      "id": "floppy_blue",
+      "role": "validation",
+      "source_group": "mjjr_floppy_series"
+    },
+    {
+      "id": "floppy_sentinel",
+      "role": "validation",
+      "source_group": "mjjr_floppy_series"
+    },
+    {
+      "id": "sd_adapter",
+      "role": "development",
+      "source_group": "wikideas1_sd"
+    },
+    {
+      "id": "gold_cap",
+      "role": "development",
+      "source_group": "ben_stone_cap"
+    },
+    {
+      "id": "continental_coin",
+      "role": "validation",
+      "source_group": "1776_coin_capture"
+    },
+    {
+      "id": "floppy_front_new",
+      "role": "development",
+      "source_group": "discoa340_collection"
+    },
+    {
+      "id": "headphones_negative",
+      "role": "development",
+      "source_group": "wendelin_headphones"
+    },
+    {
+      "id": "cd_scan",
+      "role": "development",
+      "source_group": "liam_cd_scan"
+    },
+    {
+      "id": "floppy_sony",
+      "role": "validation",
+      "source_group": "mjjr_floppy_series"
+    },
+    {
+      "id": "floppy_verbatim",
+      "role": "validation",
+      "source_group": "mjjr_floppy_series"
+    },
+    {
+      "id": "dollar_coin",
+      "role": "validation",
+      "source_group": "akdash47_coin"
+    },
+    {
+      "id": "vhs_front",
+      "role": "development",
+      "source_group": "discoa340_collection"
+    },
+    {
+      "id": "grass_validation",
+      "role": "validation",
+      "source_group": "kurt_kaiser_texture"
+    },
+    {
+      "id": "wood_validation",
+      "role": "validation",
+      "source_group": "kurt_kaiser_texture"
+    }
+  ],
+  "real_test_cases_opened": [],
+  "within_training_duplicate_inputs": 0,
+  "training_real_validation_overlap": 0,
+  "training_reserved_synthetic_overlap": 0,
+  "source_groups_crossing_train_validation": 0,
+  "generation": {
+    "validation_duplicate_exclusions": 37,
+    "training_duplicate_exclusions": 235,
+    "real_positive_seed_inputs": 173,
+    "real_background_seed_inputs": 1440
+  },
+  "policy": "Development candidates only for real training; validation candidates never augmented or trained. New real test never proposed or inferred. Synthetic reserved input hashes exclude exact duplicates; labels not consulted.",
+  "limits": "Bbox-overlap candidate labels are weak supervision, manually defined outer-object policy; not pixel-mask ground truth. Near duplicates remain possible."
+}

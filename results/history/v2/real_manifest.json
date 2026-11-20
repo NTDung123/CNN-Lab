@@ -1,0 +1,616 @@
+{
+  "schema_version": 2,
+  "dataset_name": "Real geometry pilot v1",
+  "created_at_utc": "2026-11-14T13:28:50.561543+00:00",
+  "annotation_policy": {
+    "unit": "Whole physical outer silhouettes; square/near-rectangular floppy disks count as rectangles; coin outer silhouettes count as circles.",
+    "exclude": "Internal slots, printed text, holes, labels, shadows and small texture regions are not separate target objects.",
+    "coordinates": "xywh, half-open, in distributed image pixels. Images have maximum side 800.",
+    "annotation_quality": "Manually checked pilot labels; no second annotator or pixel-accurate masks. Stress occlusion bboxes are estimates."
+  },
+  "protocol": {
+    "real_images_used_for_training": false,
+    "real_images_used_for_model_selection": false,
+    "preprocessing_tuned_on_real_test": false,
+    "split_unit": "Original source photograph; all crops and resized variants inherit the same source group and role.",
+    "test_policy": "All six original photographs are held-out real tests. Basic and stress categories fixed before inference. Report separately and together; never merge with synthetic test metrics.",
+    "statistical_scope": "Small convenience sample, not a representative real-world benchmark."
+  },
+  "sources": [
+    {
+      "id": "brooklyn_coins",
+      "title": "Greek coins from Pompeii (scikit-image sample)",
+      "source_page": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+      "download_url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.24.0/skimage/data/coins.png",
+      "author": "Brooklyn Museum Collection; distributed as scikit-image sample data",
+      "license": "No known copyright restrictions (as stated in scikit-image documentation)",
+      "license_url": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+      "download_sha256": "f8d773fc9cfa6f4d8e5942dc34d0a0788fcaed2a4fefbbed0aef5398d7ef4cba",
+      "image_file": "images/brooklyn_coins.png",
+      "image_sha256": "4e45fcf4916f2702a2dd86b560a98ecdc8f5e9f9c821d8caa6053deb037a4d3e",
+      "pixel_sha256": "aaecc2ad43bd43e204f7ad01dc60494586ff80d42236c2db358c59b9be1f5427",
+      "width": 384,
+      "height": 303,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "us_aluminum",
+      "title": "1974Aluminumback.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1974Aluminumback.jpg",
+      "author": "Smithsonian Institution (U.S. federally funded employee); individual photographer not listed",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+      "download_sha256": "15fa758163e5184330b87cfae467cd7d278c7b951cfd89ac99ad21b5e6b37103",
+      "image_file": "images/us_aluminum.png",
+      "image_sha256": "a60984dfe3be8533f47a0525853a791c00d47fc12014eb6e65aa3036e71019ed",
+      "pixel_sha256": "69b1c4fe95998bd6d292c08e4a65a08b6ff3d7b722776af47f6f8825767ba4ae",
+      "width": 285,
+      "height": 281,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_front",
+      "title": "3.5\" floppy disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/3.5%22_floppy_disk.jpg",
+      "author": "Load",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+      "download_sha256": "3e4a0e19a16b27f1337360b364e0d1ab03149f064a46dfb1e668aeb207337d44",
+      "image_file": "images/floppy_front.png",
+      "image_sha256": "3d986438432e80dbc46faf5e0ea8fbb1bbb101daf18c06706a28a574b3a09acb",
+      "pixel_sha256": "eb2ee52a822794fe518fb8c86c4a690ca3aaf2534a90a76f36f6d864e556bd7c",
+      "width": 483,
+      "height": 503,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_back",
+      "title": "Backside of a 3.5\" Floppy Disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Backside_of_a_3.5%22_Floppy_Disk.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Backside_of_a_3.5%22_Floppy_Disk.jpg/960px-Backside_of_a_3.5%22_Floppy_Disk.jpg",
+      "author": "DiscoA340",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "87a694228b4d334016772d9ffd6ca5370969e273f39265ab0e5c459cb8f06959",
+      "image_file": "images/floppy_back.png",
+      "image_sha256": "2bad0354e3333b1f51a3cc2a8c90e625c7d2632338af80dcfd250798a76db7ef",
+      "pixel_sha256": "61695d59e1beb92e8f4f09e3028dc23b15621ce2072937ebcbdcebc7269dd59e",
+      "width": 800,
+      "height": 782,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_label",
+      "title": "Floppy disc with wikipedia label.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disc_with_wikipedia_label.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Floppy_disc_with_wikipedia_label.jpg/960px-Floppy_disc_with_wikipedia_label.jpg",
+      "author": "AnatGutman",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "3bd4a3f93753d0ba2d79cb46d66d6b6b2cdaf00898358b3855387ca4bf9be5de",
+      "image_file": "images/floppy_label.png",
+      "image_sha256": "74226ab3df03550b0c0f71cd6df7f3684be3c07e56d385dfa79516ebe6e8c9ef",
+      "pixel_sha256": "a0def4b289504e626cf0e858fa1697121e2d600baf6d8d026896edf7b9371d89",
+      "width": 788,
+      "height": 800,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "dimes_overlap",
+      "title": "Gfp-dimes.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gfp-dimes.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Gfp-dimes.jpg/960px-Gfp-dimes.jpg",
+      "author": "Yinan Chen",
+      "license": "Public Domain",
+      "license_url": "https://web.archive.org/web/20230926203737/https://creativecommons.org/licenses/publicdomain/",
+      "download_sha256": "0209a5efd8d3bda5154c0c8d4cfb329bbcf9cdb4db04e64389a72eb9baaf7e23",
+      "image_file": "images/dimes_overlap.png",
+      "image_sha256": "fabc6a3854236a62ab6d900312afed150096384bd14a4b5d42a3c4a513236166",
+      "pixel_sha256": "9a19e1a4758e3ec6a39def3cb43cdcf1d570d643eb874818f9e310bc8eb4199a",
+      "width": 800,
+      "height": 761,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    }
+  ],
+  "cases": [
+    {
+      "id": "brooklyn_coins",
+      "source_group": "brooklyn_coins",
+      "source_id": "brooklyn_coins",
+      "title": "24 đồng xu, nền xám không đều",
+      "split": "test",
+      "difficulty": "basic",
+      "image_file": "images/brooklyn_coins.png",
+      "width": 384,
+      "height": 303,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            22,
+            30,
+            46,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            81,
+            35,
+            41,
+            39
+          ],
+          "occluded": false
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            132,
+            27,
+            47,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            190,
+            26,
+            52,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            252,
+            31,
+            49,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            306,
+            14,
+            61,
+            60
+          ],
+          "occluded": false
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            24,
+            103,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            82,
+            104,
+            43,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            134,
+            106,
+            42,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 10,
+          "class": "circle",
+          "bbox": [
+            186,
+            101,
+            42,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 11,
+          "class": "circle",
+          "bbox": [
+            244,
+            93,
+            54,
+            52
+          ],
+          "occluded": false
+        },
+        {
+          "id": 12,
+          "class": "circle",
+          "bbox": [
+            316,
+            101,
+            42,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 13,
+          "class": "circle",
+          "bbox": [
+            21,
+            175,
+            44,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 14,
+          "class": "circle",
+          "bbox": [
+            79,
+            172,
+            48,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 15,
+          "class": "circle",
+          "bbox": [
+            134,
+            175,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 16,
+          "class": "circle",
+          "bbox": [
+            188,
+            168,
+            50,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 17,
+          "class": "circle",
+          "bbox": [
+            249,
+            170,
+            51,
+            49
+          ],
+          "occluded": false
+        },
+        {
+          "id": 18,
+          "class": "circle",
+          "bbox": [
+            313,
+            153,
+            67,
+            67
+          ],
+          "occluded": false
+        },
+        {
+          "id": 19,
+          "class": "circle",
+          "bbox": [
+            16,
+            233,
+            57,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 20,
+          "class": "circle",
+          "bbox": [
+            90,
+            243,
+            49,
+            47
+          ],
+          "occluded": false
+        },
+        {
+          "id": 21,
+          "class": "circle",
+          "bbox": [
+            144,
+            234,
+            56,
+            57
+          ],
+          "occluded": false
+        },
+        {
+          "id": 22,
+          "class": "circle",
+          "bbox": [
+            217,
+            235,
+            55,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 23,
+          "class": "circle",
+          "bbox": [
+            275,
+            238,
+            51,
+            53
+          ],
+          "occluded": false
+        },
+        {
+          "id": 24,
+          "class": "circle",
+          "bbox": [
+            332,
+            246,
+            51,
+            48
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Đường bao tự nhiên không hoàn toàn tròn; độ sáng nền và vật thể giao nhau."
+    },
+    {
+      "id": "us_aluminum",
+      "source_group": "us_aluminum",
+      "source_id": "us_aluminum",
+      "title": "Đồng xu nhôm, nền sáng",
+      "split": "test",
+      "difficulty": "basic",
+      "image_file": "images/us_aluminum.png",
+      "width": 285,
+      "height": 281,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            4,
+            3,
+            268,
+            266
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Bóng đổ bên phải không thuộc đối tượng."
+    },
+    {
+      "id": "floppy_front",
+      "source_group": "floppy_front",
+      "source_id": "floppy_front",
+      "title": "Đĩa mềm, nền trắng",
+      "split": "test",
+      "difficulty": "basic",
+      "image_file": "images/floppy_front.png",
+      "width": 483,
+      "height": 503,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            15,
+            14,
+            452,
+            474
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Đường bao gần chữ nhật, có góc vát và khe nhỏ."
+    },
+    {
+      "id": "floppy_back",
+      "source_group": "floppy_back",
+      "source_id": "floppy_back",
+      "title": "Mặt sau đĩa mềm, nền có texture",
+      "split": "test",
+      "difficulty": "basic",
+      "image_file": "images/floppy_back.png",
+      "width": 800,
+      "height": 782,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            43,
+            17,
+            741,
+            739
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Chỉ gán nhãn đường bao ngoài đĩa; lỗ tròn và nắp kim loại bên trong không là vật thể rời."
+    },
+    {
+      "id": "floppy_label",
+      "source_group": "floppy_label",
+      "source_id": "floppy_label",
+      "title": "Đĩa mềm sát mép ảnh",
+      "split": "test",
+      "difficulty": "stress",
+      "image_file": "images/floppy_label.png",
+      "width": 788,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            7,
+            778,
+            781
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Có vùng sát/cắt bởi mép ảnh và nhãn có chữ; kiểm tra giới hạn chọn nền từ biên."
+    },
+    {
+      "id": "dimes_overlap",
+      "source_group": "dimes_overlap",
+      "source_id": "dimes_overlap",
+      "title": "9 đồng xu chồng nhau",
+      "split": "test",
+      "difficulty": "stress",
+      "image_file": "images/dimes_overlap.png",
+      "width": 800,
+      "height": 761,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            39,
+            179,
+            271,
+            273
+          ],
+          "occluded": true
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            177,
+            54,
+            279,
+            283
+          ],
+          "occluded": true
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            416,
+            52,
+            273,
+            267
+          ],
+          "occluded": true
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            499,
+            241,
+            252,
+            242
+          ],
+          "occluded": true
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            343,
+            270,
+            259,
+            254
+          ],
+          "occluded": true
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            154,
+            318,
+            264,
+            257
+          ],
+          "occluded": true
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            50,
+            464,
+            259,
+            247
+          ],
+          "occluded": true
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            260,
+            449,
+            250,
+            255
+          ],
+          "occluded": true
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            475,
+            435,
+            250,
+            252
+          ],
+          "occluded": true
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Các bbox là ước lượng đường bao tròn đầy đủ của các đồng xu bị che khuất; chỉ dùng stress test, không tính vào chỉ số cơ bản."
+    }
+  ]
+}

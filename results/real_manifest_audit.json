@@ -1,0 +1,575 @@
+{
+  "passed": true,
+  "case_count": 40,
+  "original_photo_groups": 33,
+  "duplicate_decoded_images": 0,
+  "source_groups_crossing_splits": 0,
+  "case_counts_by_difficulty": {
+    "basic": 21,
+    "stress": 12,
+    "negative": 7
+  },
+  "target_counts": {
+    "circle": 46,
+    "rectangle": 22
+  },
+  "case_counts_by_role": {
+    "development": 19,
+    "validation": 10,
+    "test": 11
+  },
+  "target_counts_by_role": {
+    "development": 48,
+    "validation": 10,
+    "test": 10
+  },
+  "class_counts_by_role": {
+    "development": {
+      "circle": 38,
+      "rectangle": 10
+    },
+    "validation": {
+      "rectangle": 8,
+      "circle": 2
+    },
+    "test": {
+      "rectangle": 4,
+      "circle": 6
+    }
+  },
+  "negative_frames_by_role": {
+    "development": 3,
+    "validation": 2,
+    "test": 2
+  },
+  "image_characteristics": [
+    {
+      "id": "brooklyn_coins",
+      "size": [
+        384,
+        303
+      ],
+      "targets": 24,
+      "gray_mean": 96.85551602035204,
+      "gray_std": 52.87981861986824,
+      "gray_p05": 30.0,
+      "gray_p95": 191.0,
+      "border_std": 35.28655030061436
+    },
+    {
+      "id": "us_aluminum",
+      "size": [
+        285,
+        281
+      ],
+      "targets": 1,
+      "gray_mean": 180.81036398826248,
+      "gray_std": 62.32339824361273,
+      "gray_p05": 59.0,
+      "gray_p95": 255.0,
+      "border_std": 7.647331136626461
+    },
+    {
+      "id": "floppy_front",
+      "size": [
+        483,
+        503
+      ],
+      "targets": 1,
+      "gray_mean": 108.52515960139782,
+      "gray_std": 67.11268189164751,
+      "gray_p05": 38.0,
+      "gray_p95": 255.0,
+      "border_std": 0.0
+    },
+    {
+      "id": "floppy_back",
+      "size": [
+        800,
+        782
+      ],
+      "targets": 1,
+      "gray_mean": 92.15452685421995,
+      "gray_std": 56.06827276602509,
+      "gray_p05": 39.0,
+      "gray_p95": 206.0,
+      "border_std": 12.920496929418464
+    },
+    {
+      "id": "floppy_label",
+      "size": [
+        788,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 128.391192893401,
+      "gray_std": 83.8886017164578,
+      "gray_p05": 22.0,
+      "gray_p95": 241.0,
+      "border_std": 23.601496669946865
+    },
+    {
+      "id": "dimes_overlap",
+      "size": [
+        800,
+        761
+      ],
+      "targets": 9,
+      "gray_mean": 166.87057490144548,
+      "gray_std": 52.07353999684987,
+      "gray_p05": 105.0,
+      "gray_p95": 240.0,
+      "border_std": 4.218411965371194
+    },
+    {
+      "id": "fd_round",
+      "size": [
+        789,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 85.08264416983523,
+      "gray_std": 98.3100583171886,
+      "gray_p05": 19.0,
+      "gray_p95": 254.0,
+      "border_std": 9.700322452621425
+    },
+    {
+      "id": "floppy_pair",
+      "size": [
+        800,
+        406
+      ],
+      "targets": 2,
+      "gray_mean": 54.41544027093596,
+      "gray_std": 54.37801550346951,
+      "gray_p05": 7.0,
+      "gray_p95": 167.0,
+      "border_std": 68.75433104824998
+    },
+    {
+      "id": "cassette_audioforum",
+      "size": [
+        591,
+        432
+      ],
+      "targets": 1,
+      "gray_mean": 134.4622031083537,
+      "gray_std": 79.47238417847232,
+      "gray_p05": 30.0,
+      "gray_p95": 250.0,
+      "border_std": 51.408588993153096
+    },
+    {
+      "id": "cassette_overlap",
+      "size": [
+        640,
+        480
+      ],
+      "targets": 2,
+      "gray_mean": 114.49621419270834,
+      "gray_std": 41.98919781400327,
+      "gray_p05": 36.0,
+      "gray_p95": 173.0,
+      "border_std": 33.32626322634113
+    },
+    {
+      "id": "verbatim_disc",
+      "size": [
+        800,
+        785
+      ],
+      "targets": 1,
+      "gray_mean": 203.5920159235669,
+      "gray_std": 36.41597008207876,
+      "gray_p05": 160.0,
+      "gray_p95": 248.0,
+      "border_std": 13.774441722013892
+    },
+    {
+      "id": "cd_gray",
+      "size": [
+        800,
+        600
+      ],
+      "targets": 0,
+      "gray_mean": 84.16259375,
+      "gray_std": 36.70581083001883,
+      "gray_p05": 53.0,
+      "gray_p95": 157.0,
+      "border_std": 11.465064926790001
+    },
+    {
+      "id": "carlsberg_cap",
+      "size": [
+        800,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 98.8432890625,
+      "gray_std": 59.578861992904564,
+      "gray_p05": 21.0,
+      "gray_p95": 188.0,
+      "border_std": 43.66307882234249
+    },
+    {
+      "id": "cassette_case",
+      "size": [
+        609,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 160.70240147783252,
+      "gray_std": 29.860750691091667,
+      "gray_p05": 91.0,
+      "gray_p95": 194.0,
+      "border_std": 6.669188558251276
+    },
+    {
+      "id": "dat_pair",
+      "size": [
+        800,
+        492
+      ],
+      "targets": 2,
+      "gray_mean": 147.7378048780488,
+      "gray_std": 45.05063962643089,
+      "gray_p05": 46.0,
+      "gray_p95": 199.0,
+      "border_std": 25.45674492111457
+    },
+    {
+      "id": "floppy_blue",
+      "size": [
+        763,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 80.34113204456095,
+      "gray_std": 61.12926421239142,
+      "gray_p05": 24.0,
+      "gray_p95": 223.0,
+      "border_std": 15.243729870086044
+    },
+    {
+      "id": "floppy_sentinel",
+      "size": [
+        769,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 134.68965052015605,
+      "gray_std": 78.35918215913816,
+      "gray_p05": 35.0,
+      "gray_p95": 235.0,
+      "border_std": 6.895854460571564
+    },
+    {
+      "id": "sd_adapter",
+      "size": [
+        796,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 66.71636777638192,
+      "gray_std": 28.682477464524077,
+      "gray_p05": 31.0,
+      "gray_p95": 130.0,
+      "border_std": 14.603844632420483
+    },
+    {
+      "id": "gold_cap",
+      "size": [
+        800,
+        450
+      ],
+      "targets": 0,
+      "gray_mean": 120.93215277777777,
+      "gray_std": 46.16250010775934,
+      "gray_p05": 46.0,
+      "gray_p95": 197.0,
+      "border_std": 50.44536626648676
+    },
+    {
+      "id": "continental_coin",
+      "size": [
+        446,
+        461
+      ],
+      "targets": 1,
+      "gray_mean": 88.61398013676644,
+      "gray_std": 32.85181036406734,
+      "gray_p05": 44.0,
+      "gray_p95": 136.0,
+      "border_std": 5.030254730666965
+    },
+    {
+      "id": "floppy_front_new",
+      "size": [
+        600,
+        596
+      ],
+      "targets": 1,
+      "gray_mean": 118.57753355704698,
+      "gray_std": 56.17495287785661,
+      "gray_p05": 35.0,
+      "gray_p95": 208.0,
+      "border_std": 6.579780622555855
+    },
+    {
+      "id": "headphones_negative",
+      "size": [
+        600,
+        400
+      ],
+      "targets": 0,
+      "gray_mean": 228.2601875,
+      "gray_std": 67.92326073075539,
+      "gray_p05": 34.0,
+      "gray_p95": 255.0,
+      "border_std": 8.293001251055012
+    },
+    {
+      "id": "cassette_clear",
+      "size": [
+        600,
+        400
+      ],
+      "targets": 1,
+      "gray_mean": 87.12735833333333,
+      "gray_std": 54.18067041410246,
+      "gray_p05": 27.0,
+      "gray_p95": 179.0,
+      "border_std": 39.232064233226374
+    },
+    {
+      "id": "cd_black",
+      "size": [
+        600,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 69.38343611111111,
+      "gray_std": 62.34269556762512,
+      "gray_p05": 7.0,
+      "gray_p95": 200.0,
+      "border_std": 4.516812728265609
+    },
+    {
+      "id": "cd_white",
+      "size": [
+        600,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 201.7087138888889,
+      "gray_std": 66.48224315694569,
+      "gray_p05": 42.0,
+      "gray_p95": 254.0,
+      "border_std": 0.5237657449237737
+    },
+    {
+      "id": "cd_scan",
+      "size": [
+        598,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 67.74621794871796,
+      "gray_std": 68.62921371678344,
+      "gray_p05": 0.0,
+      "gray_p95": 220.0,
+      "border_std": 66.00889033980083
+    },
+    {
+      "id": "cd_dark_texture",
+      "size": [
+        600,
+        450
+      ],
+      "targets": 1,
+      "gray_mean": 49.23441851851852,
+      "gray_std": 54.05645320536079,
+      "gray_p05": 7.0,
+      "gray_p95": 159.0,
+      "border_std": 3.015796469371102
+    },
+    {
+      "id": "floppy_scan",
+      "size": [
+        572,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 135.40766025641025,
+      "gray_std": 78.18578800885253,
+      "gray_p05": 34.0,
+      "gray_p95": 224.0,
+      "border_std": 81.5797387461275
+    },
+    {
+      "id": "floppy_sony",
+      "size": [
+        577,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 119.01851819757366,
+      "gray_std": 82.39482917555895,
+      "gray_p05": 33.0,
+      "gray_p95": 230.0,
+      "border_std": 18.269346409381903
+    },
+    {
+      "id": "floppy_verbatim",
+      "size": [
+        580,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 156.26518390804597,
+      "gray_std": 37.95656470140172,
+      "gray_p05": 102.0,
+      "gray_p95": 232.0,
+      "border_std": 11.861350204034133
+    },
+    {
+      "id": "ancient_round",
+      "size": [
+        579,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 77.10169833045481,
+      "gray_std": 64.43608332441607,
+      "gray_p05": 15.0,
+      "gray_p95": 203.0,
+      "border_std": 20.91714605350763
+    },
+    {
+      "id": "rare_coins",
+      "size": [
+        600,
+        400
+      ],
+      "targets": 2,
+      "gray_mean": 200.29539583333334,
+      "gray_std": 57.29980311602286,
+      "gray_p05": 32.0,
+      "gray_p95": 229.0,
+      "border_std": 6.288126092088167
+    },
+    {
+      "id": "dollar_coin",
+      "size": [
+        566,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 82.25354829210836,
+      "gray_std": 72.9857327738003,
+      "gray_p05": 0.0,
+      "gray_p95": 207.0,
+      "border_std": 0.0
+    },
+    {
+      "id": "vhs_front",
+      "size": [
+        600,
+        352
+      ],
+      "targets": 1,
+      "gray_mean": 105.22974431818182,
+      "gray_std": 68.95877495782989,
+      "gray_p05": 20.0,
+      "gray_p95": 214.0,
+      "border_std": 3.998536509117394
+    },
+    {
+      "id": "vhs_black",
+      "size": [
+        600,
+        402
+      ],
+      "targets": 1,
+      "gray_mean": 130.78860696517413,
+      "gray_std": 81.94002077450992,
+      "gray_p05": 36.0,
+      "gray_p95": 255.0,
+      "border_std": 33.98140582786533
+    },
+    {
+      "id": "floppy_white",
+      "size": [
+        596,
+        600
+      ],
+      "targets": 1,
+      "gray_mean": 228.83730984340045,
+      "gray_std": 51.05862624270399,
+      "gray_p05": 49.0,
+      "gray_p95": 250.0,
+      "border_std": 25.733601896629228
+    },
+    {
+      "id": "grass_test",
+      "size": [
+        600,
+        400
+      ],
+      "targets": 0,
+      "gray_mean": 105.05605833333334,
+      "gray_std": 49.77634611402552,
+      "gray_p05": 30.0,
+      "gray_p95": 190.0,
+      "border_std": 42.90629195992122
+    },
+    {
+      "id": "grass_validation",
+      "size": [
+        600,
+        450
+      ],
+      "targets": 0,
+      "gray_mean": 115.78604444444444,
+      "gray_std": 48.12540917442087,
+      "gray_p05": 31.0,
+      "gray_p95": 189.0,
+      "border_std": 51.18038662694379
+    },
+    {
+      "id": "wood_test",
+      "size": [
+        600,
+        400
+      ],
+      "targets": 0,
+      "gray_mean": 167.20397916666667,
+      "gray_std": 27.19240466869807,
+      "gray_p05": 112.0,
+      "gray_p95": 200.0,
+      "border_std": 29.03127070935752
+    },
+    {
+      "id": "wood_validation",
+      "size": [
+        600,
+        450
+      ],
+      "targets": 0,
+      "gray_mean": 160.54253333333332,
+      "gray_std": 17.869740153057005,
+      "gray_p05": 130.0,
+      "gray_p95": 184.0,
+      "border_std": 23.616646666562183
+    }
+  ],
+  "annotation_policy": {
+    "unit": "Projected 2D outer silhouette, not physical object category. Approximately circular discs/coins are circle; quadrilateral cassette/floppy shells with mild chamfers are rectangle (including squares).",
+    "exclude": "Text, holes, spokes/slots, printed images and shadows inside an outer object are not separate targets. Elliptical projections are explicit distractors, not circle targets.",
+    "coordinates": "Integer xywh half-open in distributed image pixels; max side 800. Newly added photos max side 600.",
+    "annotation_quality": "Manual single-annotator boxes checked on coordinate grids before phase-4 inference. No pixel masks or second annotator. Occluded bboxes remain estimates in stress cases; clipped boxes use visible extent.",
+    "scope": "Basic complete approximately front-facing silhouettes evaluated separately from clipping/occlusion and negative frames. Overlapping circles remain unsupported stress targets; no promise of amodal reconstruction."
+  },
+  "statistical_scope": "Convenience sample of photographs and a few clearly marked scans, not a representative population benchmark."
+}

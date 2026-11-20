@@ -1,0 +1,23 @@
+{
+  "version": 5,
+  "mode": "repaired_regions",
+  "min_confidence": 0.75,
+  "background_window": 101,
+  "minimum_contrast": 10,
+  "illumination_border_std": 12,
+  "rectangle_extent": 0.78,
+  "minimum_extent": 0.22,
+  "min_area_fraction": 0.0001,
+  "nms_iou": 0.75,
+  "candidate_limit": 160,
+  "complex_min_confidence": 0.9,
+  "classes_include_background": true,
+  "selection_roles": [
+    "validation"
+  ],
+  "background_method": "morphology",
+  "thin_line_bank": true,
+  "thin_line_max_noise": 3,
+  "bridge_open_outlines": true,
+  "bridge_gap_fraction": 0.3
+}

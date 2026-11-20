@@ -1,0 +1,22 @@
+{
+  "manifest_sha256": "3d77b70e7e9aba7cd14159a9a1ecc4308ef3b8daae0e89abad00006e2338c6d4",
+  "shapes_checkpoint_sha256": "40c282fd706390cf2f83e945a34edc1e276f8b5985d1d370f11b2f77ef85877a",
+  "geometry_dataset_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "processing_sha256": "5003b85b1af2e535349732e3fb3f3e9ef3f3e18a1d0eeeb11de2e5f85a064c2d",
+  "service_sha256": "8983d9fb9484125eb4c768a213d7f15b5ceaf2ddf76ac59dcbf09c5550886f1a",
+  "segmentation_sha256": "52d54d40e2d757a72451a71d4e979310d81813825750ec1da09f528c8e34d2ac",
+  "geometry_profile_sha256": "7bff3778336e52c75eb99bc1bf44149d59378c4de0bc6bf3051e2615f9a9a7c1",
+  "metrics_sha256": "37cdce75a13657cee7ef171ac6ae93e382c2ac5dddb8f81f7e55f8f3dc305870",
+  "real_evaluation_sha256": "9d0a3c223a468b50fc2148c5a17e9f3664bd9fc2c307a8d9ae1f0a85f10ada80",
+  "selection_experiment_sha256": "b6c088051e0e679a644228b2a324cf126a94adf0042b70508327881c496bfd20",
+  "protocol_version": 3,
+  "frozen_at_utc": "2026-11-15T03:29:47.592303+00:00",
+  "selected_mode": "illumination_regions",
+  "selection_roles": [
+    "development",
+    "validation"
+  ],
+  "test_previously_used_for_selection": false,
+  "selection_rule": "Maximize validation detection F1; tie broken by development F1, then prefer illumination_regions over edge_regions for the requested background-correction workflow. CNN weights unchanged.",
+  "notes": "Roles/manual labels frozen first. Old six photos are development. Do not modify pipeline after reading new test results."
+}

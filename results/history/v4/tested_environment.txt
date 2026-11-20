@@ -1,0 +1,3 @@
+Phase 4: Python 3.12.14; Linux CPU
+{"numpy": "2.3.5", "Pillow": "13.0.0", "Flask": "3.1.3", "torch": "2.7.1+cpu"}
+52 unittest checks passed; operational paths and checkpoint recovery verified. Desktop / 390px / 320px browser checks passed, including separate pipeline branches. Windows BAT not executed in this environment.

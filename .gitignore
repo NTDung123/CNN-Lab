@@ -1,0 +1,37 @@
+# Local Python environments, including the copy from another computer
+.venv*/
+venv*/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Local configuration, credentials and editor files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Temporary builds and exploratory reruns
+build/
+dist/
+*.egg-info/
+*.tmp
+*.bak
+*.zip
+results/exploratory/
+results/partial/
+results/*_development.json
+results/*_exploratory*.json
+
+# Keep the supplied datasets, checkpoints, locked results and historical
+# baselines: a fresh clone must run the offline demo and its tests.

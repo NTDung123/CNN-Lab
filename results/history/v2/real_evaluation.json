@@ -1,0 +1,2789 @@
+{
+  "schema_version": 2,
+  "dataset": "Real geometry pilot v1",
+  "audit": {
+    "passed": true,
+    "case_count": 6,
+    "original_photo_groups": 6,
+    "duplicate_decoded_images": 0,
+    "source_groups_crossing_splits": 0,
+    "case_counts_by_difficulty": {
+      "basic": 4,
+      "stress": 2
+    },
+    "target_counts": {
+      "circle": 34,
+      "rectangle": 3
+    },
+    "image_characteristics": [
+      {
+        "id": "brooklyn_coins",
+        "size": [
+          384,
+          303
+        ],
+        "targets": 24,
+        "gray_mean": 96.85551602035204,
+        "gray_std": 52.87981861986824,
+        "gray_p05": 30.0,
+        "gray_p95": 191.0,
+        "border_std": 35.28655030061436
+      },
+      {
+        "id": "us_aluminum",
+        "size": [
+          285,
+          281
+        ],
+        "targets": 1,
+        "gray_mean": 180.81036398826248,
+        "gray_std": 62.32339824361273,
+        "gray_p05": 59.0,
+        "gray_p95": 255.0,
+        "border_std": 7.647331136626461
+      },
+      {
+        "id": "floppy_front",
+        "size": [
+          483,
+          503
+        ],
+        "targets": 1,
+        "gray_mean": 108.52515960139782,
+        "gray_std": 67.11268189164751,
+        "gray_p05": 38.0,
+        "gray_p95": 255.0,
+        "border_std": 0.0
+      },
+      {
+        "id": "floppy_back",
+        "size": [
+          800,
+          782
+        ],
+        "targets": 1,
+        "gray_mean": 92.15452685421995,
+        "gray_std": 56.06827276602509,
+        "gray_p05": 39.0,
+        "gray_p95": 206.0,
+        "border_std": 12.920496929418464
+      },
+      {
+        "id": "floppy_label",
+        "size": [
+          788,
+          800
+        ],
+        "targets": 1,
+        "gray_mean": 128.391192893401,
+        "gray_std": 83.8886017164578,
+        "gray_p05": 22.0,
+        "gray_p95": 241.0,
+        "border_std": 23.601496669946865
+      },
+      {
+        "id": "dimes_overlap",
+        "size": [
+          800,
+          761
+        ],
+        "targets": 9,
+        "gray_mean": 166.87057490144548,
+        "gray_std": 52.07353999684987,
+        "gray_p05": 105.0,
+        "gray_p95": 240.0,
+        "border_std": 4.218411965371194
+      }
+    ],
+    "annotation_policy": {
+      "unit": "Whole physical outer silhouettes; square/near-rectangular floppy disks count as rectangles; coin outer silhouettes count as circles.",
+      "exclude": "Internal slots, printed text, holes, labels, shadows and small texture regions are not separate target objects.",
+      "coordinates": "xywh, half-open, in distributed image pixels. Images have maximum side 800.",
+      "annotation_quality": "Manually checked pilot labels; no second annotator or pixel-accurate masks. Stress occlusion bboxes are estimates."
+    },
+    "statistical_scope": "Small convenience sample, not a representative real-world benchmark."
+  },
+  "protocol": {
+    "original_lock_verified": true,
+    "exploratory": false,
+    "changed_items": [],
+    "real_images_used_for_training": false,
+    "real_images_used_for_model_selection": false,
+    "checkpoint_sha256": "40c282fd706390cf2f83e945a34edc1e276f8b5985d1d370f11b2f77ef85877a",
+    "manifest_sha256": "85465754b6ed8928332652f1f80ad09038c1ca3a7cadd8cab13932f00954fd54"
+  },
+  "detection_all": {
+    "scenes": 6,
+    "ground_truth_all_classes": 37,
+    "iou_threshold": 0.5,
+    "confidence_threshold": 0.75,
+    "per_class": {
+      "circle": {
+        "tp": 22,
+        "fp": 2,
+        "fn": 12,
+        "precision": 0.9166666666666666,
+        "recall": 0.6470588235294118,
+        "f1": 0.7586206896551724
+      },
+      "rectangle": {
+        "tp": 3,
+        "fp": 7,
+        "fn": 0,
+        "precision": 0.3,
+        "recall": 1.0,
+        "f1": 0.4615384615384615
+      }
+    },
+    "tp": 25,
+    "fp": 9,
+    "fn": 12,
+    "precision": 0.7352941176470589,
+    "recall": 0.6756756756756757,
+    "f1": 0.7042253521126761,
+    "mean_iou_on_true_positives": 0.8479421794016733,
+    "ground_truth_targets": 37
+  },
+  "detection_by_difficulty": {
+    "basic": {
+      "scenes": 4,
+      "ground_truth_all_classes": 27,
+      "iou_threshold": 0.5,
+      "confidence_threshold": 0.75,
+      "per_class": {
+        "circle": {
+          "tp": 22,
+          "fp": 1,
+          "fn": 3,
+          "precision": 0.9565217391304348,
+          "recall": 0.88,
+          "f1": 0.9166666666666666
+        },
+        "rectangle": {
+          "tp": 2,
+          "fp": 5,
+          "fn": 0,
+          "precision": 0.2857142857142857,
+          "recall": 1.0,
+          "f1": 0.4444444444444445
+        }
+      },
+      "tp": 24,
+      "fp": 6,
+      "fn": 3,
+      "precision": 0.8,
+      "recall": 0.8888888888888888,
+      "f1": 0.8421052631578948,
+      "mean_iou_on_true_positives": 0.8424488324460299,
+      "ground_truth_targets": 27
+    },
+    "stress": {
+      "scenes": 2,
+      "ground_truth_all_classes": 10,
+      "iou_threshold": 0.5,
+      "confidence_threshold": 0.75,
+      "per_class": {
+        "circle": {
+          "tp": 0,
+          "fp": 1,
+          "fn": 9,
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0
+        },
+        "rectangle": {
+          "tp": 1,
+          "fp": 2,
+          "fn": 0,
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5
+        }
+      },
+      "tp": 1,
+      "fp": 3,
+      "fn": 9,
+      "precision": 0.25,
+      "recall": 0.1,
+      "f1": 0.14285714285714288,
+      "mean_iou_on_true_positives": 0.9797825063371152,
+      "ground_truth_targets": 10
+    }
+  },
+  "roi_diagnostic": {
+    "samples": 37,
+    "correct": 28,
+    "top1_accuracy": 0.7567567567567568,
+    "uses_ground_truth_bbox": true,
+    "warning": "Oracle bbox location is provided. This diagnostic is NOT complete-frame detection accuracy."
+  },
+  "failure_counts": {
+    "no_matching_region_after_segmentation": 11,
+    "region_found_but_wrong_class_or_low_score": 1,
+    "matched": 25
+  },
+  "cases": [
+    {
+      "id": "brooklyn_coins",
+      "title": "24 đồng xu, nền xám không đều",
+      "source_group": "brooklyn_coins",
+      "difficulty": "basic",
+      "notes": "Đường bao tự nhiên không hoàn toàn tròn; độ sáng nền và vật thể giao nhau.",
+      "source": {
+        "id": "brooklyn_coins",
+        "title": "Greek coins from Pompeii (scikit-image sample)",
+        "source_page": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+        "download_url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.24.0/skimage/data/coins.png",
+        "author": "Brooklyn Museum Collection; distributed as scikit-image sample data",
+        "license": "No known copyright restrictions (as stated in scikit-image documentation)",
+        "license_url": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+        "download_sha256": "f8d773fc9cfa6f4d8e5942dc34d0a0788fcaed2a4fefbbed0aef5398d7ef4cba",
+        "image_file": "images/brooklyn_coins.png",
+        "image_sha256": "4e45fcf4916f2702a2dd86b560a98ecdc8f5e9f9c821d8caa6053deb037a4d3e",
+        "pixel_sha256": "aaecc2ad43bd43e204f7ad01dc60494586ff80d42236c2db358c59b9be1f5427",
+        "width": 384,
+        "height": 303,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/brooklyn_coins.png",
+      "comparison_image": "real_brooklyn_coins_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            22,
+            30,
+            46,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            81,
+            35,
+            41,
+            39
+          ],
+          "occluded": false
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            132,
+            27,
+            47,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            190,
+            26,
+            52,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            252,
+            31,
+            49,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            306,
+            14,
+            61,
+            60
+          ],
+          "occluded": false
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            24,
+            103,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            82,
+            104,
+            43,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            134,
+            106,
+            42,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 10,
+          "class": "circle",
+          "bbox": [
+            186,
+            101,
+            42,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 11,
+          "class": "circle",
+          "bbox": [
+            244,
+            93,
+            54,
+            52
+          ],
+          "occluded": false
+        },
+        {
+          "id": 12,
+          "class": "circle",
+          "bbox": [
+            316,
+            101,
+            42,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 13,
+          "class": "circle",
+          "bbox": [
+            21,
+            175,
+            44,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 14,
+          "class": "circle",
+          "bbox": [
+            79,
+            172,
+            48,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 15,
+          "class": "circle",
+          "bbox": [
+            134,
+            175,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 16,
+          "class": "circle",
+          "bbox": [
+            188,
+            168,
+            50,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 17,
+          "class": "circle",
+          "bbox": [
+            249,
+            170,
+            51,
+            49
+          ],
+          "occluded": false
+        },
+        {
+          "id": 18,
+          "class": "circle",
+          "bbox": [
+            313,
+            153,
+            67,
+            67
+          ],
+          "occluded": false
+        },
+        {
+          "id": 19,
+          "class": "circle",
+          "bbox": [
+            16,
+            233,
+            57,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 20,
+          "class": "circle",
+          "bbox": [
+            90,
+            243,
+            49,
+            47
+          ],
+          "occluded": false
+        },
+        {
+          "id": 21,
+          "class": "circle",
+          "bbox": [
+            144,
+            234,
+            56,
+            57
+          ],
+          "occluded": false
+        },
+        {
+          "id": 22,
+          "class": "circle",
+          "bbox": [
+            217,
+            235,
+            55,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 23,
+          "class": "circle",
+          "bbox": [
+            275,
+            238,
+            51,
+            53
+          ],
+          "occluded": false
+        },
+        {
+          "id": 24,
+          "class": "circle",
+          "bbox": [
+            332,
+            246,
+            51,
+            48
+          ],
+          "occluded": false
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.9930504560470581,
+          "target": false,
+          "bbox": [
+            0,
+            0,
+            324,
+            76
+          ],
+          "features": {
+            "area": 11549,
+            "perimeter_4": 1178,
+            "circularity_4": 0.10458361862299635,
+            "extent": 0.46901397011046136,
+            "aspect_ratio": 4.2631578947368425,
+            "eccentricity": 0.9671131278748474
+          },
+          "probabilities": {
+            "circle": 1.9111985238851048e-07,
+            "rectangle": 0.006765811704099178,
+            "triangle": 0.9930504560470581,
+            "ellipse": 0.0001834872382460162
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAlUlEQVR4nGNgGAVDBjAyMDD8ZWL4z8jwn5GB4T/jfwbG/79u/TH89fHui20HbjMwsEAVQcDHmWLMwccLryiavDj//89PmAn/GBj/MzL82nPIZKpuwKbJ/zCs+f///7//77IYGIR7///7Z4Hpji83/v37F8vAwMAQ9v/fP39MBWliM2/MZ2NgYGBgrj8/gZkKXh8FAwMA8bQ3aLJ8MaYAAAAASUVORK5CYII="
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999948740005493,
+          "target": true,
+          "bbox": [
+            305,
+            16,
+            60,
+            56
+          ],
+          "features": {
+            "area": 2610,
+            "perimeter_4": 232,
+            "circularity_4": 0.6093606440152616,
+            "extent": 0.7767857142857143,
+            "aspect_ratio": 1.0714285714285714,
+            "eccentricity": 0.32680984034358485
+          },
+          "probabilities": {
+            "circle": 0.9999948740005493,
+            "rectangle": 4.875553713645786e-06,
+            "triangle": 4.127718538428833e-27,
+            "ellipse": 1.8928567158127407e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABF0lEQVR4nM2SsUrDUBSG/ysueYJSJUF8DBE6FQIdtG/hW3ToEzh0FXwD6+DimsG5gpBMRYujkyJCOJ/DvWmSppn1XC6E/B/nP/e/V/pXNUivnzGMRTrYp082hl/YZnbU0Wel1QCshm05KbAWQJE09TgH2oDlcQPIjN0OxktNzKHbAeaSdCApGgMg4RcCBOMoNJiyv4NNQ4dRX3QjSYeSLgg/goWE/A7ASSU7HA4nnITziKvZLuCcn2HZN8MyWKzpAdZV0J/mK6SJGWZgpxV5T7tCDk9RyEG3QahOGerxe/u52Gfx3rjOOO9alFfNeZPCdq+7pUvDrGxZrNLOoScPH1uLrH60roEcn59dxu717uvm7acnur+pXxltUuz8xSNuAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9998409748077393,
+          "target": true,
+          "bbox": [
+            192,
+            30,
+            48,
+            43
+          ],
+          "features": {
+            "area": 1642,
+            "perimeter_4": 182,
+            "circularity_4": 0.6229314258174665,
+            "extent": 0.7955426356589147,
+            "aspect_ratio": 1.1162790697674418,
+            "eccentricity": 0.38873690474656425
+          },
+          "probabilities": {
+            "circle": 0.9998409748077393,
+            "rectangle": 0.00015815503138583153,
+            "triangle": 2.321561043295488e-24,
+            "ellipse": 8.497758585690462e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA/0lEQVR4nM2SsUpDMRiFTwpO6nC5g4+ga0EQ6tJF6OILOAeHboL0cZxcHIqQx6gPoK4OFYXApXYTznFocpPe5jr38A+B/+P8J38C7JWGj6RI8WM23O0eTf1aAaDWftzpV05UAshmstWvnToA/XUOzMkuwJfj1D98LwC6ScCzSvIXADAAcHkFCQKktiRUZ9Hgnq3yEVxGh3PTCrGMgTmZBodiAkl6AGAAMMU1CgUYAYMNoN7nMZsMvXoKIV2aml9TWsRr9mT8ik4H3+U93MY9/NpVKcHqLZ3npQk2g2u3O8LVuV1lm22gsVVn4tizNf/5tKNCqLvwq19np/9tbx/1Bx8NWtXuX0JDAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999916553497314,
+          "target": true,
+          "bbox": [
+            255,
+            34,
+            42,
+            38
+          ],
+          "features": {
+            "area": 1234,
+            "perimeter_4": 160,
+            "circularity_4": 0.605738333520282,
+            "extent": 0.7731829573934837,
+            "aspect_ratio": 1.105263157894737,
+            "eccentricity": 0.40599750439306015
+          },
+          "probabilities": {
+            "circle": 0.9999916553497314,
+            "rectangle": 6.752064109605271e-06,
+            "triangle": 1.3270068695464176e-26,
+            "ellipse": 1.5365222907348652e-06
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABA0lEQVR4nM2RrW8CQRTEZy85VUGqSi5NmqAaLKmoxmAwFXXQYLD1+BpqCGhEkSfJOf6BJjXNqSZ1CCqa8JEgUG8q2t3uLgvnmo54Zn6Z92YX+Fe6ar0KSaati5B9Mp6TQpLCfHadKM+PpxQDkJRb1y9NxAM2bQdo0Adk27T86mIf4K5i/PKbBAAZGKDLH7nA+6W+8EWCCewAiADc1AqecCkHEpYAFAAalMoMKCpG3yuOKgKw0iWI32Grw3BNZrpmegDQNTe9ghVQj8GEUWyI6iIAWJ8FNGRPfLCXlJ4+/IT83L2jNnQD8go8xUn2aR7k+e5UF7CZetI/A3C/RrYq+IE/1RduSIldEVhSOgAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 5,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.8298036456108093,
+          "target": true,
+          "bbox": [
+            81,
+            39,
+            44,
+            35
+          ],
+          "features": {
+            "area": 1165,
+            "perimeter_4": 160,
+            "circularity_4": 0.571868037723767,
+            "extent": 0.7564935064935064,
+            "aspect_ratio": 1.2571428571428571,
+            "eccentricity": 0.5115753395742026
+          },
+          "probabilities": {
+            "circle": 0.00033493907540105283,
+            "rectangle": 0.8298036456108093,
+            "triangle": 1.1337815519871404e-14,
+            "ellipse": 0.16986137628555298
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA9UlEQVR4nNWSsUoDQRRF7wsiLGonWKQJ+B92wcZOthOsDLZiJ4il+YK0gYCd32BrKxaBQArRVoQUgQjyToodN7M7ux+QW7wZuId33zxG2iZlg5E7Dr66Omjw8zc8APj7ZeL3Fx4BLM9q/ileAfDz2D7MvxPgJ4+Aa0qVgM+D2Wl71fHt5v7h7vUI5ysrAZoi8L3uiSST5JIkQzJMGCZkyOhIOwEKh0lWFJk0VAHQ1uEzAC0a/01DX5qB/eX/Hp4AECCkoqDn3w17P0v3sOjH3SYkeqmuOo14rMyz+1qPuKlNfHQR/yjmD+nzs8GozL/rtW9nO7UGu54Qg2aQC1gAAAAASUVORK5CYII="
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999794960021973,
+          "target": true,
+          "bbox": [
+            245,
+            96,
+            51,
+            48
+          ],
+          "features": {
+            "area": 1896,
+            "perimeter_4": 198,
+            "circularity_4": 0.6077399929809456,
+            "extent": 0.7745098039215687,
+            "aspect_ratio": 1.0625,
+            "eccentricity": 0.3482573731382403
+          },
+          "probabilities": {
+            "circle": 0.9999794960021973,
+            "rectangle": 1.997730396396946e-05,
+            "triangle": 2.916837540809188e-26,
+            "ellipse": 4.703182980847487e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA0klEQVR4nM2SPQrCQBCF3woexU4IgggiCF7DxtraIiAkOYWdhYVp0tmZ0ttYKNosoug8i6whP5ukEXG2GNj37czOD/BnNg9FSEoUOBbVOVOYAJRrr6SHiWIASlTQIykAepDTLywCvC0zupYyINynuksr8Bx/gIcdEA9Aq64vE+M9VkRgUwR8BVAACFBRAVRE4sxRSQS/6rVvUhxeTXlie5n3FBjFDbPAwgbobBJXl8c9zH2jv6tfGBR2kltLLd3gmAKb9FblmM4Us/Yap1VTY35rbx2ePHMsxrrBAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            25,
+            104,
+            42,
+            41
+          ],
+          "features": {
+            "area": 1325,
+            "perimeter_4": 166,
+            "circularity_4": 0.6042401315149479,
+            "extent": 0.7694541231126597,
+            "aspect_ratio": 1.024390243902439,
+            "eccentricity": 0.33923496016170956
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 3.18724993064734e-08,
+            "triangle": 4.249833375397904e-31,
+            "ellipse": 5.841456029997971e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABGElEQVR4nMWSv0oDQRjEZ+UKH8AiECEBFUHIA1ikCYGkEPIGeRorC6tYpBebKIK1oiRpo2BnBLU7JYXFBVMoMzZ7e3+yuVKnuP325rc73+4d8KfqPlKSLlp+e+vwR5Qkft6WPH79g7KA9FDO26XuQilA836QBa7FDCDetNN+M1oCGDUTvxORJKl4EElFHQcMpeUdxFkDwBqA2qb/4BsVW4SkL4IKARgAcmtk3ANGBgYI0oCxpYwdbQ+FKgRO42Sn7DHf6yjuYTqyEecrEgZx0Zh5I46T/q58F/Wym+y17QPs5w4A4Outms9/urxLT2uhsnrdyS1o5yLunWN/vfHJQcW9m3xj6iYmLvb20VsXgKPns8WKi/kv/QLwzDeq4q0Q3gAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999998807907104,
+          "target": true,
+          "bbox": [
+            186,
+            105,
+            40,
+            39
+          ],
+          "features": {
+            "area": 1220,
+            "perimeter_4": 158,
+            "circularity_4": 0.614123223422456,
+            "extent": 0.782051282051282,
+            "aspect_ratio": 1.0256410256410255,
+            "eccentricity": 0.37019810876543247
+          },
+          "probabilities": {
+            "circle": 0.9999998807907104,
+            "rectangle": 1.1823370016372792e-07,
+            "triangle": 3.199450367796911e-30,
+            "ellipse": 2.679467847599426e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABB0lEQVR4nGNgoC8Iiv72////vdHRQlgkmYTnbf/+HwqObtfhQJM3avn///8/mIL///6v50aR1330H03Bv+X8SPIm9/9jKPi/hQ1hf+c/dPD/3/9/60RgCvLg+pBN+Pc/Eiof8hvDAIiCHqiC4/9xmPCPgYGBkYGB4T/Mqv+MCNZ/xv+M/5kYGFiQFSCxEB7AEqgogAVqDRqAGPWYAd0KNFBBwIo3LwkoOL4Pyoj9jwH+/f/3/58gzJHf/zBjM2D6JzgzD1tQP7FBqOV+jcWKVcimmdzHMGIXL4p9kBSFZMJGQTQXGaGoeJkvgOFm/tQvcOPvGWINF9/od///////f2+0EVb5gQMAcnlC5o9PcHcAAAAASUVORK5CYII="
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999992847442627,
+          "target": true,
+          "bbox": [
+            317,
+            105,
+            39,
+            40
+          ],
+          "features": {
+            "area": 1174,
+            "perimeter_4": 158,
+            "circularity_4": 0.5909677576212814,
+            "extent": 0.7525641025641026,
+            "aspect_ratio": 0.975,
+            "eccentricity": 0.2473478567993202
+          },
+          "probabilities": {
+            "circle": 0.9999992847442627,
+            "rectangle": 6.017245368639124e-07,
+            "triangle": 8.622712157993555e-29,
+            "ellipse": 9.025631442227677e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABDklEQVR4nLWTsWoCQRRF71uFRTDE2NhJsAkWCUSElP5A+hCst5X8RIpU+QPbYIqAQTBYbbNlyB+oLPgHgXTvWrjLzsyO2cpbPeaed+fNwANOLjHq4AHo3iyQJl40nC2oSlXdzZpB2e/Eygyg6svQ9c++aALcXNv+xUptQNOB6bfmdAGm54XfWLIMMCqAKX1A0s79wdoL6BgA6gD6lwRA0HlZPy/G9CcQAAIAt96fzSTAIZpCASEEhBAKKJIl/KsAwF8VEFUBx/RcAWw/8qqdeP9hWrCRerRsGINMfulI5y3rvqdSwJU9UO3VDvie1JyRh1FstMcdz6vC0efPoX33HhbH5uKgd3f/+HZ0cU6mPaz8M6mdTEwkAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 10,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            84,
+            107,
+            38,
+            38
+          ],
+          "features": {
+            "area": 1131,
+            "perimeter_4": 152,
+            "circularity_4": 0.6151560407219626,
+            "extent": 0.7832409972299169,
+            "aspect_ratio": 1.0,
+            "eccentricity": 0.3420085434044852
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 1.0719773957390544e-09,
+            "triangle": 7.926229103216094e-33,
+            "ellipse": 1.265412885587125e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABA0lEQVR4nGNgoDlgRGJzeHAuZWCYdIDh/UGsan1W/f8HAa8XtmPI8jlf+/4fAf7Ms0FTMOvfv3//YCb8+/f/3+dQFP2z/vxHB5+RzZgH0Yxswr9/8xDykp+xKfiDcOnC/9gU/D+rBpW3f41dwb8ABgYGFgYGBkERBkZIiCGCjZHhP8IJF//hMOEiVM8/Bsb/jP8ZGBgY4boY/zMwMP5nZGRgYMIa6kiATgpm45KcBVWwHZeC7QSsOH8NyuBZjxHX/////3dDEq405AeWkDyjjGRYOqaC6/LItqld/IcK3k1GkWdgULv/AznJTrXAdHLIerj2E/VYPcUTkATRH6mIx+u0AACY6TU7VTIhpQAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 11,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9998663663864136,
+          "target": true,
+          "bbox": [
+            134,
+            110,
+            40,
+            35
+          ],
+          "features": {
+            "area": 1107,
+            "perimeter_4": 150,
+            "circularity_4": 0.6182654342264713,
+            "extent": 0.7907142857142857,
+            "aspect_ratio": 1.1428571428571428,
+            "eccentricity": 0.44982797170055966
+          },
+          "probabilities": {
+            "circle": 0.9998663663864136,
+            "rectangle": 0.0001313513785135001,
+            "triangle": 3.2516546746066123e-24,
+            "ellipse": 2.2829331101092976e-06
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABEUlEQVR4nM2SsUpDMRSG/3NbKQoOCuVCuzgWXHyIvsMdBBfxBTq7CL5BcXAu9AEquFTcfIXe4qCTg0PBSbfzOyQ5N0mvzv2HkOR850/OSYDd0lm1JEneVEctUendvSq9ns/3toBLkgZQ3y72k/Dw8YsaA9RpbDJaq+YAZw1R1mE7BnRgwELpHNSCVOoixMebAKQOmzGAAkDfyqYb6FbHfQ/cNs1wg4S7+S0FhBAKxayEQmEBdD0kcWasbjj5LxUA3sULYjMAwMQD16E4WJkO+LQ+MJdSqcsD7/D00n78z3eYlbXmorIuG3a0bnmsq9htuNpymKafapI7zNMfhc59YrA66eRXPqw+LP+hOv2vubunX6HSMg5HxgpIAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 12,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999997615814209,
+          "target": true,
+          "bbox": [
+            315,
+            156,
+            65,
+            62
+          ],
+          "features": {
+            "area": 3109,
+            "perimeter_4": 254,
+            "circularity_4": 0.6055683278573171,
+            "extent": 0.7714640198511167,
+            "aspect_ratio": 1.0483870967741935,
+            "eccentricity": 0.26603833746608796
+          },
+          "probabilities": {
+            "circle": 0.9999997615814209,
+            "rectangle": 2.2181886549788032e-07,
+            "triangle": 3.6129588116026185e-29,
+            "ellipse": 5.885593790111443e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA/0lEQVR4nGNgoDlgRGLL2toxpDMwMMy8vuQtFqXC3S//w8C9cgxpzvrf/5HBCmlUedUL/9HAc1VkeZmn/zDABQ4kBUvQ9f////9/A0I+H5v8/1/mMHnBu5gW/Pv3799GBgYGBiYGBgZ9RexhZCYNVRCBXZ5B3AKqgBEXcGNgYGBhYGDw+I/DiP9QE17jMoELqnAGdk/8+/cPasIPHDYwnIcqmPoZh4LTMMZUHDY4wJVil78rCLWCgeEPVhsmvYczvT5hMeAZsuL5mJH5VBdZgeoFdP2oKYqBgbP+L4r8Xn0MJ1mfgsu+PIlI1Uj5QjhGk4FBRPMww6HDj3GE3AABAEX3NTOKF1+SAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 13,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            189,
+            170,
+            48,
+            46
+          ],
+          "features": {
+            "area": 1729,
+            "perimeter_4": 188,
+            "circularity_4": 0.614736724542412,
+            "extent": 0.7830615942028986,
+            "aspect_ratio": 1.0434782608695652,
+            "eccentricity": 0.270954029700745
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 2.41145805546239e-08,
+            "triangle": 3.726932816047612e-31,
+            "ellipse": 1.1010823364188127e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA/0lEQVR4nMWSvUoDQRSFz10UYopY+xCyVgFLsfYBAiFbiG+Q3ocwrqZUC/FxFNQ2mGaFVCljPMciM/s3o42gh1tcOB/3bwb4Ww3H56Reht/Yk2JFkeLqdZSGdvr0KdJHcbLTtLvHc6oGkHm37ndyqgUw71R+MpUCQNcVkElhBRX7JTCLArz0/ukHvRrAOwAkANItMzOYtTbf3nOJpNiQ5NhV+FG/Aw4BGAABkMkgmA/ABCSbChcODDRxLR7XmyqB3nwyY0Tisrx1Fr/DTbXKc/QtsqrZIAY81L5Mb1oEwH2vMfDRogksBrutlfp3y9Jdz0f9yNYHtw64Oosd5R/1BfU7VyO8Q5s/AAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 14,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999744892120361,
+          "target": true,
+          "bbox": [
+            251,
+            172,
+            46,
+            44
+          ],
+          "features": {
+            "area": 1511,
+            "perimeter_4": 180,
+            "circularity_4": 0.5860427777252071,
+            "extent": 0.7465415019762845,
+            "aspect_ratio": 1.0454545454545454,
+            "eccentricity": 0.4657788992183844
+          },
+          "probabilities": {
+            "circle": 0.9999744892120361,
+            "rectangle": 5.6237536227854434e-06,
+            "triangle": 4.5744376038434635e-27,
+            "ellipse": 1.9949520719819702e-05
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABGklEQVR4nMWSPUsDQRiE56IiggRFAnYiolgEwUL8+AFiQGt7Ee1EO0ut7FP4AyyEQEwppLCxsLSzESWdJM3ZqAjKjMXtnXu7e1qJU+y9sM/NzLIL/Lkia15ewHb1uoWruyC60ohFkWLvYXPEM5ptPksGENkoO/tbIs1esrRKOaBKibaDeDlgA00f4JLdLyadCPJpEgBQAoCxUUQRIvvIwPhOXzbXFYig6hnwGAZ602lEgSo1A6xWfqD6AewPCwIEJB+50KHCHfhqIt6K7Id+KYkzA9zEBcBtOpyHO3Sy+yrPXTAvkdSuZTZ/+ilPG7m8rudwP5UDFruuwbFTeeKk/fHt8N4+GvSPtXbwkv4efvnA+l7i0JkpAP5FX52TQ7iuE4DpAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 15,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            80,
+            175,
+            44,
+            42
+          ],
+          "features": {
+            "area": 1481,
+            "perimeter_4": 172,
+            "circularity_4": 0.6290831151928723,
+            "extent": 0.8014069264069265,
+            "aspect_ratio": 1.0476190476190477,
+            "eccentricity": 0.26187918527642
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 6.972247668102227e-09,
+            "triangle": 5.971884521633607e-32,
+            "ellipse": 2.6609370262775656e-10
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABEUlEQVR4nL2SPWrDQBSE5wlB7pAmaVQlEpicIVVOkMK1cgdBCnU+QK7g0oEcxOgCAnUqBCHuhIuZFCut9bMknacQj52P9/aNFrimtgVFiX2e3wfsuDzTAaLqMln62V6URkBssrm/6SheOojsNlM/bbkE1KYXP9oP51OA9aMH3jVqCrDyQEWuR5D9K4AYwPOdAYAtN7u5HYo3hjuIACIADwYzwH2WMgCCDDIZfCGYYIpcB8AAW9/BRRA8XQDf/wGFz0mQIEjO/BqA+mSjYAYb1/n5GNtUDP0LF3UEAIfwFgdfJTVXEuvJq0rbwIjdtNumWwGf8Wxe1szfQ7NbRpiUx5MHzsenUGgvee+AYvtXttfXL6qrRRq0960UAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 16,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999940395355225,
+          "target": true,
+          "bbox": [
+            25,
+            178,
+            38,
+            39
+          ],
+          "features": {
+            "area": 1125,
+            "perimeter_4": 156,
+            "circularity_4": 0.5809158013294736,
+            "extent": 0.7591093117408907,
+            "aspect_ratio": 0.9743589743589743,
+            "eccentricity": 0.23997903785941657
+          },
+          "probabilities": {
+            "circle": 0.9999940395355225,
+            "rectangle": 5.921239790041e-06,
+            "triangle": 8.38491041367102e-27,
+            "ellipse": 4.020769495127752e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA3ElEQVR4nGNgoDlgRDA5fP8zMDLId+XuvoVVqfum///+/f///9//C41YpBWT/v+DKfj//58PujzH6f8oCl6s4kCRlz/7H1XB//9n5ZHkWU7+x1DwLxZJgd1/LAr+s8HlrZ7gUcDEwMAgK43V3yvgCnAAMysY6/9/rFb8DydgAgPcihOEFIXjsOI4ISssiHIDAwMDA8M6Sn1BGGCPrJOycAVYo/t/GZIR2BJMKIrt6Enu//9aNGegJNprIY0zWDCdKngBouDtKkEkUaSMw6Cmx8DI0H9w3l6ivE49AAAcXzCSJ1NMdgAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 17,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            135,
+            179,
+            39,
+            38
+          ],
+          "features": {
+            "area": 1159,
+            "perimeter_4": 154,
+            "circularity_4": 0.6141180444443533,
+            "extent": 0.782051282051282,
+            "aspect_ratio": 1.0263157894736843,
+            "eccentricity": 0.24976369490086503
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 7.900666787463706e-09,
+            "triangle": 1.15006629212417e-31,
+            "ellipse": 1.4206025245044884e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA30lEQVR4nMWTPQ6CQBCFH4QQGlo7Qmw8hAWx4wISbsIRbGm9gg2FCWcwxJgYSmJhYSjkDjsWLFl2GbDT1+wm39uZt3/ATxWkORFRngYsdrNKSFWZO+URaYoM7JWtbmhL3xnx9ZWmOo4MNcOJFI9ZTvHAd2/B6uxJQ8IXIEoAOAAOo26aVgAsAGKGA3ZfwZo19J5l2QCe30x7fpdCCMgMcyEectzcF87BBtA0fIGuG2Yxn+CkvOxt1r4ysO8hGbfzbmb9m/aigLDSl1ehGdkpXooWkWNyANv00vOZf/E/fQCMg1BoeV8ymwAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 18,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999998807907104,
+          "target": true,
+          "bbox": [
+            18,
+            233,
+            57,
+            55
+          ],
+          "features": {
+            "area": 2437,
+            "perimeter_4": 224,
+            "circularity_4": 0.6103365191962952,
+            "extent": 0.7773524720893142,
+            "aspect_ratio": 1.0363636363636364,
+            "eccentricity": 0.2587471186692901
+          },
+          "probabilities": {
+            "circle": 0.9999998807907104,
+            "rectangle": 1.1127076504635625e-07,
+            "triangle": 1.2283849762251066e-29,
+            "ellipse": 3.6428406957611514e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABH0lEQVR4nMWRsUoDQRRF7wS1XgKKiiz7ARLSaSNoJQT0TyxE8gEpYpNAQOyEQNLmCyzyD5YGxBTZYCFKKotF3k2xLzuzu7Ol+JoZeGfuu+8O8Odl7HX79HrnxgAPycdw5UEbzxQKSREuzvdL/U4sFhB5v823o4GQLiDJndsPZ5K+twATR2NryjIgcpIBF+IFRpt+sGRaBWAZAKgBaB4oAIJkJnzYVKBltGBgjBNdS4F2RcrpAgCsKJ07gF095/Sb5FxHTOg3iYmOyL6Uhgb5KagB+Kky2Ndzr8LDV10VVk8FD0xXe/zeSB17FeIjG8bUB1w5bsJZCfi9z/mNXotAt7BR+CZuxZ3SztF4kSl8jhu+WIKzXiLkS++yXpXcP9UabwFgc/GoYTQAAAAASUVORK5CYII="
+        },
+        {
+          "id": 19,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.8748177289962769,
+          "target": true,
+          "bbox": [
+            144,
+            237,
+            57,
+            50
+          ],
+          "features": {
+            "area": 2174,
+            "perimeter_4": 216,
+            "circularity_4": 0.5855471904067395,
+            "extent": 0.7628070175438596,
+            "aspect_ratio": 1.14,
+            "eccentricity": 0.3991396821874441
+          },
+          "probabilities": {
+            "circle": 0.8748177289962769,
+            "rectangle": 0.12493710219860077,
+            "triangle": 1.7311464626647922e-19,
+            "ellipse": 0.0002451353648211807
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABEklEQVR4nGNgGFRAu3P3/3//////96FQhAdTWsP60f9/EAX//v+7mSaIJp/19/8/JAX//l2xQ1Xw5B+agv+HrZDlg95hKPj3RQ0u7Vv19B+mgn+z4QoW/vuPTcF/RQYGBiZ8Hs9kYGBgYWBgYJVgZGBkYGDEUCAHpWf9QwMwK/5BFfyHATQ3XI+DKkA3AKZgIQPUDXDL/zP+Z2Rg+I/hFhwmnDdjgHqzixEKGBgZGBnh5r04BWPxLd6NzYQIJEucsSh4qcoAcyQDw59/zCiuYmRgYHhyG1mkHdOE1xrICmQuoyu4v0EUxVCpBlQFDVLogcFkPW8fPMz/r4HHMnIUspWK5DMwMBw/8mLxjy8YwTmYAQC6Plo+S4p+XgAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 20,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999990463256836,
+          "target": true,
+          "bbox": [
+            276,
+            240,
+            50,
+            48
+          ],
+          "features": {
+            "area": 1966,
+            "perimeter_4": 196,
+            "circularity_4": 0.6431040355016174,
+            "extent": 0.8191666666666667,
+            "aspect_ratio": 1.0416666666666667,
+            "eccentricity": 0.4219351985889401
+          },
+          "probabilities": {
+            "circle": 0.9999990463256836,
+            "rectangle": 9.61944465416309e-07,
+            "triangle": 6.198019321083496e-29,
+            "ellipse": 6.627716597762401e-09
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABB0lEQVR4nMVQsUoDQRScd/gHAcEgJEhAwc9JQOz8BsHmsLxGG3u/IJ+QD7CwMpBcoRZCvsDuYkKcsdjdy16yJp1OsTyY2Zl5D/hTtPKCDm/5yTY9GFdigOaPZxv8zUKSSFKkRM4aim7x5ajgQHJ2uuY7UyXwsRa8MJhHDlxdAcgA4PocSmyVtf1wWCnpwFcvyFMFJEkADgD0ZTIBsDoomgAQvwkyX3IXnEBui+QqPshCXown7IkY7RF8T/wwYfpQz6HD0GAwM/dYPQ2D1fGcmxDJz6M67HaZuvNdVKdMOEw7kaD3vvW/7DY26j0sGw6L+yYP4LJc1b+r8SB1lwvfpMhbO673H/gBXz1CPYTO5UAAAAAASUVORK5CYII="
+        },
+        {
+          "id": 21,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999991655349731,
+          "target": true,
+          "bbox": [
+            220,
+            241,
+            49,
+            47
+          ],
+          "features": {
+            "area": 1738,
+            "perimeter_4": 192,
+            "circularity_4": 0.5924574687433877,
+            "extent": 0.7546678245766392,
+            "aspect_ratio": 1.0425531914893618,
+            "eccentricity": 0.3363437072002881
+          },
+          "probabilities": {
+            "circle": 0.9999991655349731,
+            "rectangle": 2.3275397609268111e-07,
+            "triangle": 2.425217351893351e-29,
+            "ellipse": 5.965443392597081e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABFUlEQVR4nMXSv0vDQBQH8O+LHaRQ6uDoX9FBaDdL9Q+Iu3UpLplsIf+G4N6pUwMOzp0d/AdcFR0Kpb8MqB36nkMul7vLdW0fgZB8P/cu9wiw3xokzMzCk44vvYgWLBmQv8lJKQ9TYQ2EP7t2fHr1whaQ9NYCPRYHSHpj5LW3MuCvus6Pn8QDpK/Bs3jBMlB569cPOFYg5rwcsAFAAFbF1wAAhLJLiDLAOiIBQBaoqC65KE24AkCcDvpxCiAA8E15gYiMJg/qfr/jFD+NXI79YKxbNddilgLvQbFZ4gHztnGWWsJuzS6t054v3Q5DZx7XKwvMR874gfDDAGvfb12NFtnu29ldq3htDX9whOhs9ProWX7Q+geh83VW6nGpJwAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 22,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999994039535522,
+          "target": true,
+          "bbox": [
+            92,
+            245,
+            44,
+            42
+          ],
+          "features": {
+            "area": 1390,
+            "perimeter_4": 172,
+            "circularity_4": 0.5904291222944581,
+            "extent": 0.7521645021645021,
+            "aspect_ratio": 1.0476190476190477,
+            "eccentricity": 0.3258668209676873
+          },
+          "probabilities": {
+            "circle": 0.9999994039535522,
+            "rectangle": 4.962763568983064e-07,
+            "triangle": 7.466265856174365e-29,
+            "ellipse": 9.303278147854144e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABH0lEQVR4nMWSsUoDQRRF7xsCqRSiXfQXFLbzH/IFFgp2KWIpFkEhFvkFKyMI5gf8BRshBCFYWkkwEEG0ENbi3RQzs5mdnS3FWwyz7565b+ftAn8uCfadXZw9XT/WATv32YZQPt6Ai+V8XknanipJJZVKTk8lAoZKVS0A1WHJNoM8BvKBCYAtVw8Aai8A7ugUApN24R9+qcYtqHri/eaMqQSdNR3QVU0msAvA2GmJAHaJZQBsJuqAMwQA1yUKKBQQQgiNTTivS/AtvuvMTwANRD0AFs99l3D7Il4Q8XcKWuSL0rlCrw9+154kJ3m5ZntaEXUcfG/7P5QT3vdK/Y6fI2CZRW/UuvkJgfF+dSxZZ+GB36tGcnIHIwv0j5L2v2kFTTYzRB1CcU8AAAAASUVORK5CYII="
+        },
+        {
+          "id": 23,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.9999996423721313,
+          "target": true,
+          "bbox": [
+            336,
+            248,
+            45,
+            41
+          ],
+          "features": {
+            "area": 1477,
+            "perimeter_4": 172,
+            "circularity_4": 0.6273840385819529,
+            "extent": 0.8005420054200542,
+            "aspect_ratio": 1.0975609756097562,
+            "eccentricity": 0.42125503640341044
+          },
+          "probabilities": {
+            "circle": 0.9999996423721313,
+            "rectangle": 3.097014769082307e-07,
+            "triangle": 7.183252858259091e-29,
+            "ellipse": 3.679285143221023e-08
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABCklEQVR4nM1QoU7EQBSc12AQJxAX/gHXXILB1dCcwWNQJy78BsFhcTTAj5DcqQuyAgMGAVdxqpiGZAZx22XbbEHCiJdNZnbmzQP+GU6WlKiL+SRCpkVZfogSRa3Ls/0eP92IZCsQtdjt8FkjeY4SpcUo4PPaMYFAd0F+JbIXIVUpACQAMBvHOo1n7WtObdF14NuBE7ySsQjq3AmkuINWAAwAB0+bADtOtLUyWTsAmW/xE36NSAA8mgMMfpjBzEXcDxlcOcHDu6sJwQ8JemmV1/E7PHmrtGIE1fF3WF6rC0p1Hq6TNf3/TdZdeO+my2+m/UqjYu0DPssiDS/pMDnE6REAXD7fDt72T/AFGOlBUqMRxW0AAAAASUVORK5CYII="
+        }
+      ],
+      "warnings": [
+        "Có hình chạm mép ảnh; hình bị cắt có thể được nhận dạng sai."
+      ],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 24,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 21,
+            "fp": 0,
+            "fn": 3,
+            "precision": 1.0,
+            "recall": 0.875,
+            "f1": 0.9333333333333333
+          },
+          "rectangle": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "tp": 21,
+        "fp": 1,
+        "fn": 3,
+        "precision": 0.9545454545454546,
+        "recall": 0.875,
+        "f1": 0.9130434782608695,
+        "mean_iou_on_true_positives": 0.8254055811614407,
+        "ground_truth_targets": 24
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "circle",
+          "bbox": [
+            22,
+            30,
+            46,
+            45
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9074044227600098,
+          "best_region_iou": 0.08406432748538012,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 2,
+          "true_class": "circle",
+          "bbox": [
+            81,
+            35,
+            41,
+            39
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9998849630355835,
+          "best_region_iou": 0.8421361502347418,
+          "failure_category": "region_found_but_wrong_class_or_low_score"
+        },
+        {
+          "annotation_id": 3,
+          "true_class": "circle",
+          "bbox": [
+            132,
+            27,
+            47,
+            48
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.09161793372319688,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 4,
+          "true_class": "circle",
+          "bbox": [
+            190,
+            26,
+            52,
+            51
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9992567896842957,
+          "best_region_iou": 0.7782805429864253,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 5,
+          "true_class": "circle",
+          "bbox": [
+            252,
+            31,
+            49,
+            48
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.999984860420227,
+          "best_region_iou": 0.6785714285714286,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 6,
+          "true_class": "circle",
+          "bbox": [
+            306,
+            14,
+            61,
+            60
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.8891280947255114,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 7,
+          "true_class": "circle",
+          "bbox": [
+            24,
+            103,
+            45,
+            43
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999994039535522,
+          "best_region_iou": 0.889922480620155,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 8,
+          "true_class": "circle",
+          "bbox": [
+            82,
+            104,
+            43,
+            41
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999998807907104,
+          "best_region_iou": 0.819058423142371,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 9,
+          "true_class": "circle",
+          "bbox": [
+            134,
+            106,
+            42,
+            41
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9997881054878235,
+          "best_region_iou": 0.8130081300813008,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 10,
+          "true_class": "circle",
+          "bbox": [
+            186,
+            101,
+            42,
+            45
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999998807907104,
+          "best_region_iou": 0.8253968253968254,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 11,
+          "true_class": "circle",
+          "bbox": [
+            244,
+            93,
+            54,
+            52
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999991655349731,
+          "best_region_iou": 0.8717948717948718,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 12,
+          "true_class": "circle",
+          "bbox": [
+            316,
+            101,
+            42,
+            46
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999992847442627,
+          "best_region_iou": 0.8074534161490683,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 13,
+          "true_class": "circle",
+          "bbox": [
+            21,
+            175,
+            44,
+            43
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999746084213257,
+          "best_region_iou": 0.7832980972515856,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 14,
+          "true_class": "circle",
+          "bbox": [
+            79,
+            172,
+            48,
+            46
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.8369565217391305,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 15,
+          "true_class": "circle",
+          "bbox": [
+            134,
+            175,
+            45,
+            43
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.765891472868217,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 16,
+          "true_class": "circle",
+          "bbox": [
+            188,
+            168,
+            50,
+            51
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.8658823529411764,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 17,
+          "true_class": "circle",
+          "bbox": [
+            249,
+            170,
+            51,
+            49
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999818801879883,
+          "best_region_iou": 0.8099239695878351,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 18,
+          "true_class": "circle",
+          "bbox": [
+            313,
+            153,
+            67,
+            67
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999998807907104,
+          "best_region_iou": 0.8977500556916908,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 19,
+          "true_class": "circle",
+          "bbox": [
+            16,
+            233,
+            57,
+            55
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999998807907104,
+          "best_region_iou": 0.9322033898305084,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 20,
+          "true_class": "circle",
+          "bbox": [
+            90,
+            243,
+            49,
+            47
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999998807907104,
+          "best_region_iou": 0.8024316109422492,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 21,
+          "true_class": "circle",
+          "bbox": [
+            144,
+            234,
+            56,
+            57
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999929666519165,
+          "best_region_iou": 0.863664404688464,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 22,
+          "true_class": "circle",
+          "bbox": [
+            217,
+            235,
+            55,
+            55
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999995231628418,
+          "best_region_iou": 0.7613223140495867,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 23,
+          "true_class": "circle",
+          "bbox": [
+            275,
+            238,
+            51,
+            53
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999986886978149,
+          "best_region_iou": 0.8879023307436182,
+          "failure_category": "matched"
+        },
+        {
+          "annotation_id": 24,
+          "true_class": "circle",
+          "bbox": [
+            332,
+            246,
+            51,
+            48
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999996423721313,
+          "best_region_iou": 0.7536764705882353,
+          "failure_category": "matched"
+        }
+      ]
+    },
+    {
+      "id": "us_aluminum",
+      "title": "Đồng xu nhôm, nền sáng",
+      "source_group": "us_aluminum",
+      "difficulty": "basic",
+      "notes": "Bóng đổ bên phải không thuộc đối tượng.",
+      "source": {
+        "id": "us_aluminum",
+        "title": "1974Aluminumback.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1974Aluminumback.jpg",
+        "author": "Smithsonian Institution (U.S. federally funded employee); individual photographer not listed",
+        "license": "Public domain",
+        "license_url": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+        "download_sha256": "15fa758163e5184330b87cfae467cd7d278c7b951cfd89ac99ad21b5e6b37103",
+        "image_file": "images/us_aluminum.png",
+        "image_sha256": "a60984dfe3be8533f47a0525853a791c00d47fc12014eb6e65aa3036e71019ed",
+        "pixel_sha256": "69b1c4fe95998bd6d292c08e4a65a08b6ff3d7b722776af47f6f8825767ba4ae",
+        "width": 285,
+        "height": 281,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/us_aluminum.png",
+      "comparison_image": "real_us_aluminum_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            4,
+            3,
+            268,
+            266
+          ],
+          "occluded": false
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 1.0,
+          "target": true,
+          "bbox": [
+            4,
+            5,
+            271,
+            266
+          ],
+          "features": {
+            "area": 56658,
+            "perimeter_4": 1074,
+            "circularity_4": 0.6172520505570658,
+            "extent": 0.7859778597785978,
+            "aspect_ratio": 1.018796992481203,
+            "eccentricity": 0.20187701955980625
+          },
+          "probabilities": {
+            "circle": 1.0,
+            "rectangle": 2.5631552436067295e-10,
+            "triangle": 8.668571969188608e-34,
+            "ellipse": 1.1399516747223615e-10
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABNklEQVR4nLWRvUoDURCFz6w/RRCVRQsrBUEQbESwcAs72cYib6DP4Buk8BnE0lIE0VKDYkAEERbtQjBgHTBphBTuHIvc3bs391rmwGUXzsfMmRlg4pLK/049WV/pDdqt288QevBMpZJU5ve7nj1/RS0BMj+bdf2lD3UA5dNi1a9l5BjAx5kKcEEfYMP6qYaA4WYJvKmqUqmqFlS9Lvw9DQP5BoAIwKGIiEAgInZ7gqgOYBpAQgAQCo1HAUAgMS36dGSDdkw1hVOBQqGAkJ+5UQsp7lZcbpSBmDIZBgvu3mkevs0UXXGE4qFtgJZ3W6MX893XsLhdZOqEx3wtSx2FgdQ2uwsBl5U0ceYneI+reePmeIXuqjtRdDp0gIdlb+itm9+y/NexeD6AtZNmj+xn52n03+omoj+SFnSm8dKd5gAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 2,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.9994297623634338,
+          "target": false,
+          "bbox": [
+            97,
+            48,
+            85,
+            27
+          ],
+          "features": {
+            "area": 1366,
+            "perimeter_4": 378,
+            "circularity_4": 0.12013705004909318,
+            "extent": 0.5952069716775599,
+            "aspect_ratio": 3.1481481481481484,
+            "eccentricity": 0.9316822179757086
+          },
+          "probabilities": {
+            "circle": 2.3887392064381174e-11,
+            "rectangle": 2.9630327844643034e-05,
+            "triangle": 0.9994297623634338,
+            "ellipse": 0.0005405324045568705
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAyUlEQVR4nGNgGAWDBTAyMDBs9FuYELjuymzxCdMPuTL832ojwHBSSPXBFIdT5yGKNv6fOOPx/3//75r+//fv3z8I8f/f/3+FUFN+/j8i1P3/9KNPW9AUHGVgYGBhYGCoFT/2bsaXDvsMlr5ICQaGD3euWTx4HPyaReES1A0MDAwMDDwVR1T+ftcsZWDY2n/rl8AtsVesCvf+IrnW4N9/mOn/fv64BxdnweY1VgZmOJsJxrha+nPrnb6d9+4xbHlcvOUFpcE3CmgAAK15a86R6l8UAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 3,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9999622106552124,
+          "target": true,
+          "bbox": [
+            152,
+            217,
+            24,
+            36
+          ],
+          "features": {
+            "area": 441,
+            "perimeter_4": 162,
+            "circularity_4": 0.21116329221659788,
+            "extent": 0.5104166666666666,
+            "aspect_ratio": 0.6666666666666666,
+            "eccentricity": 0.8784145148117712
+          },
+          "probabilities": {
+            "circle": 1.2380953194224276e-05,
+            "rectangle": 0.9999622106552124,
+            "triangle": 2.2760201318305917e-05,
+            "ellipse": 2.6327682007831754e-06
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABMUlEQVR4nLWSP0sDQRDF34goQfzTKgErESSSVtDWfACxjNhYCIIg+BkMWKiF2NhaC7YWXmMjdhohphFJIQFBEyRBlPcsLncXuDm7zMLuMPNj3uzsAgM3i72xZQAob+jg6t5Fj0iFK/DS+cq3Dwz3zgagKHbtAT3bagF26UmsS6S2LZWIKnQEAF1lAuF9cyYbx2/HAwQAZz+tyXN7Wqune8jfSBJFSdz3ujxlOAdS/JhzJKKhG4CHtgco3HafgXrT03ghyc+yl4oB8S4VHkpcM9jIxD+AJBX3soGKr5wAt33R0aWpNLogSQpmAKwe6yLuLAZyhzsAUP0CZqdNUelkUN1XAEABln7z0BZrJMnwPU6iaN+Xe3ybBwA02mhuvnslApJktZihAKxItVKpkJkflP0BKu+PTYTKCuwAAAAASUVORK5CYII="
+        },
+        {
+          "id": 4,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9808079600334167,
+          "target": true,
+          "bbox": [
+            126,
+            222,
+            23,
+            33
+          ],
+          "features": {
+            "area": 389,
+            "perimeter_4": 152,
+            "circularity_4": 0.21157886811745666,
+            "extent": 0.5125164690382081,
+            "aspect_ratio": 0.696969696969697,
+            "eccentricity": 0.8283109214430332
+          },
+          "probabilities": {
+            "circle": 0.01918581873178482,
+            "rectangle": 0.9808079600334167,
+            "triangle": 4.293032702662458e-07,
+            "ellipse": 5.766688445874024e-06
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABHklEQVR4nL2TO0sDQRSFz6xRMAEfvUhEsXQrTREsbCwEsbBT/AeyTSp/iGBh7S9Q8AGBtGkE7SVNiiSFiIIieI7F7Gz2MYlY6GmGuee7986dYYB/1dxGmyTJRuj1p88oC2hw7ENOmQBUezmOlhK/vAMAeP8sVQDcduNw4PzFyyoAdPfnN+/6QP8j3yCSJPX2AODwTVHeX30kST7Y3VFrKQ/UJEmKgYnZxAiyXNMuXy+FGWuiSFUKRlCI/BYYXpSBGQvohwpT3vSU7Ctx9BTG6mBkhROmr9pT4ebVGGPcQcJONJknI5JkJwSwsvtMNlxvB6yfrwHA/RVQ38o4ThfMqnCacksp9erFQWaaw/Snbd+o1WuXP/D6wML4j/NX+gahT6Zv03/xPQAAAABJRU5ErkJggg=="
+        }
+      ],
+      "warnings": [],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 1,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          },
+          "rectangle": {
+            "tp": 0,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "mean_iou_on_true_positives": 0.9742502272038777,
+        "ground_truth_targets": 1
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "circle",
+          "bbox": [
+            4,
+            3,
+            268,
+            266
+          ],
+          "roi_top1_class": "circle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 1.0,
+          "best_region_iou": 0.9742502272038777,
+          "failure_category": "matched"
+        }
+      ]
+    },
+    {
+      "id": "floppy_front",
+      "title": "Đĩa mềm, nền trắng",
+      "source_group": "floppy_front",
+      "difficulty": "basic",
+      "notes": "Đường bao gần chữ nhật, có góc vát và khe nhỏ.",
+      "source": {
+        "id": "floppy_front",
+        "title": "3.5\" floppy disk.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+        "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/3.5%22_floppy_disk.jpg",
+        "author": "Load",
+        "license": "Public domain",
+        "license_url": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+        "download_sha256": "3e4a0e19a16b27f1337360b364e0d1ab03149f064a46dfb1e668aeb207337d44",
+        "image_file": "images/floppy_front.png",
+        "image_sha256": "3d986438432e80dbc46faf5e0ea8fbb1bbb101daf18c06706a28a574b3a09acb",
+        "pixel_sha256": "eb2ee52a822794fe518fb8c86c4a690ca3aaf2534a90a76f36f6d864e556bd7c",
+        "width": 483,
+        "height": 503,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/floppy_front.png",
+      "comparison_image": "real_floppy_front_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            15,
+            14,
+            452,
+            474
+          ],
+          "occluded": false
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9999991655349731,
+          "target": true,
+          "bbox": [
+            16,
+            14,
+            452,
+            474
+          ],
+          "features": {
+            "area": 208669,
+            "perimeter_4": 1890,
+            "circularity_4": 0.734081349829992,
+            "extent": 0.9739600836413875,
+            "aspect_ratio": 0.9535864978902954,
+            "eccentricity": 0.2888146131566139
+          },
+          "probabilities": {
+            "circle": 2.2543095212768094e-07,
+            "rectangle": 0.9999991655349731,
+            "triangle": 4.701624902736512e-07,
+            "ellipse": 1.0473929279442018e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAw0lEQVR4nLWRMQoCMRBFX5ZVVFAESz2AhxA8kifxLN7C2t5CC0urdQVXcL5FNosKJiKaNCHz8v+fDPx9OWAz2m0nzMrj+ERBQVWxmufZehkgM5lkJqk++L0AyAEQAgQg16hPA+CvfOWhTisAopZ5JQCySAN5yqKXUmhkohliFoP/W3RTFq0AWCxDTKHdZNBjSPxwhTpvQgonJ1fHTQ4rBnw2rBjggs/zV9N00Q/A110QFA5DKw24nQFKAy5XGOxTj3+07tUjX69IMTjiAAAAAElFTkSuQmCC"
+        }
+      ],
+      "warnings": [],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 1,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "rectangle": {
+            "tp": 1,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "f1": 1.0
+          }
+        },
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "mean_iou_on_true_positives": 0.9955849889624724,
+        "ground_truth_targets": 1
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "rectangle",
+          "bbox": [
+            15,
+            14,
+            452,
+            474
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999991655349731,
+          "best_region_iou": 0.9955849889624724,
+          "failure_category": "matched"
+        }
+      ]
+    },
+    {
+      "id": "floppy_back",
+      "title": "Mặt sau đĩa mềm, nền có texture",
+      "source_group": "floppy_back",
+      "difficulty": "basic",
+      "notes": "Chỉ gán nhãn đường bao ngoài đĩa; lỗ tròn và nắp kim loại bên trong không là vật thể rời.",
+      "source": {
+        "id": "floppy_back",
+        "title": "Backside of a 3.5\" Floppy Disk.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Backside_of_a_3.5%22_Floppy_Disk.jpg",
+        "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Backside_of_a_3.5%22_Floppy_Disk.jpg/960px-Backside_of_a_3.5%22_Floppy_Disk.jpg",
+        "author": "DiscoA340",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "download_sha256": "87a694228b4d334016772d9ffd6ca5370969e273f39265ab0e5c459cb8f06959",
+        "image_file": "images/floppy_back.png",
+        "image_sha256": "2bad0354e3333b1f51a3cc2a8c90e625c7d2632338af80dcfd250798a76db7ef",
+        "pixel_sha256": "61695d59e1beb92e8f4f09e3028dc23b15621ce2072937ebcbdcebc7269dd59e",
+        "width": 800,
+        "height": 782,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/floppy_back.png",
+      "comparison_image": "real_floppy_back_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            43,
+            17,
+            741,
+            739
+          ],
+          "occluded": false
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9999985694885254,
+          "target": true,
+          "bbox": [
+            0,
+            14,
+            782,
+            761
+          ],
+          "features": {
+            "area": 554624,
+            "perimeter_4": 3882,
+            "circularity_4": 0.4624847965801514,
+            "extent": 0.9319814082291775,
+            "aspect_ratio": 1.0275952693823915,
+            "eccentricity": 0.32734918696113857
+          },
+          "probabilities": {
+            "circle": 1.0361522981838789e-06,
+            "rectangle": 0.9999985694885254,
+            "triangle": 2.643917440536825e-08,
+            "ellipse": 3.2306041930496576e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA/0lEQVR4nL2SsUoDQRCG/9kEixiwsNAmTQoRfIRAHsBasPKx4hP4DlbapbKwsBMFEUJcc7lcogGXJDMWO9fcMdkq+YuD3fnY74c5YOchALi5/Xw5Xk6LaZFPfsfFogpc3zXjQUgIQmE2yX2WzfzbU7wfiIaF44eZhVk+ADgA95a/pUAmAhFIDWgq8M0Eoti3FgfgvGEoGgpcWR02qgkCACQ1h1PgNE7qHVihjqUoXzmxhqTAnwWIAj6leE0BFynFe7lNVHayUuCZNKjsZKNAL9VhaA2DAmepkllK0beGbQUeLaD8Hx7c5WFrvjxYh5+jr8Wa864fu5UPxWibe4/5B9jObug2kbj2AAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 2,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9996140599250793,
+          "target": true,
+          "bbox": [
+            65,
+            285,
+            19,
+            33
+          ],
+          "features": {
+            "area": 484,
+            "perimeter_4": 112,
+            "circularity_4": 0.4848631518933227,
+            "extent": 0.7719298245614035,
+            "aspect_ratio": 0.5757575757575758,
+            "eccentricity": 0.89355873870854
+          },
+          "probabilities": {
+            "circle": 0.000209663892746903,
+            "rectangle": 0.9996140599250793,
+            "triangle": 1.3487517769306123e-09,
+            "ellipse": 0.00017630888032726943
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAkElEQVR4nGNgoB9I+P////9////9+//v3xYzbkwFK5EU/P/XjalAOOYwkoJ/2CyRuINNARNCwYvDhNzJS8AEBob/DP8xdKEoYGRgxK8AG6CuAqzeRFbARsi0mH8IgFUB738EgAuyIKvADCY0BZjBNARNkMNmAgKoxzzFH5LZSOH4H0uyZxDbgtDfhSXj0A4AAGtngfRifBw0AAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 3,
+          "class": "ellipse",
+          "label": "Ellipse (ngoài phạm vi)",
+          "confidence": 0.9999995231628418,
+          "target": false,
+          "bbox": [
+            381,
+            319,
+            64,
+            63
+          ],
+          "features": {
+            "area": 2345,
+            "perimeter_4": 254,
+            "circularity_4": 0.45675706941955885,
+            "extent": 0.5815972222222222,
+            "aspect_ratio": 1.0158730158730158,
+            "eccentricity": 0.7819520604451866
+          },
+          "probabilities": {
+            "circle": 1.243558926944388e-07,
+            "rectangle": 3.678164262055361e-07,
+            "triangle": 7.765371308330319e-23,
+            "ellipse": 0.9999995231628418
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABEUlEQVR4nL3QoUsDcRjG8YcJOmQgiGA1KIahCDLBYDYIFoMiiMKCf4B/werKgiwZBWHVJpo0OhAWTYq4MZDJivw2vOc1bOfvvXt/F/Vtx/dzD9wB/36zDQr79YWsvvssFApfTsJ9y8kIyPA4uP9AjgGHh7YX7kXiBcrXvgE3pF8Qflenk73skkB4kOwR06Cl+5GjAaL68kDGp0Dd9/kWxSzczfz2uSYtcCU/8CQW9Ld9P4sscDu+n0a04Ep9wRstaOQVaIoBr1NxzAF41D8EAPCxN9CPxffUwudm6oWltujrbaQXsdbRCxXTgZWuB+cTAYD1bgwucqEOlG5H4HIy3IH8NUm2F7M6UKiRndXs/mf3A/I8eBkCSqSOAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.8600174188613892,
+          "target": true,
+          "bbox": [
+            427,
+            381,
+            40,
+            41
+          ],
+          "features": {
+            "area": 1097,
+            "perimeter_4": 162,
+            "circularity_4": 0.525274674742875,
+            "extent": 0.6689024390243903,
+            "aspect_ratio": 0.975609756097561,
+            "eccentricity": 0.2810060361884271
+          },
+          "probabilities": {
+            "circle": 0.8600174188613892,
+            "rectangle": 0.016080472618341446,
+            "triangle": 1.8284866504876703e-23,
+            "ellipse": 0.12390215694904327
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABCElEQVR4nL3SoWvDQBQG8O/o3EYDhUHc1OTqKmYn5yomNgiTJaZmUNc/oapmdmrMbbKiVExurjCiMhFRKFQVSkfhfROll8vdK1Prs98vX3KXBxx4ki8hk/a++LRPCslVWtPiem/BLaCkSt7NKBZ8NIL8luIAjrz4/GFdBRxW8nhKeiC/cJ/PGAD5dkAmyhRRCUilgeNSaAVCeQYAHAEw2x5DA9AAoAGB2DZ8qq+QzWAH7jYqoNiKyV/gSgczC6Kxdoq8Wd5EVCgNj+7f6Ifg7cQF5skHL95WNZeVL1heBytz7zYULT8GGq8W/Ewvwxw424FeR4uBWroiKe83egwA7YTz5Hh//l/zC6OEndZcFZjWAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 5,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.7983375191688538,
+          "target": true,
+          "bbox": [
+            66,
+            432,
+            226,
+            101
+          ],
+          "features": {
+            "area": 21278,
+            "perimeter_4": 676,
+            "circularity_4": 0.5851231441746054,
+            "extent": 0.9321825987908525,
+            "aspect_ratio": 2.237623762376238,
+            "eccentricity": 0.8896757187618071
+          },
+          "probabilities": {
+            "circle": 4.163312496530125e-06,
+            "rectangle": 0.7983375191688538,
+            "triangle": 1.3239082363725174e-07,
+            "ellipse": 0.20165826380252838
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAlklEQVR4nO2QPQoCMRCFvxeCWdZyz2ArgmfwuF7Dwmuo1YqIjSxoYpEY12KzCJb7FcNj8ibzAxP/QQDr7SdRNwfXVbObmrNrlym5CQMANlqCAqCQP87KvjspN+RbAbu798H7FHxPAQbYVxJSCuqpZOhKaxpgUXQArEZmoC4UW4C5GFzTAlyeJh7q9AC4ujY+Hsdmm/iBF55IXolbuwx+AAAAAElFTkSuQmCC"
+        }
+      ],
+      "warnings": [
+        "Có hình chạm mép ảnh; hình bị cắt có thể được nhận dạng sai."
+      ],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 1,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "rectangle": {
+            "tp": 1,
+            "fp": 2,
+            "fn": 0,
+            "precision": 0.3333333333333333,
+            "recall": 1.0,
+            "f1": 0.5
+          }
+        },
+        "tp": 1,
+        "fp": 3,
+        "fn": 0,
+        "precision": 0.25,
+        "recall": 1.0,
+        "f1": 0.4,
+        "mean_iou_on_true_positives": 0.9154195581481109,
+        "ground_truth_targets": 1
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "rectangle",
+          "bbox": [
+            43,
+            17,
+            741,
+            739
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999985694885254,
+          "best_region_iou": 0.9154195581481109,
+          "failure_category": "matched"
+        }
+      ]
+    },
+    {
+      "id": "floppy_label",
+      "title": "Đĩa mềm sát mép ảnh",
+      "source_group": "floppy_label",
+      "difficulty": "stress",
+      "notes": "Có vùng sát/cắt bởi mép ảnh và nhãn có chữ; kiểm tra giới hạn chọn nền từ biên.",
+      "source": {
+        "id": "floppy_label",
+        "title": "Floppy disc with wikipedia label.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disc_with_wikipedia_label.jpg",
+        "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Floppy_disc_with_wikipedia_label.jpg/960px-Floppy_disc_with_wikipedia_label.jpg",
+        "author": "AnatGutman",
+        "license": "CC0",
+        "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "download_sha256": "3bd4a3f93753d0ba2d79cb46d66d6b6b2cdaf00898358b3855387ca4bf9be5de",
+        "image_file": "images/floppy_label.png",
+        "image_sha256": "74226ab3df03550b0c0f71cd6df7f3684be3c07e56d385dfa79516ebe6e8c9ef",
+        "pixel_sha256": "a0def4b289504e626cf0e858fa1697121e2d600baf6d8d026896edf7b9371d89",
+        "width": 788,
+        "height": 800,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/floppy_label.png",
+      "comparison_image": "real_floppy_label_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            7,
+            778,
+            781
+          ],
+          "occluded": false
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9999990463256836,
+          "target": true,
+          "bbox": [
+            0,
+            5,
+            788,
+            787
+          ],
+          "features": {
+            "area": 586320,
+            "perimeter_4": 3394,
+            "circularity_4": 0.6396183235251948,
+            "extent": 0.9454395345687214,
+            "aspect_ratio": 1.0012706480304956,
+            "eccentricity": 0.2418141189371587
+          },
+          "probabilities": {
+            "circle": 9.584194771150578e-08,
+            "rectangle": 0.9999990463256836,
+            "triangle": 7.344313530666113e-07,
+            "ellipse": 1.1349970918672625e-07
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA50lEQVR4nLWRPU4DMRCFv0mW7I+TKAVSytSUSByIQ3A5DkCDaCjgHEGiCdqdRxF7i8DIDUwxlqzP8+Y9w7+XAent6pldf/fFOHKSYHrsduvj/UeGHtxd7u5yzc1dL8sM5MsfgN8AC+AJod/0P/N5K7nk0uWEA9AArUAg7GJCnyW6yGIB2ggYakCbd+hmbcPmBpYKUDyaTKWBaZklNpHEKgN9BCxqSxab6whIVIIqwBABXW1Cm4EUASvOQaUoyRmIkiw2t5FE+c3QxTWVoErUoc1NXvJ1P53GSWbOGbdhsqbZ9u/Ry7+tby5vdIQDkxV1AAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 2,
+          "class": "unknown",
+          "label": "Chưa xác định",
+          "confidence": 0.5968850255012512,
+          "target": false,
+          "bbox": [
+            299,
+            345,
+            12,
+            9
+          ],
+          "features": {
+            "area": 90,
+            "perimeter_4": 42,
+            "circularity_4": 0.641141357875468,
+            "extent": 0.8333333333333334,
+            "aspect_ratio": 1.3333333333333333,
+            "eccentricity": 0.608314162255267
+          },
+          "probabilities": {
+            "circle": 0.023830244317650795,
+            "rectangle": 0.5968850255012512,
+            "triangle": 1.7314742304860853e-12,
+            "ellipse": 0.37928470969200134
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAy0lEQVR4nGNgGEZAdvJ/ZPC1nhMmw8TAwMDAIasuhKKeUUxbkhXCZGFgYGAQ83LSQVHAasW3Y/s7BN9w2X8MMFuPhxluBTZgkOotBrcCGzDU47/xHKogR0YNUwEzs1ak7RQGBkYGBob7bHw8WMz48umXIkTBf1zWMDDicSQMUK6AhYGB4QFOR0IV9Mq4GGNRcHPPExgTW1D//7/MkHqOZHh7iEVHE03i+pVDb+EcDlmXpeguWOoiywE34cdjhndoBjC8u/mYkO1DCAAAWuNrP/J+tUgAAAAASUVORK5CYII="
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "label": "Hình tròn",
+          "confidence": 0.7980549931526184,
+          "target": true,
+          "bbox": [
+            387,
+            345,
+            12,
+            10
+          ],
+          "features": {
+            "area": 95,
+            "perimeter_4": 44,
+            "circularity_4": 0.6166349216756826,
+            "extent": 0.7916666666666666,
+            "aspect_ratio": 1.2,
+            "eccentricity": 0.6101210392116239
+          },
+          "probabilities": {
+            "circle": 0.7980549931526184,
+            "rectangle": 0.15768592059612274,
+            "triangle": 3.0745321091618632e-18,
+            "ellipse": 0.04425919055938721
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABAUlEQVR4nGNgGDpAdvJ/ZPC1nhMmw8TAwMDAIacpjKKeUVxXihXCZGFgYGAQ93bSRlHAasW/Y+s7OFfced1/DDDHkJ8FZkKJmAamqwzTDx14BmVjav///////8sM4Y7EDjRiixkYGBgZGBj+Y1fw/dtvSbwKINrxWAEBg0EBCwMDwwtWLk4sUt+//YYq6JF2MMSi4MaBpzCm4TLcQc3CwMDA8HLLJ1MjNP3nTh96iXAIv+EcfNHN8Ofjw4NsDAwMDAraQgzvrj5gYGBgOPjwI9wXDAwMn/deZGBgYPAQEWJ4uWUHAwMDw5vPDMgKfj97xsDAwKD1nYHh+6NLhMJm0AEAhUaUrjW3sv4AAAAASUVORK5CYII="
+        },
+        {
+          "id": 4,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.8861827850341797,
+          "target": true,
+          "bbox": [
+            525,
+            345,
+            12,
+            10
+          ],
+          "features": {
+            "area": 100,
+            "perimeter_4": 44,
+            "circularity_4": 0.6490893912375606,
+            "extent": 0.8333333333333334,
+            "aspect_ratio": 1.2,
+            "eccentricity": 0.5694092451688233
+          },
+          "probabilities": {
+            "circle": 0.0917646661400795,
+            "rectangle": 0.8861827850341797,
+            "triangle": 1.701151192763485e-16,
+            "ellipse": 0.02205258421599865
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAA3UlEQVR4nGNgGCrAcNl/VPC1nhMmx8TAwKCnKoCmg1FcV4oVwmRhYGAoEdJAU8Bqxb9j6zs49z82MMeQnwVmBXZ3pXuL4TXh//9lhnhNQPYFuQoUvGIYGBgYGRgY/mNX8P71dwO8CiDaaepICGDBLfX922/8Cm4ceApl4Q1qFgYGhh4xU00M/edOH3oJY4s7r8Md3SwMDAwvOfZ8YWBgYFDX5mZgYGBg+Hr1JgPDwYcfEb54ueUIAwMDQ4QsRMGnvSsYGN58RvLmj0ePGBgYGGx/Q8R+P72E22+DEgAAZjCVDHR6NfwAAAAASUVORK5CYII="
+        },
+        {
+          "id": 5,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.960420548915863,
+          "target": false,
+          "bbox": [
+            116,
+            433,
+            26,
+            108
+          ],
+          "features": {
+            "area": 959,
+            "perimeter_4": 382,
+            "circularity_4": 0.08258510881808644,
+            "extent": 0.34152421652421655,
+            "aspect_ratio": 0.24074074074074073,
+            "eccentricity": 0.9866885435926157
+          },
+          "probabilities": {
+            "circle": 9.344532259092375e-07,
+            "rectangle": 0.03845192492008209,
+            "triangle": 0.960420548915863,
+            "ellipse": 0.0011265859939157963
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAuElEQVR4nGNgoDN4005Awf/rGEJMKLzXfGz4FdwS4cKvgGH3Z/xuqP8vjN+ENwxW+BXIRRwh4IYH7/G7QeS6CX4TmKSk8CuQwggnNAU3P2sxMMjgUcAlqshguhuPgg8PtBnS/+NR8Pe8MgMDGx4FDOuYGcRf4FNwttvNjgEP4Ozf/v/fUXwqGASC/nXis4JBJYrhAV4TNvz/54fXBAYGhld4Fdxi+HUDr4LDDJc/4HWDwBVLvPK0AADFiSv4UVQqSwAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 6,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 1.0,
+          "target": false,
+          "bbox": [
+            215,
+            435,
+            73,
+            105
+          ],
+          "features": {
+            "area": 2287,
+            "perimeter_4": 690,
+            "circularity_4": 0.0603639773052708,
+            "extent": 0.29836921069797784,
+            "aspect_ratio": 0.6952380952380952,
+            "eccentricity": 0.6209152240835536
+          },
+          "probabilities": {
+            "circle": 6.937768276529666e-17,
+            "rectangle": 3.5834734291029235e-08,
+            "triangle": 1.0,
+            "ellipse": 2.018261079095307e-11
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABXUlEQVR4nL2RvS9DURiHn6tNRCqlWCQkxEQrNh9TI9W/QKRhEluZDHYmBjYRRpuF1EdZJHItt0IHBrEwaIKUoJKGtsl7LLdX3XvZeJf34/ec33tODvxbPD+2uAtVZtYbx34Htmn4LlTbgFukUq7be7c59UiqomtIqFX7rot81Zd+JobfrL1mHgwxf92tH812Qb61pzD5ZjPQUipcPv+qSmFLKPuqQ9Vp6gd+pnUL8FqV5gPAt99Leg0nkFUAeBZ7VXaiZH8CEFVrgGdFSTHiIkNUdoC4iCS/za3Hf3AF5DSNKXcgVRgAMoDmugE2c1BzrpRs/ACM5mBZRKQ07g7oxUi8JCIiL8PBYLDNHH8tNPoAYwliI+yu83RsdzCUUg/NQOBEpetdVrSLFGMABC7lLuAEZkQSZtlxKvchB7AgYn1y4EzmHEBSZWqtxjPU5AAM2XK5WUX030R/B/4sPgFiIHnTPPnIzQAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 7,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.8980556726455688,
+          "target": false,
+          "bbox": [
+            181,
+            440,
+            21,
+            102
+          ],
+          "features": {
+            "area": 773,
+            "perimeter_4": 294,
+            "circularity_4": 0.11238146703803553,
+            "extent": 0.36087768440709617,
+            "aspect_ratio": 0.20588235294117646,
+            "eccentricity": 0.99562243126528
+          },
+          "probabilities": {
+            "circle": 8.126834472932387e-06,
+            "rectangle": 0.10063648968935013,
+            "triangle": 0.8980556726455688,
+            "ellipse": 0.0012996315490454435
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAqElEQVR4nGNgoDMI/5GGLsSEwvvMZo5fwSdGDENRFbz6fxu/gq9v7+F1I4P82w91eBV4/FuK34rbDD/wKxDH9AUq4Pl3Br8JDAwXCSlQxG8F083/EnhN+HcMUw8ql5lBBr+CxwwK+B0h/b8TTQQ1ZBqZkl8Y4Tci/yqBwNzznwdVAD2gHr7/h18BQ8lv/ArezinFr+AKoyxeNzKo/DtMwIqrvPhNoAEAAAAsKP7HW40vAAAAAElFTkSuQmCC"
+        },
+        {
+          "id": 8,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.99992835521698,
+          "target": false,
+          "bbox": [
+            136,
+            441,
+            18,
+            69
+          ],
+          "features": {
+            "area": 440,
+            "perimeter_4": 216,
+            "circularity_4": 0.11851001093788657,
+            "extent": 0.35426731078904994,
+            "aspect_ratio": 0.2608695652173913,
+            "eccentricity": 0.9787883311461271
+          },
+          "probabilities": {
+            "circle": 1.2043584185494893e-10,
+            "rectangle": 5.60824919375591e-05,
+            "triangle": 0.99992835521698,
+            "ellipse": 1.563020487083122e-05
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAAvklEQVR4nGNgoC/gdZmBX0Hf/0QMMSYUE/6HceFV8JLRYwNeK2Rf/XuE3xGb/n83xqsgI/0SEz55Dn6GywpoYizInJNPGJTdZ+IxIfrb//+r8Lrhyv//GxhRhdDc9P+/MQceN7hKMDIc/45HwS50AXTw//////8D8bhhx+2PDAxheEzg5kia/+8KPjsYGDjPE1DAEPo5g4CKD7NRuJi+msmMwsWM3e63BEw4epOACX/PEzAhnpAbvnpjCNEYAAA7iTUNe8iSPAAAAABJRU5ErkJggg=="
+        },
+        {
+          "id": 9,
+          "class": "triangle",
+          "label": "Tam giác (ngoài phạm vi)",
+          "confidence": 0.9576978087425232,
+          "target": false,
+          "bbox": [
+            154,
+            445,
+            22,
+            99
+          ],
+          "features": {
+            "area": 687,
+            "perimeter_4": 290,
+            "circularity_4": 0.1026527540079043,
+            "extent": 0.3154269972451791,
+            "aspect_ratio": 0.2222222222222222,
+            "eccentricity": 0.9913832395639883
+          },
+          "probabilities": {
+            "circle": 1.8696080132940551e-06,
+            "rectangle": 0.0388716496527195,
+            "triangle": 0.9576978087425232,
+            "ellipse": 0.0034286677837371826
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAAArElEQVR4nGNgoDfIfqOPJsKEyn321Q5NAQsqd/0XKfwmMDDoEFKgSkDBRwUCCl6gm4iuQP0HAQU2h/ErMPIkYMUfXiX8Ci5tEUM3AhXwv+zGb8KXWAJu+HuQgALWKwL43SDo/G/PHDzyUvIf/qtz4FFw6en//+L4bPj/H0MBqiN34HchA4PXr///0VMMKnj+718MPisYJjAyMuBVMP8vuploCl51M7zD6wZaAAB6Hyt3TsoN2QAAAABJRU5ErkJggg=="
+        }
+      ],
+      "warnings": [
+        "Có hình chạm mép ảnh; hình bị cắt có thể được nhận dạng sai."
+      ],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 1,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "rectangle": {
+            "tp": 1,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.5,
+            "recall": 1.0,
+            "f1": 0.6666666666666666
+          }
+        },
+        "tp": 1,
+        "fp": 2,
+        "fn": 0,
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1": 0.5,
+        "mean_iou_on_true_positives": 0.9797825063371152,
+        "ground_truth_targets": 1
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "rectangle",
+          "bbox": [
+            0,
+            7,
+            778,
+            781
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": true,
+          "roi_top1_score": 0.9999990463256836,
+          "best_region_iou": 0.9797825063371152,
+          "failure_category": "matched"
+        }
+      ]
+    },
+    {
+      "id": "dimes_overlap",
+      "title": "9 đồng xu chồng nhau",
+      "source_group": "dimes_overlap",
+      "difficulty": "stress",
+      "notes": "Các bbox là ước lượng đường bao tròn đầy đủ của các đồng xu bị che khuất; chỉ dùng stress test, không tính vào chỉ số cơ bản.",
+      "source": {
+        "id": "dimes_overlap",
+        "title": "Gfp-dimes.jpg",
+        "source_page": "https://commons.wikimedia.org/wiki/File:Gfp-dimes.jpg",
+        "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Gfp-dimes.jpg/960px-Gfp-dimes.jpg",
+        "author": "Yinan Chen",
+        "license": "Public Domain",
+        "license_url": "https://web.archive.org/web/20230926203737/https://creativecommons.org/licenses/publicdomain/",
+        "download_sha256": "0209a5efd8d3bda5154c0c8d4cfb329bbcf9cdb4db04e64389a72eb9baaf7e23",
+        "image_file": "images/dimes_overlap.png",
+        "image_sha256": "fabc6a3854236a62ab6d900312afed150096384bd14a4b5d42a3c4a513236166",
+        "pixel_sha256": "9a19e1a4758e3ec6a39def3cb43cdcf1d570d643eb874818f9e310bc8eb4199a",
+        "width": 800,
+        "height": 761,
+        "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+      },
+      "image_url": "/real/images/dimes_overlap.png",
+      "comparison_image": "real_dimes_overlap_comparison.png",
+      "ground_truth": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            39,
+            179,
+            271,
+            273
+          ],
+          "occluded": true
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            177,
+            54,
+            279,
+            283
+          ],
+          "occluded": true
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            416,
+            52,
+            273,
+            267
+          ],
+          "occluded": true
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            499,
+            241,
+            252,
+            242
+          ],
+          "occluded": true
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            343,
+            270,
+            259,
+            254
+          ],
+          "occluded": true
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            154,
+            318,
+            264,
+            257
+          ],
+          "occluded": true
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            50,
+            464,
+            259,
+            247
+          ],
+          "occluded": true
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            260,
+            449,
+            250,
+            255
+          ],
+          "occluded": true
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            475,
+            435,
+            250,
+            252
+          ],
+          "occluded": true
+        }
+      ],
+      "predictions": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "label": "Hình chữ nhật",
+          "confidence": 0.9063549637794495,
+          "target": true,
+          "bbox": [
+            29,
+            47,
+            723,
+            664
+          ],
+          "features": {
+            "area": 391196,
+            "perimeter_4": 3260,
+            "circularity_4": 0.4625610597740648,
+            "extent": 0.814869436251229,
+            "aspect_ratio": 1.088855421686747,
+            "eccentricity": 0.45681889624239
+          },
+          "probabilities": {
+            "circle": 0.09361645579338074,
+            "rectangle": 0.9063549637794495,
+            "triangle": 6.867779135238125e-16,
+            "ellipse": 2.8524997105705552e-05
+          },
+          "crop": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAAAAABWESUoAAABJElEQVR4nM1Su0pDQRSc1UQSxF6019iIpaWlFjai/oMY0lgIaicItqm0CwhaKCo2/oAogiIWIRAMWKgIKSTigxTOWHh34713t88Uh2Vnds5rga7CxOFLYzMPTJ8123cLaX7+m6Kqs6cUKVb6EvzoF6k/TqTI3Tg/eMGEgIUOa0pPYkqwDADIAEC5KBjBxE0H3GmKokQq7jDnBPuMEBfUxq3g2e+gN1tmy+8gHkeCWwXwCaAHQNleQHBBgnK2iK1AioYVZB/8KdYivvfE73Bl91UMdOEmdR1ownaJZsCh5ZbltmRgXACyiOZQS7tDEi7tuxV/CZyxglzCon4jST8bna8xdE+SfN/+IMnHscxi5Xxn8v/nya9W2697IxhePzpY6ke34RdcJsVuvKMvRQAAAABJRU5ErkJggg=="
+        }
+      ],
+      "warnings": [],
+      "detection": {
+        "scenes": 1,
+        "ground_truth_all_classes": 9,
+        "iou_threshold": 0.5,
+        "confidence_threshold": 0.75,
+        "per_class": {
+          "circle": {
+            "tp": 0,
+            "fp": 0,
+            "fn": 9,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          },
+          "rectangle": {
+            "tp": 0,
+            "fp": 1,
+            "fn": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+          }
+        },
+        "tp": 0,
+        "fp": 1,
+        "fn": 9,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "mean_iou_on_true_positives": 0.0,
+        "ground_truth_targets": 9
+      },
+      "roi_diagnostics": [
+        {
+          "annotation_id": 1,
+          "true_class": "circle",
+          "bbox": [
+            39,
+            179,
+            271,
+            273
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9886511564254761,
+          "best_region_iou": 0.15410813377993302,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 2,
+          "true_class": "circle",
+          "bbox": [
+            177,
+            54,
+            279,
+            283
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9957327246665955,
+          "best_region_iou": 0.1644690796380543,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 3,
+          "true_class": "circle",
+          "bbox": [
+            416,
+            52,
+            273,
+            267
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.8803367018699646,
+          "best_region_iou": 0.15183347497875319,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 4,
+          "true_class": "circle",
+          "bbox": [
+            499,
+            241,
+            252,
+            242
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9915086030960083,
+          "best_region_iou": 0.12703094535819628,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 5,
+          "true_class": "circle",
+          "bbox": [
+            343,
+            270,
+            259,
+            254
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9200384616851807,
+          "best_region_iou": 0.13703361162492292,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 6,
+          "true_class": "circle",
+          "bbox": [
+            154,
+            318,
+            264,
+            257
+          ],
+          "roi_top1_class": "triangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.999510645866394,
+          "best_region_iou": 0.141328800679898,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 7,
+          "true_class": "circle",
+          "bbox": [
+            50,
+            464,
+            259,
+            247
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9980645775794983,
+          "best_region_iou": 0.13325709476911796,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 8,
+          "true_class": "circle",
+          "bbox": [
+            260,
+            449,
+            250,
+            255
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.860975980758667,
+          "best_region_iou": 0.13279258111283307,
+          "failure_category": "no_matching_region_after_segmentation"
+        },
+        {
+          "annotation_id": 9,
+          "true_class": "circle",
+          "bbox": [
+            475,
+            435,
+            250,
+            252
+          ],
+          "roi_top1_class": "rectangle",
+          "roi_top1_correct": false,
+          "roi_top1_score": 0.9994062185287476,
+          "best_region_iou": 0.1312303154526821,
+          "failure_category": "no_matching_region_after_segmentation"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only six independent source photographs, selected for an educational pilot.",
+    "No confidence intervals or claims of population-level real-world accuracy.",
+    "Internal parts/text are not separately annotated; occlusion boxes are estimates in stress images.",
+    "All basic and stress cases are retained, including false positives and missed objects."
+  ]
+}

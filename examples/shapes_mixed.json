@@ -1,0 +1,56 @@
+[
+  {
+    "class": "rectangle",
+    "bbox": [
+      65,
+      36,
+      103,
+      88
+    ]
+  },
+  {
+    "class": "triangle",
+    "bbox": [
+      263,
+      55,
+      51,
+      76
+    ]
+  },
+  {
+    "class": "ellipse",
+    "bbox": [
+      480,
+      59,
+      27,
+      57
+    ]
+  },
+  {
+    "class": "circle",
+    "bbox": [
+      56,
+      236,
+      88,
+      88
+    ]
+  },
+  {
+    "class": "rectangle",
+    "bbox": [
+      239,
+      208,
+      107,
+      105
+    ]
+  },
+  {
+    "class": "rectangle",
+    "bbox": [
+      471,
+      241,
+      67,
+      75
+    ]
+  }
+]

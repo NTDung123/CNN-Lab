@@ -1,0 +1,744 @@
+{
+ "note": "Đo bằng scripts/benchmark_phase5.py trên cùng ca thử. 'phase4' = mã gốc (reference_v4 + cấu hình giai đoạn 4), 'phase5' = mã hiện tại. Chỉ dùng ca thử dựng sẵn, ảnh validation MNIST và ảnh thực development/validation; không dùng ảnh test.",
+ "phase4": {
+  "digits_canvas": {
+   "chuan": 0.995,
+   "net_manh": 0.945,
+   "but_bi_3px": 0.685,
+   "but_bi_5px": 0.795,
+   "net_dam": 0.975,
+   "gauss25": 0.995,
+   "muoi_tieu_5": 0.995,
+   "sang_lech_40": 0.9,
+   "sang_lech_60": 0.24,
+   "sang_lech_60_nhieu": 0.25,
+   "muc_xanh_giay_vang": 0.995,
+   "phan_bang_den": 0.995,
+   "phan_bang_den_lech": 0.995,
+   "but_chi_mo": 0.975,
+   "giay_ke_dong": 0.85
+  },
+  "digits_seconds": 38.4,
+  "mnist_pipeline_first3000": 0.983,
+  "mnist_pipeline_seconds": 1.8,
+  "shape_probes": {
+   "dac_chuan": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vuong_xoay45": {
+    "ok": true,
+    "targets": [
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vien_3px": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vien_1px": {
+    "ok": false,
+    "targets": [],
+    "others": []
+   },
+   "ho_3px_net6": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_6px_net6": {
+    "ok": false,
+    "targets": [],
+    "others": []
+   },
+   "ho_10px_net6": {
+    "ok": false,
+    "targets": [],
+    "others": []
+   },
+   "ho_16px_net6": {
+    "ok": false,
+    "targets": [],
+    "others": []
+   },
+   "ho_10px_net3": {
+    "ok": false,
+    "targets": [],
+    "others": []
+   },
+   "nho_r8": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "nho_r5_khong_nham": {
+    "ok": false,
+    "targets": [
+     "rectangle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "sang_lech_60": {
+    "ok": false,
+    "targets": [
+     "circle"
+    ],
+    "others": [
+     "ellipse"
+    ]
+   },
+   "nhieu_30": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "tam_giac_ellipse": {
+    "ok": true,
+    "targets": [],
+    "others": [
+     "ellipse",
+     "triangle"
+    ]
+   },
+   "luc_giac": {
+    "ok": false,
+    "targets": [
+     "circle"
+    ],
+    "others": []
+   },
+   "tron_ve_tay_meo3": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "tron_ve_tay_meo5": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "tron_ve_tay_vien": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "bat_giac": {
+    "ok": false,
+    "targets": [
+     "circle"
+    ],
+    "others": []
+   },
+   "cham_nhau": {
+    "ok": false,
+    "targets": [],
+    "others": [
+     "ellipse"
+    ]
+   }
+  },
+  "shape_probes_passed": "10/20",
+  "real": {
+   "development": {
+    "tp": 34,
+    "fp": 5,
+    "fn": 14,
+    "precision": 0.8718,
+    "recall": 0.7083,
+    "f1": 0.7816
+   },
+   "validation": {
+    "tp": 9,
+    "fp": 1,
+    "fn": 1,
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1": 0.9
+   }
+  },
+  "real_per_case": {
+   "brooklyn_coins": {
+    "tp": 23,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 25
+   },
+   "us_aluminum": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_front": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_back": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 2
+   },
+   "floppy_label": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "dimes_overlap": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 9,
+    "shown_boxes": 1
+   },
+   "fd_round": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_pair": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 2
+   },
+   "cassette_audioforum": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "cassette_overlap": {
+    "tp": 0,
+    "fp": 3,
+    "fn": 2,
+    "shown_boxes": 28
+   },
+   "verbatim_disc": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "cd_gray": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "carlsberg_cap": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 6
+   },
+   "cassette_case": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 13
+   },
+   "dat_pair": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 9
+   },
+   "floppy_blue": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_sentinel": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "sd_adapter": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 19
+   },
+   "gold_cap": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 31
+   },
+   "continental_coin": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_front_new": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "headphones_negative": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "shown_boxes": 14
+   },
+   "cd_scan": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_sony": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_verbatim": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "dollar_coin": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "vhs_front": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "grass_validation": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 31
+   },
+   "wood_validation": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "shown_boxes": 1
+   }
+  },
+  "real_seconds": 63.5
+ },
+ "phase5": {
+  "digits_canvas": {
+   "chuan": 0.995,
+   "net_manh": 0.995,
+   "but_bi_3px": 0.835,
+   "but_bi_5px": 0.87,
+   "net_dam": 0.975,
+   "gauss25": 0.995,
+   "muoi_tieu_5": 0.995,
+   "sang_lech_40": 0.995,
+   "sang_lech_60": 0.995,
+   "sang_lech_60_nhieu": 0.995,
+   "muc_xanh_giay_vang": 0.995,
+   "phan_bang_den": 0.995,
+   "phan_bang_den_lech": 0.995,
+   "but_chi_mo": 0.98,
+   "giay_ke_dong": 0.995
+  },
+  "digits_seconds": 89.1,
+  "mnist_pipeline_first3000": 0.983,
+  "mnist_pipeline_seconds": 2.4,
+  "shape_probes": {
+   "dac_chuan": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vuong_xoay45": {
+    "ok": true,
+    "targets": [
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vien_3px": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "vien_1px": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_3px_net6": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_6px_net6": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_10px_net6": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_16px_net6": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "ho_10px_net3": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "nho_r8": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "nho_r5_khong_nham": {
+    "ok": true,
+    "targets": [
+     "rectangle"
+    ],
+    "others": [
+     "unknown"
+    ]
+   },
+   "sang_lech_60": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": [
+     "unknown"
+    ]
+   },
+   "nhieu_30": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "rectangle"
+    ],
+    "others": []
+   },
+   "tam_giac_ellipse": {
+    "ok": true,
+    "targets": [],
+    "others": [
+     "ellipse",
+     "triangle"
+    ]
+   },
+   "luc_giac": {
+    "ok": true,
+    "targets": [],
+    "others": [
+     "polygon"
+    ]
+   },
+   "tron_ve_tay_meo3": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "tron_ve_tay_meo5": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "tron_ve_tay_vien": {
+    "ok": true,
+    "targets": [
+     "circle",
+     "circle"
+    ],
+    "others": []
+   },
+   "bat_giac": {
+    "ok": false,
+    "targets": [
+     "circle"
+    ],
+    "others": []
+   },
+   "cham_nhau": {
+    "ok": false,
+    "targets": [],
+    "others": [
+     "ellipse"
+    ]
+   }
+  },
+  "shape_probes_passed": "18/20",
+  "real": {
+   "development": {
+    "tp": 34,
+    "fp": 3,
+    "fn": 14,
+    "precision": 0.9189,
+    "recall": 0.7083,
+    "f1": 0.8
+   },
+   "validation": {
+    "tp": 9,
+    "fp": 1,
+    "fn": 1,
+    "precision": 0.9,
+    "recall": 0.9,
+    "f1": 0.9
+   }
+  },
+  "real_per_case": {
+   "brooklyn_coins": {
+    "tp": 23,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 25
+   },
+   "us_aluminum": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_front": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_back": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_label": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "dimes_overlap": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 9,
+    "shown_boxes": 1
+   },
+   "fd_round": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_pair": {
+    "tp": 2,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 2
+   },
+   "cassette_audioforum": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "cassette_overlap": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 2,
+    "shown_boxes": 26
+   },
+   "verbatim_disc": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "cd_gray": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "carlsberg_cap": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 7
+   },
+   "cassette_case": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 13
+   },
+   "dat_pair": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 9
+   },
+   "floppy_blue": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_sentinel": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "sd_adapter": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 1,
+    "shown_boxes": 19
+   },
+   "gold_cap": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 35
+   },
+   "continental_coin": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_front_new": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "headphones_negative": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "shown_boxes": 14
+   },
+   "cd_scan": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_sony": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "floppy_verbatim": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "dollar_coin": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "vhs_front": {
+    "tp": 1,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 1
+   },
+   "grass_validation": {
+    "tp": 0,
+    "fp": 0,
+    "fn": 0,
+    "shown_boxes": 37
+   },
+   "wood_validation": {
+    "tp": 0,
+    "fp": 1,
+    "fn": 0,
+    "shown_boxes": 2
+   }
+  },
+  "real_seconds": 48.3
+ }
+}

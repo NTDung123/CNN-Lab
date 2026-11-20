@@ -1,0 +1,24 @@
+{
+  "manifest_sha256": "395756ec395df0d0216116ec19dad994c73e8132f2b653dc6e133c36cdb6942e",
+  "shapes_checkpoint_sha256": "425bf873b35e0a943d3d738170d6d0c295153cdac6edcf81605f6f24b8c9c46f",
+  "geometry_dataset_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "processing_sha256": "5003b85b1af2e535349732e3fb3f3e9ef3f3e18a1d0eeeb11de2e5f85a064c2d",
+  "service_sha256": "962c99f10ee7ba015cb9b40db00d4f6d88c53b79a18030a10cc96964313fa378",
+  "segmentation_sha256": "00e033b78eea8d182c5638380d048a70f9c0bccef28eb2bc3a540f98c2a5d5ea",
+  "geometry_profile_sha256": "39ad0365e2af43b4ed7b8445e4396883f09bd9a49d01eb580c13957ce4834e2b",
+  "metrics_sha256": "89a0fc01d6e2c81641b5cbe31754945d7f2cdd00504539ed7ece738b15eb33c6",
+  "real_evaluation_sha256": "7b9a155d362dc60a16e502a391a6a0e846b7686f7a0fe4d18f0b580cc2a3ce02",
+  "selection_experiment_sha256": "4513ef22c593a6a3b375c46e070c6699e53b8d3fb415df8dd02a80c5c5eec381",
+  "protocol_version": 4,
+  "frozen_at_utc": "2026-11-15T15:34:20.002998+00:00",
+  "selected_mode": "repaired_regions",
+  "training_roles": [
+    "development"
+  ],
+  "selection_roles": [
+    "validation"
+  ],
+  "test_previously_used_for_selection": false,
+  "selection_rule": "Maximize validation target macro-F1 across two target classes, including negative-frame FP. CNN epochs selected on validation with synthetic validation guard; no new test used.",
+  "notes": "Roles/manual labels frozen first. Previously observed phase-3 test sources are development. Do not modify pipeline after reading new test results."
+}

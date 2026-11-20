@@ -1,0 +1,13 @@
+{
+  "version": 3,
+  "mode": "illumination_regions",
+  "min_confidence": 0.75,
+  "background_window": 101,
+  "minimum_contrast": 10,
+  "illumination_border_std": 12,
+  "rectangle_extent": 0.78,
+  "minimum_extent": 0.22,
+  "min_area_fraction": 0.0001,
+  "nms_iou": 0.75,
+  "candidate_limit": 160
+}

@@ -1,0 +1,14 @@
+digits: 55000 train, 5000 validation, 12 epochs, CPU threads=4
+{"epoch": 1, "train_loss": 0.6521312381484292, "train_accuracy": 0.7922181818181818, "validation_loss": 0.13558230533599855, "validation_accuracy": 0.9608, "seconds": 5.354346513748169}
+{"epoch": 2, "train_loss": 0.19315137943679636, "train_accuracy": 0.9407272727272727, "validation_loss": 0.09514506072998047, "validation_accuracy": 0.9692, "seconds": 4.777684211730957}
+{"epoch": 3, "train_loss": 0.14521150188879534, "train_accuracy": 0.9553090909090909, "validation_loss": 0.07433630084991455, "validation_accuracy": 0.9782, "seconds": 4.604773044586182}
+{"epoch": 4, "train_loss": 0.11810746149420738, "train_accuracy": 0.9640363636363637, "validation_loss": 0.06561718530654907, "validation_accuracy": 0.9774, "seconds": 4.746591329574585}
+{"epoch": 5, "train_loss": 0.09948018236160279, "train_accuracy": 0.9703090909090909, "validation_loss": 0.05004557056427002, "validation_accuracy": 0.9866, "seconds": 4.543452501296997}
+{"epoch": 6, "train_loss": 0.08536665589375929, "train_accuracy": 0.9735454545454545, "validation_loss": 0.049117502117156986, "validation_accuracy": 0.9848, "seconds": 4.420950889587402}
+{"epoch": 7, "train_loss": 0.08106982740868221, "train_accuracy": 0.9748363636363636, "validation_loss": 0.04628276143074036, "validation_accuracy": 0.9868, "seconds": 4.2110865116119385}
+{"epoch": 8, "train_loss": 0.07632116842053153, "train_accuracy": 0.9764181818181819, "validation_loss": 0.045932758903503415, "validation_accuracy": 0.9856, "seconds": 4.527838706970215}
+{"epoch": 9, "train_loss": 0.07272926523346793, "train_accuracy": 0.9777636363636364, "validation_loss": 0.04586407160758972, "validation_accuracy": 0.9876, "seconds": 4.433250427246094}
+{"epoch": 10, "train_loss": 0.07051041417013515, "train_accuracy": 0.9788363636363636, "validation_loss": 0.04149565653800964, "validation_accuracy": 0.9878, "seconds": 4.716621398925781}
+{"epoch": 11, "train_loss": 0.06318729140433398, "train_accuracy": 0.9807272727272728, "validation_loss": 0.04009800391197205, "validation_accuracy": 0.9884, "seconds": 4.551494121551514}
+{"epoch": 12, "train_loss": 0.06096855698227882, "train_accuracy": 0.9816, "validation_loss": 0.03912056798934937, "validation_accuracy": 0.9892, "seconds": 4.6503965854644775}
+Saved best validation checkpoint: digits_cnn.pt; validation accuracy=98.9200%

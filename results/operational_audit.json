@@ -1,0 +1,77 @@
+{
+  "audit": "operational review after phase 4",
+  "unit_tests": {
+    "run": 52,
+    "passed": 52,
+    "failed": 0
+  },
+  "frozen_assets_unchanged": {
+    "digits_checkpoint": true,
+    "shapes_checkpoint": true,
+    "processing": true,
+    "segmentation": true,
+    "service": true,
+    "models": true,
+    "metrics": true,
+    "real_evaluation": true,
+    "real_manifest": true,
+    "geometry_profile": true,
+    "real_data": true,
+    "training_inputs": true,
+    "training_manifest": true
+  },
+  "original_frozen_protocol_verified": true,
+  "default_real_command": {
+    "exit_code": 0,
+    "main_reports_and_comparison_images_unchanged": true,
+    "case_count": 29,
+    "test_cases_in_development_report": 0,
+    "report_scope": "development_validation"
+  },
+  "browser": {
+    "desktop": true,
+    "mobile_390": true,
+    "mobile_320": true,
+    "canvas_unclipped_320_768_1440": true,
+    "digit_sample_7": "7",
+    "mobile_sample_2": "2",
+    "hand_drawn_stroke": "1",
+    "mixed_scene_counts": [
+      "1",
+      "3"
+    ],
+    "hand_drawn_shapes": [
+      "1",
+      "1"
+    ],
+    "upload": true,
+    "metrics": true,
+    "deduplication_metrics": true,
+    "real_gallery_cases": 40,
+    "real_compare_dialog": true,
+    "real_photo_native_dimensions": [
+      800,
+      782
+    ],
+    "real_photo_counts": [
+      "0",
+      "1"
+    ],
+    "real_mobile_320": true,
+    "pipeline_branch_selector": true,
+    "browser_errors": []
+  },
+  "fixes": [
+    "Reject JSON report roots/identities with invalid structure",
+    "Development/exploratory reports and comparisons have separate output files",
+    "Exploratory/partial evaluation images and CSV outputs have separate directories",
+    "Atomic JSON writes preserve the previous file on failure",
+    "Training validation uses fixed .75 threshold rather than deployed adaptive threshold",
+    "Geometry training no longer requires deployed digit/shape weights or preexisting weights/results directories",
+    "Reject unsupported geometry smoke flags and nonfinite learning rates",
+    "Record actual adaptive confidence policy without changing TP/FP/FN"
+  ],
+  "model_retrained": false,
+  "recognition_scores_changed": false,
+  "windows_bat_executed": false
+}

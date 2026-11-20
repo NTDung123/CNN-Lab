@@ -1,0 +1,15 @@
+{
+  "created_at_utc": "2026-11-15T03:19:27.380544+00:00",
+  "manifest_sha256": "3d77b70e7e9aba7cd14159a9a1ecc4308ef3b8daae0e89abad00006e2338c6d4",
+  "rule": "All roles/labels fixed before any phase-3 photo prediction. Excluded Compactdisc candidate 8 because individual clipped discs were ambiguous before inference. Candidates 12/13 excluded before inference because their exposed electronics/camera background are outside simple silhouette scope.",
+  "test_ids": [
+    "fd_round",
+    "cassette_audioforum",
+    "cassette_overlap",
+    "cd_gray",
+    "carlsberg_cap",
+    "cassette_case",
+    "sd_adapter",
+    "gold_cap"
+  ]
+}

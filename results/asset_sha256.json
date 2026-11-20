@@ -1,0 +1,23 @@
+{
+  "weights/digits_cnn.pt": "25a7f202f315b94aba07a461dd413069abe45decd0342aed708cf41d7f489146",
+  "weights/shapes_cnn.pt": "40c282fd706390cf2f83e945a34edc1e276f8b5985d1d370f11b2f77ef85877a",
+  "data/geometry_splits.json": "4e15295b2fa38ec1264690b2413fc69a1dc7abf87d127b2ef95166433f06aef8",
+  "data/geometry_splits.npz": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "data/mnist.npz": "731c5ac602752760c8e48fbffcf8c3b850d9dc2a2aedcf2cc48468fc17b673d1",
+  "data/real/annotations/brooklyn_coins.png": "3b78e6495ecfc81630488af424780064c9e6bf1cc60983eacfa424e3a8e60c04",
+  "data/real/annotations/dimes_overlap.png": "b3e9e1724aad1c3d5e3f7a40250f23a20266383ec247ebcbc4220fc29ec5004d",
+  "data/real/annotations/floppy_back.png": "2bc824cfc3839eec7ca7110e5f531c7013354a847bb35b66b88b7c3e25e5c01c",
+  "data/real/annotations/floppy_front.png": "0005627ca6be929720fa721d1b809104baab7c59c75ef39f33b34e85113b1dca",
+  "data/real/annotations/floppy_label.png": "572da1fc9d4911919d8fd82382cd6520d8b592b02c77387bce6b1d612eeb8e1a",
+  "data/real/annotations/us_aluminum.png": "a4274297ef78c2b752e4ced71c814d5ab358ebb253517eaa862d238d705ff3b0",
+  "data/real/images/brooklyn_coins.png": "4e45fcf4916f2702a2dd86b560a98ecdc8f5e9f9c821d8caa6053deb037a4d3e",
+  "data/real/images/dimes_overlap.png": "fabc6a3854236a62ab6d900312afed150096384bd14a4b5d42a3c4a513236166",
+  "data/real/images/floppy_back.png": "2bad0354e3333b1f51a3cc2a8c90e625c7d2632338af80dcfd250798a76db7ef",
+  "data/real/images/floppy_front.png": "3d986438432e80dbc46faf5e0ea8fbb1bbb101daf18c06706a28a574b3a09acb",
+  "data/real/images/floppy_label.png": "74226ab3df03550b0c0f71cd6df7f3684be3c07e56d385dfa79516ebe6e8c9ef",
+  "data/real/images/us_aluminum.png": "a60984dfe3be8533f47a0525853a791c00d47fc12014eb6e65aa3036e71019ed",
+  "data/real/manifest.json": "85465754b6ed8928332652f1f80ad09038c1ca3a7cadd8cab13932f00954fd54",
+  "data/real/protocol_lock.json": "7ef021b352264120afcd195f70fed03d67c9836c1757d5945d1193847f46845b",
+  "data/real/sources.json": "dc5d45bd5d0753aaec7f0fc55128316ec94bd1524d7bae6a97b8b1da47ffaeef",
+  "data/source.json": "15843958e4da84a912f7c73fb52bc43c480ad8e0bfe86ef0d18b88659e917c45"
+}

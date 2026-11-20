@@ -1,0 +1,102 @@
+{
+  "passed": true,
+  "case_count": 6,
+  "original_photo_groups": 6,
+  "duplicate_decoded_images": 0,
+  "source_groups_crossing_splits": 0,
+  "case_counts_by_difficulty": {
+    "basic": 4,
+    "stress": 2
+  },
+  "target_counts": {
+    "circle": 34,
+    "rectangle": 3
+  },
+  "image_characteristics": [
+    {
+      "id": "brooklyn_coins",
+      "size": [
+        384,
+        303
+      ],
+      "targets": 24,
+      "gray_mean": 96.85551602035204,
+      "gray_std": 52.87981861986824,
+      "gray_p05": 30.0,
+      "gray_p95": 191.0,
+      "border_std": 35.28655030061436
+    },
+    {
+      "id": "us_aluminum",
+      "size": [
+        285,
+        281
+      ],
+      "targets": 1,
+      "gray_mean": 180.81036398826248,
+      "gray_std": 62.32339824361273,
+      "gray_p05": 59.0,
+      "gray_p95": 255.0,
+      "border_std": 7.647331136626461
+    },
+    {
+      "id": "floppy_front",
+      "size": [
+        483,
+        503
+      ],
+      "targets": 1,
+      "gray_mean": 108.52515960139782,
+      "gray_std": 67.11268189164751,
+      "gray_p05": 38.0,
+      "gray_p95": 255.0,
+      "border_std": 0.0
+    },
+    {
+      "id": "floppy_back",
+      "size": [
+        800,
+        782
+      ],
+      "targets": 1,
+      "gray_mean": 92.15452685421995,
+      "gray_std": 56.06827276602509,
+      "gray_p05": 39.0,
+      "gray_p95": 206.0,
+      "border_std": 12.920496929418464
+    },
+    {
+      "id": "floppy_label",
+      "size": [
+        788,
+        800
+      ],
+      "targets": 1,
+      "gray_mean": 128.391192893401,
+      "gray_std": 83.8886017164578,
+      "gray_p05": 22.0,
+      "gray_p95": 241.0,
+      "border_std": 23.601496669946865
+    },
+    {
+      "id": "dimes_overlap",
+      "size": [
+        800,
+        761
+      ],
+      "targets": 9,
+      "gray_mean": 166.87057490144548,
+      "gray_std": 52.07353999684987,
+      "gray_p05": 105.0,
+      "gray_p95": 240.0,
+      "border_std": 4.218411965371194
+    }
+  ],
+  "annotation_policy": {
+    "unit": "Whole physical outer silhouettes; square/near-rectangular floppy disks count as rectangles; coin outer silhouettes count as circles.",
+    "exclude": "Internal slots, printed text, holes, labels, shadows and small texture regions are not separate target objects.",
+    "coordinates": "xywh, half-open, in distributed image pixels. Images have maximum side 800.",
+    "annotation_quality": "Manually checked pilot labels; no second annotator or pixel-accurate masks. Stress occlusion bboxes are estimates."
+  },
+  "statistical_scope": "Small convenience sample, not a representative real-world benchmark."
+}

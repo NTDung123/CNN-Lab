@@ -1,0 +1,8 @@
+{
+  "first_access_utc": "2026-11-15T15:34:22.351818+00:00",
+  "manifest_sha256": "395756ec395df0d0216116ec19dad994c73e8132f2b653dc6e133c36cdb6942e",
+  "protocol_lock_sha256": "758cd06a0e5ec42ae20c1f2bdc725f818758845022312ff7bab06e8fafe807e7",
+  "geometry_profile_sha256": "39ad0365e2af43b4ed7b8445e4396883f09bd9a49d01eb580c13957ce4834e2b",
+  "first_mode": "repaired_regions",
+  "note": "Pipeline already frozen. After this point these test photos are seen; no tuning on their results."
+}

@@ -1,0 +1,2219 @@
+{
+  "schema_version": 4,
+  "dataset_name": "Real projected geometry pilot v4",
+  "created_at_utc": "2026-11-15T15:09:55.767847+00:00",
+  "annotation_policy": {
+    "unit": "Projected 2D outer silhouette, not physical object category. Approximately circular discs/coins are circle; quadrilateral cassette/floppy shells with mild chamfers are rectangle (including squares).",
+    "exclude": "Text, holes, spokes/slots, printed images and shadows inside an outer object are not separate targets. Elliptical projections are explicit distractors, not circle targets.",
+    "coordinates": "Integer xywh half-open in distributed image pixels; max side 800. Newly added photos max side 600.",
+    "annotation_quality": "Manual single-annotator boxes checked on coordinate grids before phase-4 inference. No pixel masks or second annotator. Occluded bboxes remain estimates in stress cases; clipped boxes use visible extent.",
+    "scope": "Basic complete approximately front-facing silhouettes evaluated separately from clipping/occlusion and negative frames. Overlapping circles remain unsupported stress targets; no promise of amodal reconstruction."
+  },
+  "protocol": {
+    "experiment_id": "phase4_projected_geometry",
+    "real_images_used_for_training": true,
+    "real_training_roles": [
+      "development"
+    ],
+    "model_and_pipeline_selection_roles": [
+      "validation"
+    ],
+    "split_unit": "Original source/capture family; same author series grouped conservatively. All derivatives inherit source group.",
+    "test_policy": "All eight phase-3 test photos are now development. New phase-4 test photos/roles/labels fixed before any prediction. Freeze model and processing before accessing new test.",
+    "preprocessing_tuned_on_real_test": false,
+    "statistical_scope": "Convenience sample of photographs and a few clearly marked scans, not a representative population benchmark."
+  },
+  "sources": [
+    {
+      "id": "brooklyn_coins",
+      "title": "Greek coins from Pompeii (scikit-image sample)",
+      "source_page": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+      "download_url": "https://raw.githubusercontent.com/scikit-image/scikit-image/v0.24.0/skimage/data/coins.png",
+      "author": "Brooklyn Museum Collection; distributed as scikit-image sample data",
+      "license": "No known copyright restrictions (as stated in scikit-image documentation)",
+      "license_url": "https://scikit-image.org/docs/stable/api/skimage.data.html#skimage.data.coins",
+      "download_sha256": "f8d773fc9cfa6f4d8e5942dc34d0a0788fcaed2a4fefbbed0aef5398d7ef4cba",
+      "image_file": "images/brooklyn_coins.png",
+      "image_sha256": "4e45fcf4916f2702a2dd86b560a98ecdc8f5e9f9c821d8caa6053deb037a4d3e",
+      "pixel_sha256": "aaecc2ad43bd43e204f7ad01dc60494586ff80d42236c2db358c59b9be1f5427",
+      "width": 384,
+      "height": 303,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "us_aluminum",
+      "title": "1974Aluminumback.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/f/f5/1974Aluminumback.jpg",
+      "author": "Smithsonian Institution (U.S. federally funded employee); individual photographer not listed",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:1974Aluminumback.jpg",
+      "download_sha256": "15fa758163e5184330b87cfae467cd7d278c7b951cfd89ac99ad21b5e6b37103",
+      "image_file": "images/us_aluminum.png",
+      "image_sha256": "a60984dfe3be8533f47a0525853a791c00d47fc12014eb6e65aa3036e71019ed",
+      "pixel_sha256": "69b1c4fe95998bd6d292c08e4a65a08b6ff3d7b722776af47f6f8825767ba4ae",
+      "width": 285,
+      "height": 281,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_front",
+      "title": "3.5\" floppy disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/3.5%22_floppy_disk.jpg",
+      "author": "Load",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:3.5%22_floppy_disk.jpg",
+      "download_sha256": "3e4a0e19a16b27f1337360b364e0d1ab03149f064a46dfb1e668aeb207337d44",
+      "image_file": "images/floppy_front.png",
+      "image_sha256": "3d986438432e80dbc46faf5e0ea8fbb1bbb101daf18c06706a28a574b3a09acb",
+      "pixel_sha256": "eb2ee52a822794fe518fb8c86c4a690ca3aaf2534a90a76f36f6d864e556bd7c",
+      "width": 483,
+      "height": 503,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_back",
+      "title": "Backside of a 3.5\" Floppy Disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Backside_of_a_3.5%22_Floppy_Disk.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b2/Backside_of_a_3.5%22_Floppy_Disk.jpg/960px-Backside_of_a_3.5%22_Floppy_Disk.jpg",
+      "author": "DiscoA340",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "87a694228b4d334016772d9ffd6ca5370969e273f39265ab0e5c459cb8f06959",
+      "image_file": "images/floppy_back.png",
+      "image_sha256": "2bad0354e3333b1f51a3cc2a8c90e625c7d2632338af80dcfd250798a76db7ef",
+      "pixel_sha256": "61695d59e1beb92e8f4f09e3028dc23b15621ce2072937ebcbdcebc7269dd59e",
+      "width": 800,
+      "height": 782,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "floppy_label",
+      "title": "Floppy disc with wikipedia label.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disc_with_wikipedia_label.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/9f/Floppy_disc_with_wikipedia_label.jpg/960px-Floppy_disc_with_wikipedia_label.jpg",
+      "author": "AnatGutman",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "3bd4a3f93753d0ba2d79cb46d66d6b6b2cdaf00898358b3855387ca4bf9be5de",
+      "image_file": "images/floppy_label.png",
+      "image_sha256": "74226ab3df03550b0c0f71cd6df7f3684be3c07e56d385dfa79516ebe6e8c9ef",
+      "pixel_sha256": "a0def4b289504e626cf0e858fa1697121e2d600baf6d8d026896edf7b9371d89",
+      "width": 788,
+      "height": 800,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "dimes_overlap",
+      "title": "Gfp-dimes.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Gfp-dimes.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ae/Gfp-dimes.jpg/960px-Gfp-dimes.jpg",
+      "author": "Yinan Chen",
+      "license": "Public Domain",
+      "license_url": "https://web.archive.org/web/20230926203737/https://creativecommons.org/licenses/publicdomain/",
+      "download_sha256": "0209a5efd8d3bda5154c0c8d4cfb329bbcf9cdb4db04e64389a72eb9baaf7e23",
+      "image_file": "images/dimes_overlap.png",
+      "image_sha256": "fabc6a3854236a62ab6d900312afed150096384bd14a4b5d42a3c4a513236166",
+      "pixel_sha256": "9a19e1a4758e3ec6a39def3cb43cdcf1d570d643eb874818f9e310bc8eb4199a",
+      "width": 800,
+      "height": 761,
+      "modifications": "Decoded RGB, removed EXIF; resized to maximum side 800 using self-implemented NumPy bilinear interpolation if needed; PNG encoding. No AI generation or object compositing."
+    },
+    {
+      "id": "fd_round",
+      "title": "3.5FD disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:3.5FD_disk.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f9/3.5FD_disk.jpg/960px-3.5FD_disk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f9/3.5FD_disk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Ab11",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "a0659cffa353618bc8b59c691c194af826a478ea413629dadb9a8e9de88117f9",
+      "image_file": "images/fd_round.png",
+      "image_sha256": "7d5c968e2aadba1f5a904f3a303c05ac88cce10d1558a0cfad929bc297aac382",
+      "pixel_sha256": "e258b0432a524a3324afff62e0b36af77264829c29fa01095f30ba1a7eba8717",
+      "width": 789,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "floppy_pair",
+      "title": "A 5¼-inch Floppy disk.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:A_5%C2%BC-inch_Floppy_disk.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/68/A_5%C2%BC-inch_Floppy_disk.jpg/960px-A_5%C2%BC-inch_Floppy_disk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/68/A_5%C2%BC-inch_Floppy_disk.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Muralikrishna m",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "d2c5e64d382c6613439183776950a186153d4502baad1bd6f340564bbbd28cb3",
+      "image_file": "images/floppy_pair.png",
+      "image_sha256": "28189c922d626ec659c46c98a91b784e6d64197748f69e014912935a376fdb13",
+      "pixel_sha256": "8f3e979458f5fee403da8cb61a3a7690e1d2b5ba2b026b58ecee264352e11e0f",
+      "width": 800,
+      "height": 406,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "cassette_audioforum",
+      "title": "Audio cassette audioforum 1.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Audio_cassette_audioforum_1.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Audio_cassette_audioforum_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Audio_cassette_audioforum_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Joxemai",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "download_sha256": "7dbfa94370d719c08e984590060462442e26c8ba3c2aa938a392367b3affd5a9",
+      "image_file": "images/cassette_audioforum.png",
+      "image_sha256": "f4853580b3d07b1f2effdcccaad392f3d1cfcc2352e3ffdc367e6d81b887172c",
+      "pixel_sha256": "380a53f3868473985c1cd9d8095b9e3af1ea47876210852a26ab05b3415e123d",
+      "width": 591,
+      "height": 432,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "cassette_overlap",
+      "title": "Audio cassette tapes.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Audio_cassette_tapes.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Audio_cassette_tapes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Audio_cassette_tapes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Seth Ilys at English Wikipedia",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/Commons:Copyright_tags",
+      "download_sha256": "a6d59eb3dabaae1c542045fc574382889fc865256b220033232267605ccb808a",
+      "image_file": "images/cassette_overlap.png",
+      "image_sha256": "c477317475c0ac17f67bb0fa7344c40fe7976d489dece720dd8edd6d1c3d8306",
+      "pixel_sha256": "c0eb745aaa0f2fc048c1a5c1b3d94313c07dc7e9c1c64cd03a2c801d9cf07086",
+      "width": 640,
+      "height": 480,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "verbatim_disc",
+      "title": "Blank Verbatim CD-R (Front).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Blank_Verbatim_CD-R_(Front).jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Blank_Verbatim_CD-R_%28Front%29.jpg/960px-Blank_Verbatim_CD-R_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Blank_Verbatim_CD-R_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "DiscoA340",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "33d07145ad6b92b647e19dc47b6f611ab31ea47ce328a052d093b1da352068c0",
+      "image_file": "images/verbatim_disc.png",
+      "image_sha256": "e1ece8cfd7f85f4f3e8f832b8eda3e9529484f9733b55212611a82488cbea91f",
+      "pixel_sha256": "81ab1475a78f2b9eafc9ce4ac9a8011bf2483095eef9ec4ff65b97d4c4558c26",
+      "width": 800,
+      "height": 785,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "cd_gray",
+      "title": "CD-R disc, bottom side with gray background.JPG",
+      "source_page": "https://commons.wikimedia.org/wiki/File:CD-R_disc,_bottom_side_with_gray_background.JPG",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/47/CD-R_disc%2C_bottom_side_with_gray_background.JPG/960px-CD-R_disc%2C_bottom_side_with_gray_background.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/4/47/CD-R_disc%2C_bottom_side_with_gray_background.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Asanagi",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "6024fd7a65e8909746208f8f424ee8ffe41d61beb6ce2e3b464758795908d58b",
+      "image_file": "images/cd_gray.png",
+      "image_sha256": "22fd8bbbd137f616ba95d796dd67cbca561f545de700e7731cd93b00e91cca54",
+      "pixel_sha256": "89ef9b354ca8b3ba3f1517e8fa4f17c004055c62079a84cd5712088927d37153",
+      "width": 800,
+      "height": 600,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "carlsberg_cap",
+      "title": "Carlsberg beer bottle cap, Poland, August 2021.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Carlsberg_beer_bottle_cap,_Poland,_August_2021.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Carlsberg_beer_bottle_cap%2C_Poland%2C_August_2021.jpg/960px-Carlsberg_beer_bottle_cap%2C_Poland%2C_August_2021.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Carlsberg_beer_bottle_cap%2C_Poland%2C_August_2021.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "MichalPL",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "416bf5ecd16aaadf9f5333c932ccb7c41019c40088c3026ca413debf0ee69d75",
+      "image_file": "images/carlsberg_cap.png",
+      "image_sha256": "b0a7bb81784221a93e550bcd6ff56f4c503273cb08655e3450082b3924894f4e",
+      "pixel_sha256": "e3e11a861ec842f493034b6866e50b9845f9ab438eae13ab5b1b144faef3d9e1",
+      "width": 800,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "cassette_case",
+      "title": "Compact Cassette 01.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Compact_Cassette_01.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/Compact_Cassette_01.jpg/960px-Compact_Cassette_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Compact_Cassette_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Shams948",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "e2c0938df07e4ee6d13ccdb693140469ab35af820432e8968cb44feecf7cd3c4",
+      "image_file": "images/cassette_case.png",
+      "image_sha256": "0a278f7d625cfc5e4fcafb02cbd0030942dee113c72c695670f3254e51865d62",
+      "pixel_sha256": "4491862ea54393f23c6cb2c76d559b1b10c58eb08925b8d968791b250dfcf27c",
+      "width": 609,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "dat_pair",
+      "title": "DAT & Compact Cassette.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:DAT_%26_Compact_Cassette.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/ba/DAT_%26_Compact_Cassette.jpg/960px-DAT_%26_Compact_Cassette.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/ba/DAT_%26_Compact_Cassette.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Inpriva",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "51e5c9cff819bb274bc368b0d7b8ff42b5f56aaed3400a69ffe6b3ee95c93886",
+      "image_file": "images/dat_pair.png",
+      "image_sha256": "01df5ff673bf3db07e918a892e29b654d7347c23bb693d9a41e3fb62ac564cfe",
+      "pixel_sha256": "5e06c12a9835e7255b6a23a5c27150ea8d8b25c845b8f0acc4fd05fbf874995a",
+      "width": 800,
+      "height": 492,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "floppy_blue",
+      "title": "Floppy disk R01.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disk_R01.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/Floppy_disk_R01.jpg/960px-Floppy_disk_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Floppy_disk_R01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Marc Ryckaert",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "f629585779c709347fc0774278cec51b96fd4c6bd0fbdf00a8deb77e9558192f",
+      "image_file": "images/floppy_blue.png",
+      "image_sha256": "c33673c090997fe12a2725dc57b70a50878a8f5b420be9fac20411e3d757bbf7",
+      "pixel_sha256": "a283077c160dc81710082b23c40675eaed967cbd86809da71ebba9e149a97e83",
+      "width": 763,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "floppy_sentinel",
+      "title": "Floppy disk R25.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disk_R25.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Floppy_disk_R25.jpg/960px-Floppy_disk_R25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Floppy_disk_R25.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Marc Ryckaert",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "download_sha256": "5a9111179158e8d43aaea6a524e161c33b688de9dce1cf590aaee5e622d10f64",
+      "image_file": "images/floppy_sentinel.png",
+      "image_sha256": "8827baceef3c186abe69d1177eefca99470df4e95757bf1ff4bb9fcdadb08723",
+      "pixel_sha256": "64b8be6805c360a3d1eb3cf58205a9ad913bcba931d36d0bb6500081bb5c6890",
+      "width": 769,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "sd_adapter",
+      "title": "SD card adapter.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:SD_card_adapter.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/SD_card_adapter.jpg/960px-SD_card_adapter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/SD_card_adapter.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Wikideas1",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "b1bd7c7fe381e15042203c3abe5d7834a13949bfb2d897faf0622e4d9191a935",
+      "image_file": "images/sd_adapter.png",
+      "image_sha256": "8c5809cb884086d1a4c735f346bdd1c2c6fc41591cf11dc6c2a8d571ec0a1dbe",
+      "pixel_sha256": "dc246eb475ef3f3070b4e6af78442b10f275e36f4e5028cb30e5e8c604c5df81",
+      "width": 796,
+      "height": 800,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "gold_cap",
+      "title": "XXXX Gold bottle cap .jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:XXXX_Gold_bottle_cap_.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/XXXX_Gold_bottle_cap_.jpg/960px-XXXX_Gold_bottle_cap_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/c3/XXXX_Gold_bottle_cap_.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Ben Stone",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "26c5c1e4d5403a2be5fec1355d196897469588ee059dc218f38906959b48f160",
+      "image_file": "images/gold_cap.png",
+      "image_sha256": "a9e25b225fe070bc05bdd2ce2b3dba71fc0ba8a0b98ee05b049748b7eaadfafb",
+      "pixel_sha256": "d777b97ae07a09464addd2f51469f14cb22ac65edee88a4de12f7b10d7c7401f",
+      "width": 800,
+      "height": 450,
+      "modifications": "Commons thumbnail decoded to RGB; EXIF removed; longest side 800 with self-implemented NumPy bilinear resize; PNG. No AI images, crops or composited objects."
+    },
+    {
+      "id": "continental_coin",
+      "title": "1776ContinentalCoinObverse.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:1776ContinentalCoinObverse.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/1776ContinentalCoinObverse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/1776ContinentalCoinObverse.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Benjamin Franklin (original design)",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:1776ContinentalCoinObverse.jpg",
+      "download_sha256": "e272d218dc998b77a191a614977da440b33436e3e6dc7849c61e39f48a49aba0",
+      "image_file": "images/continental_coin.png",
+      "image_sha256": "5310d317351d860a5e7c28259229dea893fa1479e60438a2804a1ca400e46c01",
+      "pixel_sha256": "a5a3922dfc951c8cf2d63e75d73a1ca12e6791d574a7ea3ac903a6e3194a1195",
+      "width": 446,
+      "height": 461,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "floppy_front_new",
+      "title": "3.5\" Floppy Disk (Front).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:3.5%22_Floppy_Disk_(Front).jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a6/3.5%22_Floppy_Disk_%28Front%29.jpg/960px-3.5%22_Floppy_Disk_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/3.5%22_Floppy_Disk_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "DiscoA340",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "602be39248df465728a9e32c8314cb71b645b770953b97728b5144d32ad7859b",
+      "image_file": "images/floppy_front_new.png",
+      "image_sha256": "2aa79a6537b642bfae5858462aab944a0ba57dd2a4e4d1de098f21110ba245d2",
+      "pixel_sha256": "4d03be3281a7f02674fb6ee3a50fc3972b78da9569765c024031559c9bbd4061",
+      "width": 600,
+      "height": 596,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "headphones_negative",
+      "title": "CASSETTE.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:CASSETTE.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/CASSETTE.jpg/960px-CASSETTE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/1/16/CASSETTE.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Wendelin Jacober",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "316acef50a32ad19f18ed4b0784b4a56272a9d1b0dd85e96941b75cab6ae7a13",
+      "image_file": "images/headphones_negative.png",
+      "image_sha256": "403be1413c469b9498aa3356dc877817a8c2111e38bfe54b43a4c40ba39b5ae7",
+      "pixel_sha256": "601b7224969bf1bb1ec9ff2e516120b9e5b3c5a1984aeccbec170caef99613df",
+      "width": 600,
+      "height": 400,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "cassette_clear",
+      "title": "Cassette-tape 8192.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Cassette-tape_8192.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Cassette-tape_8192.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Cassette-tape_8192.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Wwongbc",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "6060fdf3c343cf9ce0a6d09eddfa69078c43a118a45bd866d3ce7e6851634982",
+      "image_file": "images/cassette_clear.png",
+      "image_sha256": "18402cdb573db779f0863b131f77ebaeee13c4820132dc418d3814292387e801",
+      "pixel_sha256": "d8a7d473d1c6b7594bfb3c0bb0ea54930a66f118e642028b1ba877c351bec7d6",
+      "width": 600,
+      "height": 400,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "cd_black",
+      "title": "CompactDisc.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:CompactDisc.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8e/CompactDisc.jpg/960px-CompactDisc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/8e/CompactDisc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "DeepSkyBlue",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "download_sha256": "5fedb4b45a02ffe33efe6a4c44f6793e60df0273ff51a6eb092278b49beebe4e",
+      "image_file": "images/cd_black.png",
+      "image_sha256": "6a4a34777057c0b9e8a04b2595089b9f224d063061d7fb8f49b189fdb922f083",
+      "pixel_sha256": "d5c6baf48c58f0e24af8c9607da7bb385e981439f4bb942ddc3d977523f06799",
+      "width": 600,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "cd_white",
+      "title": "Compact Disc.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Compact_Disc.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ed/Compact_Disc.jpg/960px-Compact_Disc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ed/Compact_Disc.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Arun Kulshreshtha",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "download_sha256": "22053247fa69f3dc121d27b68935b36750a1eb7d6c7a0ef2d0fcfe83b87591ff",
+      "image_file": "images/cd_white.png",
+      "image_sha256": "7e6310e4d7394bde975d3a8362398870bfbdf9f6de4d60647577f6b1cd7d411a",
+      "pixel_sha256": "5b8b7867f065292ab353ad4e0830d1467dcba180a24868851e13d6218af89883",
+      "width": 600,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "cd_scan",
+      "title": "Compact Disc.png",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Compact_Disc.png",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/29/Compact_Disc.png/960px-Compact_Disc.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/29/Compact_Disc.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "liamz2r",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Compact_Disc.png",
+      "download_sha256": "2119bf2fa7ba8793c7a289b873e5eb4662f00d8ba020a3f7608bfdd2e0aebdc8",
+      "image_file": "images/cd_scan.png",
+      "image_sha256": "9e81b7abc09a116ec3c6f241827e9ebcab8d5d50aac0ed5e6db94dd85d79553d",
+      "pixel_sha256": "5cef86b8b0404305f51ab5cc20f799fdaeb26399edc5323f60568744ebb16683",
+      "width": 598,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "scan"
+    },
+    {
+      "id": "cd_dark_texture",
+      "title": "Compact disc 1.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Compact_disc_1.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/88/Compact_disc_1.jpg/960px-Compact_disc_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/8/88/Compact_disc_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "gausanchennai",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "8a8edf0b612824579b7b237f5a1f4d949db8162936969852ed4764850e618c57",
+      "image_file": "images/cd_dark_texture.png",
+      "image_sha256": "a043cea62e62c774555f607b580c4e3449ed49db03f09dcb414464353e459674",
+      "pixel_sha256": "4ebad85489572b5c96ec359389779953604c4f3beb5c823702adb60d770ec5e1",
+      "width": 600,
+      "height": 450,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "floppy_scan",
+      "title": "Floppy disk 300 dpi.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disk_300_dpi.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Floppy_disk_300_dpi.jpg/960px-Floppy_disk_300_dpi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Floppy_disk_300_dpi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Travis (talk)",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Floppy_disk_300_dpi.jpg",
+      "download_sha256": "0c7e86289c0fb2cf96b0dd1c0c36f7028ab2e5353f0b937ca4c9d2967199d5e2",
+      "image_file": "images/floppy_scan.png",
+      "image_sha256": "e99a5ed9575391d4d1d645142168e25ebca86c612d22981f1aed89aa91ee4b3b",
+      "pixel_sha256": "502dfb6c25de8546be1e3c8c88c4cbf3387970fe0182038fcdcc39004fb87713",
+      "width": 572,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "scan"
+    },
+    {
+      "id": "floppy_sony",
+      "title": "Floppy disk R03.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disk_R03.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/Floppy_disk_R03.jpg/960px-Floppy_disk_R03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Floppy_disk_R03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Marc Ryckaert",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "21304f72d1c9cc47997316d245281043fff9a694dee49d9791eb62d9cbc83113",
+      "image_file": "images/floppy_sony.png",
+      "image_sha256": "ed0427c79a400c0d6fdcec9870557a8701d5d39ea910991fb401ffdce447e336",
+      "pixel_sha256": "ec9a68a09459061a2bad3bc1b2e73c6522599ecfebc7761b3e704437a9c79be5",
+      "width": 577,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "floppy_verbatim",
+      "title": "Floppy disk R09.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Floppy_disk_R09.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/ef/Floppy_disk_R09.jpg/960px-Floppy_disk_R09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/e/ef/Floppy_disk_R09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Marc Ryckaert",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "65503e241283520c42c31d89fb58902ba3123ef76801837d24a26d38db307ad5",
+      "image_file": "images/floppy_verbatim.png",
+      "image_sha256": "4a8bac99d42c060d10e39bc21842ee6d99dbc2534b1bad3e78e93e4c9208bf16",
+      "pixel_sha256": "193a82598640e7e41cc2ca9bccba580af508e4f217690bcf4a1a55ecca826847",
+      "width": 580,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "ancient_round",
+      "title": "Obverse of Coin Depicting Vaballathus that Depicts Emperor Aurelian.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Obverse_of_Coin_Depicting_Vaballathus_that_Depicts_Emperor_Aurelian.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b4/Obverse_of_Coin_Depicting_Vaballathus_that_Depicts_Emperor_Aurelian.jpg/960px-Obverse_of_Coin_Depicting_Vaballathus_that_Depicts_Emperor_Aurelian.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b4/Obverse_of_Coin_Depicting_Vaballathus_that_Depicts_Emperor_Aurelian.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Graearms",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "4d41a0f36364e04533f5894059f3065aa958af1cc71affda6cc834da4d19859f",
+      "image_file": "images/ancient_round.png",
+      "image_sha256": "6db9faa5a9a4abeac3ce6876c3a98b1593441ddf62a38b3577037cec92e9f6cf",
+      "pixel_sha256": "ce7a7430f7a457c2c0fae8f5073135ba0c410662f28b3738f2ac07bfce2697e9",
+      "width": 579,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "rare_coins",
+      "title": "Rare coin.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Rare_coin.jpg",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Rare_coin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Rare_coin.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Basavayya",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "20751131e91bb5a9eb809d06a6a2b854d8e2762e3a88de7343723d2d182132d2",
+      "image_file": "images/rare_coins.png",
+      "image_sha256": "c67f253da0d8b14dc42faebb713806b86a2dc93014c78ae90310c2ca51bde303",
+      "pixel_sha256": "5b890d86786943d1ed34e077d223df31261e7130fd0dcb3dea0308a469b6b1f2",
+      "width": 600,
+      "height": 400,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "dollar_coin",
+      "title": "United States of America 1 Dollar Coin Obverse Side.png",
+      "source_page": "https://commons.wikimedia.org/wiki/File:United_States_of_America_1_Dollar_Coin_Obverse_Side.png",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/United_States_of_America_1_Dollar_Coin_Obverse_Side.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/United_States_of_America_1_Dollar_Coin_Obverse_Side.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "AKdash47",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "download_sha256": "84d1ed26a1c87731f244af5e62e70a2ebc46216a597c0e2d8032de97ecc6276f",
+      "image_file": "images/dollar_coin.png",
+      "image_sha256": "22a374fdabda52683652d388bbe47b530d84d1bc5c0fb46aa4edf77dd6ac9509",
+      "pixel_sha256": "e045c0986e33f72702ac055aa339ea76771e8f4ab584dfaf470ec744a5b171ab",
+      "width": 566,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "vhs_front",
+      "title": "VHS Tape (Front).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:VHS_Tape_(Front).jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/VHS_Tape_%28Front%29.jpg/960px-VHS_Tape_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3b/VHS_Tape_%28Front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "DiscoA340",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "dcd2ec360f19ea32605bffff529958a321cbedd060a33e06cfbc262462af1ec1",
+      "image_file": "images/vhs_front.png",
+      "image_sha256": "16d4360065c06c10bc54f45840bbb453e75cbd2d8058e002abec8a1812f1a245",
+      "pixel_sha256": "5e20367b3ed226090017de461dac0e7e54c2c04bc0bcd3148f971b870a9b06f8",
+      "width": 600,
+      "height": 352,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "vhs_black",
+      "title": "VHS cassette.png",
+      "source_page": "https://commons.wikimedia.org/wiki/File:VHS_cassette.png",
+      "download_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/VHS_cassette.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/0c/VHS_cassette.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "fluorinated",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "ae878d1bc4ba0cff766594736e6d7164e6b1ab9a85ca0f9fc9d10a20c08e53f9",
+      "image_file": "images/vhs_black.png",
+      "image_sha256": "9f10dfb8cec26e8dd9ecd60935c8d6d468b84fdb46615745f3f21f9dafe277ba",
+      "pixel_sha256": "506cc37dd80c6281e5123128f3e651c4f2658a64a98c08fe1420123ca79865ef",
+      "width": 600,
+      "height": 402,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "floppy_white",
+      "title": "White 5.25-inch floppy disk (front).jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:White_5.25-inch_floppy_disk_(front).jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3e/White_5.25-inch_floppy_disk_%28front%29.jpg/960px-White_5.25-inch_floppy_disk_%28front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/3/3e/White_5.25-inch_floppy_disk_%28front%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Andrius.v",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "download_sha256": "a46904b41a296736f28cdc1fce7dd633e42d3e15edee9818fdf51e70fc7d48c2",
+      "image_file": "images/floppy_white.png",
+      "image_sha256": "2df77ae41a6c5992814e5af1094de8e77623dbb2941fd606120f713ecde5c89e",
+      "pixel_sha256": "3419ca4fa93f0659cf5641c5b42a12997be8e2d4b4d86b2072975f7ba56ef4d7",
+      "width": 596,
+      "height": 600,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "grass_test",
+      "title": "Grass texture.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Grass_texture.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Grass_texture.jpg/960px-Grass_texture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/0/05/Grass_texture.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Titus Tscharntke",
+      "license": "Public domain",
+      "license_url": "https://commons.wikimedia.org/wiki/File:Grass_texture.jpg",
+      "download_sha256": "2ee3e1e62476088258090d0080fcb87e2dae9efd9159f11a55c3f33cc1f2121b",
+      "image_file": "images/grass_test.png",
+      "image_sha256": "b82a0a0ffd6c348af83f9f72935b84727e14ed9c13c94824016ab64cc7e69d52",
+      "pixel_sha256": "4abf4a00d0a24f12850f66ce6d4efd8c8a9fba8e6d3107621a5e41b54519a75f",
+      "width": 600,
+      "height": 400,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "grass_validation",
+      "title": "Grass texture up close.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Grass_texture_up_close.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b8/Grass_texture_up_close.jpg/960px-Grass_texture_up_close.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/b/b8/Grass_texture_up_close.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Kurt Kaiser",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "43bdb8583fe91a83508f89c0973349bf4fbd5c855c04c050c40d8e0e46bf703c",
+      "image_file": "images/grass_validation.png",
+      "image_sha256": "ac0976692a532c2aae1ec5451892f3a43522dca2e25655c56eaab62c2a40cf44",
+      "pixel_sha256": "ddba14f9f21bae5e264c03b17179cb67f51d0f887a0a9aef7db5848dc7df3aee",
+      "width": 600,
+      "height": 450,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "wood_test",
+      "title": "Wood Texture Background.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Wood_Texture_Background.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7a/Wood_Texture_Background.jpg/960px-Wood_Texture_Background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Wood_Texture_Background.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Bango Textures",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "1333544aa34c4474d7e0a6ae443ae7bf2d97c5aa05e20d632078564a180cf591",
+      "image_file": "images/wood_test.png",
+      "image_sha256": "58fe4f62f5b5296917bd877b5338a08d5469c50b88d73b7c5938c3f3d5caf684",
+      "pixel_sha256": "be65ad9d2b99836c0862f71f659e707cff9c72c5aabe064299ef9f42b2145e56",
+      "width": 600,
+      "height": 400,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    },
+    {
+      "id": "wood_validation",
+      "title": "Wood texture, light.jpg",
+      "source_page": "https://commons.wikimedia.org/wiki/File:Wood_texture,_light.jpg",
+      "download_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/ff/Wood_texture%2C_light.jpg/960px-Wood_texture%2C_light.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "original_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Wood_texture%2C_light.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+      "author": "Kurt Kaiser",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "download_sha256": "232eb315088cc580b2d9440dd519aee3d44b8ebc38065df9d52c83061dcbe20c",
+      "image_file": "images/wood_validation.png",
+      "image_sha256": "3a83c9fce960f82ea5ff0a750c26f2b35dad1ce8d2e597f8ffd5eb0f6cdca349",
+      "pixel_sha256": "00981d4fb1b85f89bc6906d2d551476df1a667b76fdd7f2fbc4c677af0dd7af1",
+      "width": 600,
+      "height": 450,
+      "modifications": "Decoded RGB, EXIF removed, NumPy bilinear resize to longest side 600, PNG. Annotation overlays stored separately. No AI-generated or composited photos.",
+      "capture_type": "photograph"
+    }
+  ],
+  "cases": [
+    {
+      "id": "brooklyn_coins",
+      "source_group": "brooklyn_coins",
+      "source_id": "brooklyn_coins",
+      "title": "24 đồng xu, nền xám không đều",
+      "split": "development",
+      "difficulty": "basic",
+      "image_file": "images/brooklyn_coins.png",
+      "width": 384,
+      "height": 303,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            22,
+            30,
+            46,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            81,
+            35,
+            41,
+            39
+          ],
+          "occluded": false
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            132,
+            27,
+            47,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            190,
+            26,
+            52,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            252,
+            31,
+            49,
+            48
+          ],
+          "occluded": false
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            306,
+            14,
+            61,
+            60
+          ],
+          "occluded": false
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            24,
+            103,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            82,
+            104,
+            43,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            134,
+            106,
+            42,
+            41
+          ],
+          "occluded": false
+        },
+        {
+          "id": 10,
+          "class": "circle",
+          "bbox": [
+            186,
+            101,
+            42,
+            45
+          ],
+          "occluded": false
+        },
+        {
+          "id": 11,
+          "class": "circle",
+          "bbox": [
+            244,
+            93,
+            54,
+            52
+          ],
+          "occluded": false
+        },
+        {
+          "id": 12,
+          "class": "circle",
+          "bbox": [
+            316,
+            101,
+            42,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 13,
+          "class": "circle",
+          "bbox": [
+            21,
+            175,
+            44,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 14,
+          "class": "circle",
+          "bbox": [
+            79,
+            172,
+            48,
+            46
+          ],
+          "occluded": false
+        },
+        {
+          "id": 15,
+          "class": "circle",
+          "bbox": [
+            134,
+            175,
+            45,
+            43
+          ],
+          "occluded": false
+        },
+        {
+          "id": 16,
+          "class": "circle",
+          "bbox": [
+            188,
+            168,
+            50,
+            51
+          ],
+          "occluded": false
+        },
+        {
+          "id": 17,
+          "class": "circle",
+          "bbox": [
+            249,
+            170,
+            51,
+            49
+          ],
+          "occluded": false
+        },
+        {
+          "id": 18,
+          "class": "circle",
+          "bbox": [
+            313,
+            153,
+            67,
+            67
+          ],
+          "occluded": false
+        },
+        {
+          "id": 19,
+          "class": "circle",
+          "bbox": [
+            16,
+            233,
+            57,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 20,
+          "class": "circle",
+          "bbox": [
+            90,
+            243,
+            49,
+            47
+          ],
+          "occluded": false
+        },
+        {
+          "id": 21,
+          "class": "circle",
+          "bbox": [
+            144,
+            234,
+            56,
+            57
+          ],
+          "occluded": false
+        },
+        {
+          "id": 22,
+          "class": "circle",
+          "bbox": [
+            217,
+            235,
+            55,
+            55
+          ],
+          "occluded": false
+        },
+        {
+          "id": 23,
+          "class": "circle",
+          "bbox": [
+            275,
+            238,
+            51,
+            53
+          ],
+          "occluded": false
+        },
+        {
+          "id": 24,
+          "class": "circle",
+          "bbox": [
+            332,
+            246,
+            51,
+            48
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Đường bao tự nhiên không hoàn toàn tròn; độ sáng nền và vật thể giao nhau.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "us_aluminum",
+      "source_group": "us_aluminum",
+      "source_id": "us_aluminum",
+      "title": "Đồng xu nhôm, nền sáng",
+      "split": "development",
+      "difficulty": "basic",
+      "image_file": "images/us_aluminum.png",
+      "width": 285,
+      "height": 281,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            4,
+            3,
+            268,
+            266
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Bóng đổ bên phải không thuộc đối tượng.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_front",
+      "source_group": "floppy_front",
+      "source_id": "floppy_front",
+      "title": "Đĩa mềm, nền trắng",
+      "split": "development",
+      "difficulty": "basic",
+      "image_file": "images/floppy_front.png",
+      "width": 483,
+      "height": 503,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            15,
+            14,
+            452,
+            474
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Đường bao gần chữ nhật, có góc vát và khe nhỏ.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_back",
+      "source_group": "discoa340_collection",
+      "source_id": "floppy_back",
+      "title": "Mặt sau đĩa mềm, nền có texture",
+      "split": "development",
+      "difficulty": "basic",
+      "image_file": "images/floppy_back.png",
+      "width": 800,
+      "height": 782,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            43,
+            17,
+            741,
+            739
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Chỉ gán nhãn đường bao ngoài đĩa; lỗ tròn và nắp kim loại bên trong không là vật thể rời.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_label",
+      "source_group": "floppy_label",
+      "source_id": "floppy_label",
+      "title": "Đĩa mềm sát mép ảnh",
+      "split": "development",
+      "difficulty": "stress",
+      "image_file": "images/floppy_label.png",
+      "width": 788,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            7,
+            778,
+            781
+          ],
+          "occluded": false
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Có vùng sát/cắt bởi mép ảnh và nhãn có chữ; kiểm tra giới hạn chọn nền từ biên.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "dimes_overlap",
+      "source_group": "dimes_overlap",
+      "source_id": "dimes_overlap",
+      "title": "9 đồng xu chồng nhau",
+      "split": "development",
+      "difficulty": "stress",
+      "image_file": "images/dimes_overlap.png",
+      "width": 800,
+      "height": 761,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            39,
+            179,
+            271,
+            273
+          ],
+          "occluded": true
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            177,
+            54,
+            279,
+            283
+          ],
+          "occluded": true
+        },
+        {
+          "id": 3,
+          "class": "circle",
+          "bbox": [
+            416,
+            52,
+            273,
+            267
+          ],
+          "occluded": true
+        },
+        {
+          "id": 4,
+          "class": "circle",
+          "bbox": [
+            499,
+            241,
+            252,
+            242
+          ],
+          "occluded": true
+        },
+        {
+          "id": 5,
+          "class": "circle",
+          "bbox": [
+            343,
+            270,
+            259,
+            254
+          ],
+          "occluded": true
+        },
+        {
+          "id": 6,
+          "class": "circle",
+          "bbox": [
+            154,
+            318,
+            264,
+            257
+          ],
+          "occluded": true
+        },
+        {
+          "id": 7,
+          "class": "circle",
+          "bbox": [
+            50,
+            464,
+            259,
+            247
+          ],
+          "occluded": true
+        },
+        {
+          "id": 8,
+          "class": "circle",
+          "bbox": [
+            260,
+            449,
+            250,
+            255
+          ],
+          "occluded": true
+        },
+        {
+          "id": 9,
+          "class": "circle",
+          "bbox": [
+            475,
+            435,
+            250,
+            252
+          ],
+          "occluded": true
+        }
+      ],
+      "annotation_method": "Manual bounding boxes from visually inspected grid images before any real-image model inference",
+      "notes": "Các bbox là ước lượng đường bao tròn đầy đủ của các đồng xu bị che khuất; chỉ dùng stress test, không tính vào chỉ số cơ bản.",
+      "prior_exposure": "Evaluated during phase 2; may be used to tune phase 3 preprocessing.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "fd_round",
+      "source_id": "fd_round",
+      "source_group": "ab11_disk",
+      "split": "development",
+      "difficulty": "basic",
+      "title": "Đĩa từ tròn, nền sáng",
+      "image_file": "images/fd_round.png",
+      "width": 789,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            13,
+            7,
+            775,
+            780
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Vật thể ngoài duy nhất; phần trục kim loại không phải mục tiêu riêng.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "floppy_pair",
+      "source_id": "floppy_pair",
+      "source_group": "muralikrishna_floppy",
+      "split": "validation",
+      "difficulty": "stress",
+      "title": "Hai đĩa mềm sát mép",
+      "image_file": "images/floppy_pair.png",
+      "width": 800,
+      "height": 406,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            3,
+            0,
+            399,
+            406
+          ],
+          "occluded": false,
+          "clipped": true
+        },
+        {
+          "id": 2,
+          "class": "rectangle",
+          "bbox": [
+            415,
+            0,
+            385,
+            406
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "notes": "Hai đĩa sát mép ảnh; khung chỉ phủ phần nhìn thấy.",
+      "previous_phase3_role": "validation",
+      "annotation_version": 4
+    },
+    {
+      "id": "cassette_audioforum",
+      "source_id": "cassette_audioforum",
+      "source_group": "joxemai_cassette",
+      "split": "development",
+      "difficulty": "stress",
+      "title": "Băng cassette có nhiều chi tiết",
+      "image_file": "images/cassette_audioforum.png",
+      "width": 591,
+      "height": 432,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            8,
+            591,
+            389
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "notes": "Vỏ băng chạm hai mép; hai trục và các lỗ là chi tiết bên trong.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "cassette_overlap",
+      "source_id": "cassette_overlap",
+      "source_group": "seth_ily_cassettes",
+      "split": "development",
+      "difficulty": "stress",
+      "title": "Hai băng cassette chồng nhau",
+      "image_file": "images/cassette_overlap.png",
+      "width": 640,
+      "height": 480,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            84,
+            53,
+            458,
+            282
+          ],
+          "occluded": true,
+          "clipped": false
+        },
+        {
+          "id": 2,
+          "class": "rectangle",
+          "bbox": [
+            58,
+            78,
+            539,
+            321
+          ],
+          "occluded": true,
+          "clipped": false
+        }
+      ],
+      "notes": "Hai băng chồng nhau trên nền gỗ; bbox băng phía sau là ước lượng có che khuất.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "verbatim_disc",
+      "source_id": "verbatim_disc",
+      "source_group": "discoa340_collection",
+      "split": "development",
+      "difficulty": "basic",
+      "title": "Đĩa CD có chữ và lỗ ở tâm",
+      "image_file": "images/verbatim_disc.png",
+      "width": 800,
+      "height": 785,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            28,
+            25,
+            746,
+            741
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Cùng tác giả bộ đĩa mềm đã dùng; giữ trong development để tránh dùng cùng nhóm nguồn làm test.",
+      "previous_phase3_role": "development",
+      "annotation_version": 4
+    },
+    {
+      "id": "cd_gray",
+      "source_id": "cd_gray",
+      "source_group": "asanagi_cd",
+      "split": "development",
+      "difficulty": "negative",
+      "title": "Đĩa CD trên nền xám",
+      "image_file": "images/cd_gray.png",
+      "width": 800,
+      "height": 600,
+      "annotations": [],
+      "notes": "Góc chụp khiến hình tròn thành ellipse nhẹ; lỗ tâm và bóng đổ không phải mục tiêu.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test.",
+      "distractors": [
+        {
+          "id": 1,
+          "class": "ellipse",
+          "bbox": [
+            176,
+            130,
+            432,
+            340
+          ],
+          "occluded": false,
+          "clipped": false,
+          "label_reason": "Projected 2D outline is elliptical / clipped, not an approximately circular target."
+        }
+      ]
+    },
+    {
+      "id": "carlsberg_cap",
+      "source_id": "carlsberg_cap",
+      "source_group": "michalpl_cap",
+      "split": "development",
+      "difficulty": "stress",
+      "title": "Nắp chai trên nền có họa tiết",
+      "image_file": "images/carlsberg_cap.png",
+      "width": 800,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            0,
+            32,
+            800,
+            743
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "notes": "Nền nhiều màu, mép nắp có răng và một phần sát mép ảnh.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "cassette_case",
+      "source_id": "cassette_case",
+      "source_group": "shams948_case",
+      "split": "development",
+      "difficulty": "basic",
+      "title": "Hộp băng cassette, nền sáng",
+      "image_file": "images/cassette_case.png",
+      "width": 609,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            78,
+            82,
+            438,
+            680
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Chỉ hộp nhựa bên ngoài; hình in người và chữ không phải vật thể cần tìm.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "dat_pair",
+      "source_id": "dat_pair",
+      "source_group": "inpriva_cassettes",
+      "split": "validation",
+      "difficulty": "stress",
+      "title": "Hai cassette nhỏ trên nền gỗ",
+      "image_file": "images/dat_pair.png",
+      "width": 800,
+      "height": 492,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            231,
+            143,
+            322,
+            204
+          ],
+          "occluded": true,
+          "clipped": false
+        },
+        {
+          "id": 2,
+          "class": "rectangle",
+          "bbox": [
+            230,
+            200,
+            247,
+            158
+          ],
+          "occluded": true,
+          "clipped": false
+        }
+      ],
+      "notes": "Hai cassette chồng một phần; bbox vật phía sau là ước lượng.",
+      "previous_phase3_role": "validation",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_blue",
+      "source_id": "floppy_blue",
+      "source_group": "mjjr_floppy_series",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đĩa mềm xanh, nhiều chi tiết",
+      "image_file": "images/floppy_blue.png",
+      "width": 763,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            16,
+            25,
+            725,
+            754
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Chỉ đường bao vỏ; trục tròn và thanh kim loại không phải đối tượng riêng.",
+      "previous_phase3_role": "validation",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_sentinel",
+      "source_id": "floppy_sentinel",
+      "source_group": "mjjr_floppy_series",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đĩa mềm có nhãn vàng",
+      "image_file": "images/floppy_sentinel.png",
+      "width": 769,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            14,
+            12,
+            740,
+            769
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Cùng tác giả và chuỗi ảnh với đĩa xanh: giữ cùng validation.",
+      "previous_phase3_role": "validation",
+      "annotation_version": 4
+    },
+    {
+      "id": "sd_adapter",
+      "source_id": "sd_adapter",
+      "source_group": "wikideas1_sd",
+      "split": "development",
+      "difficulty": "stress",
+      "title": "Thẻ chuyển SD trên nền gỗ",
+      "image_file": "images/sd_adapter.png",
+      "width": 796,
+      "height": 800,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            20,
+            37,
+            754,
+            727
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "notes": "Hình chữ nhật quay nghiêng có một góc vát; nền gỗ và chữ gây khó cho ngưỡng xám.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test."
+    },
+    {
+      "id": "gold_cap",
+      "source_id": "gold_cap",
+      "source_group": "ben_stone_cap",
+      "split": "development",
+      "difficulty": "negative",
+      "title": "Nắp chai vàng bị cắt mép",
+      "image_file": "images/gold_cap.png",
+      "width": 800,
+      "height": 450,
+      "annotations": [],
+      "notes": "Nắp nghiêng và bị cắt trên/dưới; khung ghi phần nhìn thấy, không đoán phần ngoài ảnh.",
+      "previous_phase3_role": "test",
+      "annotation_version": 4,
+      "prior_exposure": "Phase-3 test already observed; now development, eligible for training. It is NOT independent phase-4 test.",
+      "distractors": [
+        {
+          "id": 1,
+          "class": "ellipse",
+          "bbox": [
+            54,
+            0,
+            552,
+            450
+          ],
+          "occluded": false,
+          "clipped": true,
+          "label_reason": "Projected 2D outline is elliptical / clipped, not an approximately circular target."
+        }
+      ]
+    },
+    {
+      "id": "continental_coin",
+      "source_id": "continental_coin",
+      "source_group": "1776_coin_capture",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đồng xu lục địa, nền xám",
+      "image_file": "images/continental_coin.png",
+      "width": 446,
+      "height": 461,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            6,
+            14,
+            428,
+            431
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Ảnh nhìn gần chính diện; chỉ đường bao ngoài đồng xu.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_front_new",
+      "source_id": "floppy_front_new",
+      "source_group": "discoa340_collection",
+      "split": "development",
+      "difficulty": "basic",
+      "title": "Đĩa mềm xám, mặt trước",
+      "image_file": "images/floppy_front_new.png",
+      "width": 600,
+      "height": 596,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            35,
+            28,
+            532,
+            548
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Cùng nhóm tác giả ảnh cũ: chỉ development.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "headphones_negative",
+      "source_id": "headphones_negative",
+      "source_group": "wendelin_headphones",
+      "split": "development",
+      "difficulty": "negative",
+      "title": "Tai nghe và dây, ngoài lớp mục tiêu",
+      "image_file": "images/headphones_negative.png",
+      "width": 600,
+      "height": 400,
+      "annotations": [],
+      "distractors": [
+        {
+          "id": 1,
+          "class": "background",
+          "bbox": [
+            60,
+            85,
+            445,
+            255
+          ]
+        }
+      ],
+      "notes": "Dây và toàn bộ tai nghe là vật không có đường bao tròn/chữ nhật đơn giản; không gán từng lỗ vòng dây làm vật riêng.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "cassette_clear",
+      "source_id": "cassette_clear",
+      "source_group": "wwongbc_cassette",
+      "split": "test",
+      "difficulty": "stress",
+      "title": "Vỏ cassette trong suốt",
+      "image_file": "images/cassette_clear.png",
+      "width": 600,
+      "height": 400,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            12,
+            600,
+            378
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "distractors": [],
+      "notes": "Nhiều chi tiết trong vỏ, hai cạnh sát mép; chỉ vỏ ngoài là mục tiêu.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "cd_black",
+      "source_id": "cd_black",
+      "source_group": "deepskyblue_cd",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Đĩa CD trên nền đen",
+      "image_file": "images/cd_black.png",
+      "width": 600,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            35,
+            40,
+            531,
+            525
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Đường bao ngoài gần tròn; lỗ tâm không là mục tiêu.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "cd_white",
+      "source_id": "cd_white",
+      "source_group": "arun_cd",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Đĩa CD trên nền trắng",
+      "image_file": "images/cd_white.png",
+      "width": 600,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            22,
+            15,
+            561,
+            562
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Đĩa gần chính diện, có phản xạ màu.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "cd_scan",
+      "source_id": "cd_scan",
+      "source_group": "liam_cd_scan",
+      "split": "development",
+      "difficulty": "stress",
+      "title": "Bản quét CD chạm bốn mép",
+      "image_file": "images/cd_scan.png",
+      "width": 598,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            0,
+            0,
+            598,
+            600
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "distractors": [],
+      "notes": "Ảnh quét vật thật, không phải ảnh camera. Đường tròn gần tiếp xúc bốn mép; giữ làm ca phát triển.",
+      "capture_type": "scan",
+      "annotation_version": 4
+    },
+    {
+      "id": "cd_dark_texture",
+      "source_id": "cd_dark_texture",
+      "source_group": "gausanchennai_cd",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Đĩa CD, nền tối có kết cấu",
+      "image_file": "images/cd_dark_texture.png",
+      "width": 600,
+      "height": 450,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            106,
+            44,
+            395,
+            391
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Đường bao ngoài gần tròn; vân phản xạ trong đĩa không là mục tiêu riêng.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_scan",
+      "source_id": "floppy_scan",
+      "source_group": "travis_floppy_scan",
+      "split": "test",
+      "difficulty": "stress",
+      "title": "Bản quét đĩa mềm bị cắt mép",
+      "image_file": "images/floppy_scan.png",
+      "width": 572,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            0,
+            572,
+            600
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "distractors": [],
+      "notes": "Bản quét vật thật, phần vỏ chạm/cắt bởi khung; bbox phủ phần nhìn thấy.",
+      "capture_type": "scan",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_sony",
+      "source_id": "floppy_sony",
+      "source_group": "mjjr_floppy_series",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đĩa mềm Sony xanh",
+      "image_file": "images/floppy_sony.png",
+      "width": 577,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            19,
+            18,
+            537,
+            567
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Cùng chuỗi MJJR với các ảnh validation cũ, không chuyển sang train/test.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_verbatim",
+      "source_id": "floppy_verbatim",
+      "source_group": "mjjr_floppy_series",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đĩa mềm Verbatim sáng",
+      "image_file": "images/floppy_verbatim.png",
+      "width": 580,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            19,
+            19,
+            541,
+            566
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Cùng chuỗi MJJR; màu vỏ gần nền, có nhãn và góc vát.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "ancient_round",
+      "source_id": "ancient_round",
+      "source_group": "graearms_coin",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Đồng xu cổ, viền không hoàn hảo",
+      "image_file": "images/ancient_round.png",
+      "width": 579,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            4,
+            4,
+            570,
+            588
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Đường bao gần tròn có sai lệch tự nhiên; không gán lớp theo hoa văn.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "rare_coins",
+      "source_id": "rare_coins",
+      "source_group": "basavayya_coins",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Hai đồng xu trên giấy có chữ",
+      "image_file": "images/rare_coins.png",
+      "width": 600,
+      "height": 400,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            94,
+            69,
+            139,
+            138
+          ],
+          "occluded": false,
+          "clipped": false
+        },
+        {
+          "id": 2,
+          "class": "circle",
+          "bbox": [
+            380,
+            74,
+            139,
+            144
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Hai vật riêng; chữ bên dưới là nền, không là mục tiêu.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "dollar_coin",
+      "source_id": "dollar_coin",
+      "source_group": "akdash47_coin",
+      "split": "validation",
+      "difficulty": "basic",
+      "title": "Đồng một đô la, nền đen",
+      "image_file": "images/dollar_coin.png",
+      "width": 566,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "circle",
+          "bbox": [
+            18,
+            30,
+            530,
+            525
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Đồng xu tròn trên nền đen, thêm lớp tròn còn thiếu trong validation.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "vhs_front",
+      "source_id": "vhs_front",
+      "source_group": "discoa340_collection",
+      "split": "development",
+      "difficulty": "basic",
+      "title": "Băng VHS xám",
+      "image_file": "images/vhs_front.png",
+      "width": 600,
+      "height": 352,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            23,
+            23,
+            553,
+            309
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Cùng tác giả bộ đĩa mềm development; chỉ vỏ ngoài.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "vhs_black",
+      "source_id": "vhs_black",
+      "source_group": "fluorinated_vhs",
+      "split": "test",
+      "difficulty": "basic",
+      "title": "Băng VHS đen, nền sáng",
+      "image_file": "images/vhs_black.png",
+      "width": 600,
+      "height": 402,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            1,
+            48,
+            598,
+            326
+          ],
+          "occluded": false,
+          "clipped": false
+        }
+      ],
+      "distractors": [],
+      "notes": "Cửa sổ băng và trục là chi tiết bên trong.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "floppy_white",
+      "source_id": "floppy_white",
+      "source_group": "andrius_floppy",
+      "split": "test",
+      "difficulty": "stress",
+      "title": "Đĩa mềm trắng gần màu nền",
+      "image_file": "images/floppy_white.png",
+      "width": 596,
+      "height": 600,
+      "annotations": [
+        {
+          "id": 1,
+          "class": "rectangle",
+          "bbox": [
+            0,
+            0,
+            596,
+            600
+          ],
+          "occluded": false,
+          "clipped": true
+        }
+      ],
+      "distractors": [],
+      "notes": "Vỏ sáng gần màu nền, sát/cắt khung. Không tính lỗ tròn ở tâm như vật riêng.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "grass_test",
+      "source_id": "grass_test",
+      "source_group": "titus_grass",
+      "split": "test",
+      "difficulty": "negative",
+      "title": "Nền cỏ, không có hình mục tiêu",
+      "image_file": "images/grass_test.png",
+      "width": 600,
+      "height": 400,
+      "annotations": [],
+      "distractors": [],
+      "notes": "Ảnh âm: không có vật thể tròn/chữ nhật riêng biệt.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "grass_validation",
+      "source_id": "grass_validation",
+      "source_group": "kurt_kaiser_texture",
+      "split": "validation",
+      "difficulty": "negative",
+      "title": "Cỏ nhìn gần, ảnh âm",
+      "image_file": "images/grass_validation.png",
+      "width": 600,
+      "height": 450,
+      "annotations": [],
+      "distractors": [],
+      "notes": "Ảnh âm; cùng nhóm tác giả với nền gỗ validation.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "wood_test",
+      "source_id": "wood_test",
+      "source_group": "bango_wood",
+      "split": "test",
+      "difficulty": "negative",
+      "title": "Vân gỗ, không có hình mục tiêu",
+      "image_file": "images/wood_test.png",
+      "width": 600,
+      "height": 400,
+      "annotations": [],
+      "distractors": [],
+      "notes": "Ảnh âm: vân/khe gỗ không được gán thành vật thể riêng.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    },
+    {
+      "id": "wood_validation",
+      "source_id": "wood_validation",
+      "source_group": "kurt_kaiser_texture",
+      "split": "validation",
+      "difficulty": "negative",
+      "title": "Nền gỗ sáng, ảnh âm",
+      "image_file": "images/wood_validation.png",
+      "width": 600,
+      "height": 450,
+      "annotations": [],
+      "distractors": [],
+      "notes": "Cùng nhóm tác giả ảnh cỏ validation.",
+      "capture_type": "photograph",
+      "annotation_version": 4
+    }
+  ]
+}

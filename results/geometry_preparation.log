@@ -1,0 +1,87 @@
+{
+  "protocol_version": 2,
+  "identity": "SHA-256 of round(clip(normalized_32x32,0,1)*255), uint8 row-major; labels excluded",
+  "splits": {
+    "train": {
+      "samples": 8000,
+      "unique_normalized_uint8": 8000,
+      "duplicates_within_split": 0,
+      "class_counts": {
+        "0": 2000,
+        "1": 2000,
+        "2": 2000,
+        "3": 2000
+      },
+      "split_signature": "876822993311e04b44210967a28f00f7fff33c3f72082f0b69b58e54e5ed55e8"
+    },
+    "validation": {
+      "samples": 1600,
+      "unique_normalized_uint8": 1600,
+      "duplicates_within_split": 0,
+      "class_counts": {
+        "0": 400,
+        "1": 400,
+        "2": 400,
+        "3": 400
+      },
+      "split_signature": "1c25977128fa0a7b480ce99cd18a0db9b5eefa4f6109b45c818dd12a368f088f"
+    },
+    "test": {
+      "samples": 1200,
+      "unique_normalized_uint8": 1200,
+      "duplicates_within_split": 0,
+      "class_counts": {
+        "0": 300,
+        "1": 300,
+        "2": 300,
+        "3": 300
+      },
+      "split_signature": "0e529ebdf1c6cf83517bb2a3574cae5e8c79ed4b9fccf91a3c8b44ca4816bf64"
+    }
+  },
+  "cross_split_overlap": {
+    "train__validation": 0,
+    "train__test": 0,
+    "validation__test": 0
+  },
+  "exact_float32_cross_split_overlap": {
+    "train__validation": 0,
+    "train__test": 0,
+    "validation__test": 0
+  },
+  "passed": true,
+  "near_duplicate_scope": "Exact float32 and uint8-equivalent images only; not a guarantee against all perceptually similar shapes.",
+  "requested_counts": {
+    "train": 8000,
+    "validation": 1600,
+    "test": 1200
+  },
+  "seeds": {
+    "train": 20261101,
+    "validation": 20261102,
+    "test": 20261103,
+    "scenes": 20261104
+  },
+  "generation": {
+    "train": {
+      "attempts": 8022,
+      "rejected_against_previous_splits": 0,
+      "rejected_within_split": 22,
+      "accepted": 8000
+    },
+    "validation": {
+      "attempts": 1608,
+      "rejected_against_previous_splits": 8,
+      "rejected_within_split": 0,
+      "accepted": 1600
+    },
+    "test": {
+      "attempts": 1209,
+      "rejected_against_previous_splits": 9,
+      "rejected_within_split": 0,
+      "accepted": 1200
+    }
+  },
+  "archive_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "protocol": "Create ordered train/validation/test splits once, reject within-split and earlier-split duplicate normalized CNN inputs; never select weights using test performance."
+}

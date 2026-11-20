@@ -1,0 +1,11 @@
+{
+  "created_before_real_inference": true,
+  "manifest_sha256": "85465754b6ed8928332652f1f80ad09038c1ca3a7cadd8cab13932f00954fd54",
+  "source_photo_count": 6,
+  "target_count": 37,
+  "shapes_checkpoint_sha256": "40c282fd706390cf2f83e945a34edc1e276f8b5985d1d370f11b2f77ef85877a",
+  "geometry_dataset_sha256": "941e3473a04633b97151262f72b3b71199fe5076f1268570a1096e551a239f90",
+  "processing_sha256": "81438cc0ad4213a9d04787029605ae8c832d1134796f73dd9f6a669e25e83cc4",
+  "service_sha256": "00de0fe6d32c3a3c15542e609e520a2b6087879718aceda2a012dfd0b6c98fbf",
+  "selection_policy": "Checkpoint selected using deduplicated synthetic validation only. No pipeline changes or tuning using the six real photos."
+}

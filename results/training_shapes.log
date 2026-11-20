@@ -1,0 +1,12 @@
+shapes: 8000 train, 1600 validation, 10 epochs, CPU threads=4
+{"epoch": 1, "train_loss": 0.7470161108970642, "train_accuracy": 0.66425, "validation_loss": 0.40736029505729676, "validation_accuracy": 0.785625, "seconds": 1.2555975914001465}
+{"epoch": 2, "train_loss": 0.3446109652519226, "train_accuracy": 0.84075, "validation_loss": 0.215577512383461, "validation_accuracy": 0.930625, "seconds": 0.8284151554107666}
+{"epoch": 3, "train_loss": 0.16894194784760475, "train_accuracy": 0.939, "validation_loss": 0.07632943361997604, "validation_accuracy": 0.98875, "seconds": 0.8920156955718994}
+{"epoch": 4, "train_loss": 0.06978569000959396, "train_accuracy": 0.980625, "validation_loss": 0.022194086834788324, "validation_accuracy": 0.995625, "seconds": 0.8931958675384521}
+{"epoch": 5, "train_loss": 0.03412984870374203, "train_accuracy": 0.99075, "validation_loss": 0.016962371543049814, "validation_accuracy": 0.996875, "seconds": 0.8891594409942627}
+{"epoch": 6, "train_loss": 0.02569252257794142, "train_accuracy": 0.993625, "validation_loss": 0.012997784484177828, "validation_accuracy": 0.9975, "seconds": 0.8447091579437256}
+{"epoch": 7, "train_loss": 0.017445929612964393, "train_accuracy": 0.995625, "validation_loss": 0.007620660737156868, "validation_accuracy": 0.999375, "seconds": 0.8515870571136475}
+{"epoch": 8, "train_loss": 0.016402155133895577, "train_accuracy": 0.996, "validation_loss": 0.005065234508365392, "validation_accuracy": 0.999375, "seconds": 0.8071119785308838}
+{"epoch": 9, "train_loss": 0.01606818351522088, "train_accuracy": 0.99425, "validation_loss": 0.008072606828063726, "validation_accuracy": 0.998125, "seconds": 0.837188720703125}
+{"epoch": 10, "train_loss": 0.012779719302430749, "train_accuracy": 0.99675, "validation_loss": 0.00183016313938424, "validation_accuracy": 0.999375, "seconds": 0.8466231822967529}
+Saved best validation checkpoint: shapes_cnn.pt; validation accuracy=99.9375%
