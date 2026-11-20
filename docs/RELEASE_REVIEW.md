@@ -26,7 +26,7 @@ Dự án phù hợp phạm vi đơn giản “nhận dạng chữ viết và hì
 3. Cập nhật `.dockerignore`, loại cả `.venv_from_other_pc` và các môi trường `.venv*` khỏi Docker context.
 4. Kiểm tra Python 3.12 64-bit trong hai BAT; bỏ fallback tạo venv bằng Python mặc định chưa kiểm tra. Script không tự xóa venv cũ. BAT chạy demo nhận thêm đối số như `--port 5001`.
 5. Sửa cache dữ liệu hybrid: khi manifest nhãn/vai trò hoặc bộ hình học gốc thay đổi, yêu cầu sinh lại bằng `--force`. Vẫn cho phép dùng nguyên bộ dữ liệu đã khóa nếu chỉ mã tạo/xử lý dữ liệu thay đổi, và ghi nhận sự khác biệt đó.
-6. Thêm ba kiểm thử hồi quy cho cache dữ liệu. Sửa mô tả giao diện để không gọi test đã xem là “kiểm tra mới”.
+6. Thêm ba kiểm thử hồi quy cho cache dữ liệu và một kiểm thử bảo đảm script kiểm tra phát hành từ chối cache thiếu mà không sinh lại dữ liệu. Sửa mô tả giao diện để không gọi test đã xem là “kiểm tra mới”.
 7. Viết lại README cho người clone lần đầu; chuyển nhật ký kỹ thuật cũ sang `docs/EXPERIMENTS.md`, làm rõ benchmark mặc định còn có phép đo MNIST test riêng.
 8. Ghi nhận repo kế thừa, nguồn ảnh và phạm vi giấy phép trong `THIRD_PARTY_NOTICES.md`; không gán giấy phép MIT chung cho tài sản chưa xác định quyền cấp phép lại.
 9. Thêm `scripts/check_release.py` kiểm tra đọc dữ liệu và HTTP contract, cùng workflow kiểm thử Windows/Ubuntu trên GitHub Actions.
@@ -40,12 +40,15 @@ Môi trường local: **Windows 11, Python 3.12.10 64-bit**, PyTorch **2.7.1+cpu
 | Kiểm tra | Kết quả |
 |---|---|
 | `python -m pip check` | Đạt, không có phụ thuộc bị xung đột |
-| Bộ kiểm thử sau khi sửa cache | **71 kiểm thử đạt**, 36,854 giây trong lần chạy local; đây không phải thời gian suy luận một ảnh |
+| Bộ kiểm thử bản cuối | **72 kiểm thử đạt**, 38,113 giây trên bản clone sạch với venv cài mới; đây không phải thời gian suy luận một ảnh |
 | `python scripts/check_release.py` | Đạt; ba báo cáo khớp toàn bộ 14 tài sản suy luận |
 | Dataset và giao thức | MNIST khớp checksum; 40 ảnh thực, 33 nhóm nguồn, 68 mục tiêu; khóa giao thức không có tài sản thay đổi |
 | HTTP contract | Mười GET trả 200; ảnh mẫu chữ số 6 được nhận là 6, ảnh hình học mẫu trả 1 tròn / 3 chữ nhật |
 | JavaScript | `node --check static/script.js` đạt; kiểm tra tĩnh ID và trường dữ liệu frontend khớp backend |
 | BAT Windows | `SETUP_WINDOWS.bat` thoát 0 với venv Python 3.12 hiện có; `RUN_DEMO_WINDOWS.bat --port ...` mở server trên cổng thử riêng, năm route chính trả 200; đã dừng đúng tiến trình thử |
+| Clone sạch và cài lại | Clone local sang thư mục tạm với `core.autocrlf=true`, tạo venv mới bằng `SETUP_WINDOWS.bat`, chỉ cài `requirements.txt`; `pip check`, `check_release.py` và toàn bộ 72 kiểm thử đều đạt trên Windows |
+
+Bản clone sạch không chứa môi trường ảo hoặc cache từ thư mục gốc. Mã/manifests khóa vẫn khớp SHA-256 sau checkout Windows; ba báo cáo tiếp tục khớp đủ 14 tài sản. Đây là kiểm tra trên môi trường mới của cùng máy, không phải xác nhận đã thử một máy tính khác.
 
 `check_release.py` và kiểm tra giao thức không chạy lại accuracy toàn bộ tập test, không huấn luyện và không ghi đè dữ liệu/kết quả đã khóa. Các kiểm thử có huấn luyện fixture rất nhỏ chỉ ghi trong thư mục tạm, không ghi đè checkpoint của ứng dụng.
 
